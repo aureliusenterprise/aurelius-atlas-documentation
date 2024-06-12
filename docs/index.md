@@ -15,7 +15,7 @@ Aurelius Atlas is available as an online demo. To access the demo, click the but
 <a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
 
 !!! note
-A Google account is required to access the demo.
+    A Google account is required to access the demo.
 
 ## License
 

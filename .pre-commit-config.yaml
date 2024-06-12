@@ -6,6 +6,7 @@ repos:
       - id: mdformat
         name: Format Markdown
         additional_dependencies:
+          - mdformat-admon
           - mdformat-beautysh
           - mdformat-black
           - mdformat-config
