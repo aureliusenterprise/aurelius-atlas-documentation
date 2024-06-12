@@ -6,6 +6,6 @@
         "tables": false
     },
     "MD033": {
-        "allowed_elements": ["button", "form", "img"]
+        "allowed_elements": ["a"]
     }
 }
