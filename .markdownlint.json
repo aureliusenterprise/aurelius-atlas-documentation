@@ -4,5 +4,8 @@
         "line_length": 110,
         "code_blocks": false,
         "tables": false
+    },
+    "MD033": {
+        "allowed_elements": ["button", "form", "img"]
     }
 }
