@@ -1,0 +1,16 @@
+site_name: Aurelius Enterprise Documentation
+
+theme:
+  name: readthedocs
+  logo: img/logo.png
+  favicon: img/favicon.ico
+  search: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Installation and Deployment: installation-and-deployment.md
+  - Architecture: architecture.md
+  - User Guide: user-guide.md
+  - Integrations: integrations.md
+  - Support and Maintenance: support-and-maintenance.md

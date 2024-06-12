@@ -1,0 +1,17 @@
+{
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [
+        {
+            "name": "custom-words",
+            "path": "./.cspell/custom-words.txt",
+            "addWords": true
+        }
+    ],
+    "dictionaries": [
+        "custom-words"
+    ],
+    "words": [],
+    "ignoreWords": [],
+    "import": []
+}

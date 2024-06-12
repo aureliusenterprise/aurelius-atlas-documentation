@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "aurelius-atlas-documentation"
+version = "0.1.0"
+description = ""
+authors = ["Aurelius Enterprise <info@aureliusenterprise.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.9"
+mkdocs = "~1.6"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "~3.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
