@@ -62,7 +62,7 @@ hooks are enabled:
 
 - `mdformat`: Automatically formats Markdown files according to the configuration in `.mdformat.toml`.
 - `markdownlint`: Lints Markdown files to catch any remaining formatting issues and enforce style rules,
-  configured via `.markdownlint.json`.
+    configured via `.markdownlint.json`.
 - `cspell`: Spell checks Markdown files to catch typographical errors, with settings defined in `.cspell.json`.
 
 ### On Commit
