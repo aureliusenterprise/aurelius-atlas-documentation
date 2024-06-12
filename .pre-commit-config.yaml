@@ -10,6 +10,7 @@ repos:
           - mdformat-beautysh
           - mdformat-black
           - mdformat-config
+          - mdformat-mkdocs
           - mdformat-gfm
           - mdformat-gfm-alerts
           - mdformat-tables

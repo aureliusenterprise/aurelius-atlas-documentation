@@ -18,3 +18,9 @@ nav:
 
 markdown_extensions:
   - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed    
+
+extra_css:
+  - stylesheets/tabs.css
