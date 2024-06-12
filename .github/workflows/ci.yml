@@ -9,14 +9,25 @@ on:
 name: CI
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.sha }}
+    env:
+      POETRY_VERSION: "1.8.3"
+      PYTHON_VERSION: "3.9"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
+
+      - name: "Setup Python, Poetry and Dependencies"
+        uses: packetcoders/action-setup-cache-python-poetry@main
         with:
-          python-version: 3.9
+          python-version: ${{ env.PYTHON_VERSION }}
+          poetry-version: ${{ env.POETRY_VERSION }}
+          install-args: --no-root
+
       - name: Run pre-commit hooks
-        uses: pre-commit/action@v3.0.1
+        run: poetry run pre-commit run --all-files
+
+      - name: Publish docs
+        run: poetry run mkdocs gh-deploy
