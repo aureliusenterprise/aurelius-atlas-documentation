@@ -15,3 +15,6 @@ nav:
   - User Guide: user-guide.md
   - Integrations: integrations.md
   - Support and Maintenance: support-and-maintenance.md
+
+markdown_extensions:
+  - admonition
