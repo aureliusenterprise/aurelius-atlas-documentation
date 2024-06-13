@@ -76,14 +76,12 @@ Before you begin the installation process, ensure that you have the following pr
 === "Azure"
     Please ensure you have the following prerequisites for a deployment on Azure:
 
-    - An Azure account
     - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed
     - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed
 
 === "Google Cloud"
     Please ensure you have the following prerequisites for a deployment on Google Cloud:
 
-    - A Google Cloud account
     - [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed
     - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed
     - A registered domain name for the Ingress controller
