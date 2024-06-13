@@ -453,7 +453,11 @@ file contains the configuration settings for Aurelius Atlas.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>{{ .Values.keycloak.keycloakFrontendURL}}</code></td>
+<td><code>{{ .Values.global.external_hostname }}</code></td>
+<td>Set this to your DNS name.</td>
+</tr>
+<tr>
+<td><code>{{ .Values.keycloak.keycloakFrontendURL }}</code></td>
 <td>Set this to your DNS name.</td>
 </tr>
 <tr>
