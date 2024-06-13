@@ -329,7 +329,7 @@ access the platform, open a web browser and navigate to `https://<dns-name>/<nam
 
 By default, the helm chart creates the following users:
 
-| User type                                 | Username    |
+| User Type                                 | Username    |
 | ----------------------------------------- | ----------- |
 | Aurelius Atlas Admin                      | `atlas`     |
 | Elasticsearch Admin                       | `elastic`   |
