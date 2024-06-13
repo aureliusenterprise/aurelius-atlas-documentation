@@ -209,8 +209,8 @@ install the ingress controller, follow the steps below:
     helm repo update
     helm install nginx-ingress ingress-nginx/ingress-nginx \
         --set controller.publishService.enabled=true \
-        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz
-    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=<label>
+        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz \
+        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=<label>
     ```
 
     !!! note
