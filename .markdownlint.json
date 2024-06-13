@@ -7,5 +7,6 @@
     },
     "MD033": {
         "allowed_elements": ["a", "div"]
-    }
+    },
+    "MD046": false
 }
