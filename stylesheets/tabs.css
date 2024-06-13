@@ -4,6 +4,8 @@
     flex-wrap: wrap;
     margin: 1em 0;
     border-radius: 0.1rem;
+    border: 1px solid #ddd;
+    padding: .5rem;
 }
 
 .tabbed-set>input {
@@ -27,7 +29,7 @@
     width: 100%;
     display: none;
     box-shadow: 0 -.05rem #ddd;
-    padding: 1.25rem;
+    padding: 24px;
 }
 
 .tabbed-set input {

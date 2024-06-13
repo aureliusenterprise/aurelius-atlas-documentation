@@ -60,6 +60,46 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#first-time-installation">First Time Installation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration-manager">Configuration Manager</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#certificate-manager-and-issuer">Certificate Manager and Issuer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#set-up-certificate-manager">Set Up Certificate Manager</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#set-up-issuer">Set Up Issuer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ingress-controller">Ingress Controller</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#set-up-ingress-controller">Set Up Ingress Controller</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#set-up-certificate">Set Up Certificate</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#elastic-cloud">Elastic Cloud</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#zookeeper">Zookeeper</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deploying-aurelius-atlas">Deploying Aurelius Atlas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-values">Configure Values</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deploy-helm-chart">Deploy Helm Chart</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accessing-aurelius-atlas">Accessing Aurelius Atlas</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#default-credentials">Default Credentials</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -109,6 +149,7 @@ any cloud provider or on-premises Kubernetes cluster.</p>
 <p class="admonition-title">Tip</p>
 <p>For users who want to try out Aurelius Atlas without setting up a Kubernetes cluster, a Docker Compose file
 is also provided.</p>
+<p><strong>Do not use the Docker Compose distribution for production deployments.</strong></p>
 </div>
 <p>All distributions of Aurelius Atlas are available on GitHub:</p>
 <div class="wy-btn-group">
@@ -240,7 +281,6 @@ is also provided.</p>
 <div class="tabbed-set" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Kubernetes Cluster</label><div class="tabbed-content">
 <p>Please ensure you have the following prerequisites for a deployment on a Kubernetes cluster:</p>
 <ul>
-<li>A Kubernetes cluster</li>
 <li><a href="https://helm.sh/docs/intro/install/">Helm</a> installed</li>
 <li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> installed</li>
 </ul>
@@ -269,6 +309,215 @@ is also provided.</p>
 </ul>
 </div>
 </div>
+<h2 id="first-time-installation">First Time Installation</h2>
+<p>Once you have your cluster and prerequisites set up, you can install Aurelius Atlas using the Helm chart or Docker
+Compose. The following sections will guide you through the process.</p>
+<h3 id="configuration-manager">Configuration Manager</h3>
+<p>Aurelius Atlas recommends <a href="https://github.com/emberstack/kubernetes-reflector">Reflector</a> for managing the configuration
+of the Kubernetes cluster. To install Reflector, run the following commands:</p>
+<pre class="highlight"><code class="language-bash">helm repo add emberstack https://emberstack.github.io/helm-charts
+helm repo update
+helm upgrade --install reflector emberstack/reflector</code></pre>
+<h3 id="certificate-manager-and-issuer">Certificate Manager and Issuer</h3>
+<p>To secure your deployment, Aurelius Atlas requires TLS certificates for your domain. Follow the steps below to
+set up the certificate manager and issuer.</p>
+<h4 id="set-up-certificate-manager">Set Up Certificate Manager</h4>
+<p>First, you need to install a certificate manager to manage the TLS certificates for your domain.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If your organization already has a certificate manager set up, you can use it and skip this step. Please
+note that you will need to provide your certificate manager's details in later steps.</p>
+</div>
+<p>Aurelius Atlas recommends using <a href="https://cert-manager.io/docs/installation/kubernetes/">cert-manager</a> for
+managing TLS certificates in Kubernetes.</p>
+<p>To install cert-manager, run the following commands:</p>
+<pre class="highlight"><code class="language-bash">helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install cert-manager jetstack/cert-manager \
+    --namespace cert-manager \
+    --create-namespace \
+    --version v1.15 \
+    --set installCRDs=true \
+    --set global.leaderElection.namespace=cert-manager</code></pre>
+<p>On successful installation, you should see the following output:</p>
+<pre class="highlight"><code class="language-plaintext">NOTES:
+cert-manager v1.15 has been deployed successfully</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use a version of cert-manager that is compatible with your Kubernetes cluster. You can find the compatibility
+matrix <a href="https://cert-manager.io/docs/releases/">here</a>.</p>
+</div>
+<h4 id="set-up-issuer">Set Up Issuer</h4>
+<p>Next, you need to set up an issuer to issue the TLS certificates for your domain.</p>
+<p>Aurelius Atlas recommends using the <code>letsencrypt-prod</code> issuer for production deployments. The helm chart includes
+a default configuration for the <code>letsencrypt-prod</code> issuer. To set up the issuer with the default configuration,
+follow these steps:</p>
+<ol>
+<li>Uncomment the content of the <code>templates/prod_issuer.yaml</code> file in the Helm chart.</li>
+<li>Update <code>{{ .Values.ingress.email_address }}</code> in the <code>values.yaml</code> file with your email address.</li>
+</ol>
+<p>Next, run the following command to install the issuer:</p>
+<pre class="highlight"><code class="language-bash">helm template -s templates/prod_issuer.yaml . | kubectl apply -f -</code></pre>
+<p>This sets up the <code>letsencrypt-prod</code> issuer with the default configuration in the <code>cert-manager</code> namespace. To
+verify that the issuer is set up correctly, run the following command:</p>
+<pre class="highlight"><code class="language-bash">kubectl get clusterissuer -n cert-manager</code></pre>
+<p>You should see the <code>letsencrypt-prod</code> issuer in the list of cluster issuers with a status of <code>Ready</code>.</p>
+<pre class="highlight"><code class="language-plaintext">NAME                                       READY   AGE
+letsencrypt-clusterissuer-aurelius-atlas   True    24h</code></pre>
+<h3 id="ingress-controller">Ingress Controller</h3>
+<p>Next, you need to set up an ingress controller to route external traffic to your services.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If your organization already has an ingress controller set up, you can use it and skip this step. Please
+note that you will need to provide your ingress controller's details in later steps.</p>
+</div>
+<h4 id="set-up-ingress-controller">Set Up Ingress Controller</h4>
+<p>Aurelius Atlas recommends using an <a href="https://kubernetes.github.io/ingress-nginx/">NGINX ingress controller</a>. To
+install the ingress controller, follow the steps below:</p>
+<div class="tabbed-set" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Kubernetes Cluster</label><div class="tabbed-content">
+<p>To install the NGINX ingress controller on a Kubernetes cluster, run the following commands:</p>
+<pre class="highlight"><code class="language-bash">helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+    --set controller.publishService.enabled=true</code></pre>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Azure</label><div class="tabbed-content">
+<p>To install the NGINX ingress controller on Azure, run the following commands:</p>
+<pre class="highlight"><code class="language-bash">helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+    --set controller.publishService.enabled=true \
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz
+--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=&lt;label&gt;</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code>&lt;label&gt;</code> with a DNS label name for the Azure Load Balancer. This label name should be unique within
+the Azure region.</p>
+<p>For example, if you use the label <code>aurelius-atlas</code>, the Load Balancer's DNS name will be <code>aurelius-atlas.&lt;region&gt;.cloudapp.azure.com</code>.</p>
+</div>
+</div>
+<input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><label for="__tabbed_3_3">Google Cloud</label><div class="tabbed-content">
+<p>To install the NGINX ingress controller on Google Cloud, run the following commands:</p>
+<pre class="highlight"><code class="language-bash">helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+    --set controller.publishService.enabled=true</code></pre>
+</div>
+<input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><label for="__tabbed_3_4">Docker Compose</label><div class="tabbed-content">
+<p>You can skip this step when making a local deployment.</p>
+</div>
+</div>
+<h4 id="set-up-certificate">Set Up Certificate</h4>
+<p>Next, you need to set up a certificate for the ingress controller. To do this, follow the steps below:</p>
+<ol>
+<li>Uncomment the content of the <code>templates/certificate.yaml</code> file in the Helm chart.</li>
+<li>Update <code>{{ .Values.ingress.dns_url }}</code> in the <code>values.yaml</code> file with your DNS name.</li>
+</ol>
+<p>Next, run the following command to install the certificate:</p>
+<pre class="highlight"><code class="language-bash">helm template -s templates/certificate.yaml . | kubectl apply -f -</code></pre>
+<p>This sets up the certificate for the ingress controller. To verify that the certificate is set up correctly, run
+the following command:</p>
+<pre class="highlight"><code class="language-bash">kubectl get certificate -n cert-manager</code></pre>
+<p>You should see the certificate in the list of certificates with a status of <code>Ready</code>.</p>
+<pre class="highlight"><code class="language-plaintext">NAME                          READY   AGE
+aurelius-atlas-ingress-cert   True    24h</code></pre>
+<h3 id="elastic-cloud">Elastic Cloud</h3>
+<p>Aurelius Atlas uses <a href="https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html">Elastic Cloud on Kubernetes (ECK)</a>
+to manage its internal Elasticsearch cluster. To set up ECK, run the following commands:</p>
+<pre class="highlight"><code class="language-bash">kubectl create -f https://download.elastic.co/downloads/eck/2.13.0/crds.yaml
+kubectl apply -f https://download.elastic.co/downloads/eck/2.13.0/operator.yaml</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please use a version of ECK that is compatible with your Kubernetes cluster. The ECK docs provide a list
+of supported versions <a href="https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_supported_versions.html">here</a>.</p>
+</div>
+<h3 id="zookeeper">Zookeeper</h3>
+<p>Aurelius Atlas internally relies on Zookeeper. Please ensure that the Zookeeper dependencies are updated by
+running the following commands:</p>
+<pre class="highlight"><code class="language-bash">cd charts/zookeeper/
+helm dependency update</code></pre>
+<h2 id="deploying-aurelius-atlas">Deploying Aurelius Atlas</h2>
+<p>Once you have set up the prerequisites and configured the necessary components, you are ready to deploy Aurelius
+Atlas.</p>
+<h3 id="configure-values">Configure Values</h3>
+<p>Before deploying Aurelius Atlas, you need to configure the values in the <code>values.yaml</code> file. The <code>values.yaml</code>
+file contains the configuration settings for Aurelius Atlas.</p>
+<p>The following are the key configuration settings that you need to update:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{{ .Values.keycloak.keycloakFrontendURL}}</code></td>
+<td>Set this to your DNS name.</td>
+</tr>
+<tr>
+<td><code>{{ .Values.post_install.upload_data }}</code></td>
+<td>Set this to <code>true</code> to upload sample data.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Aurelius Atlas ships with sample data that you can us to explore the platform. To load the sample data,
+set <code>{{ .Values.post_install.upload_data }}</code> to <code>true</code>.</p>
+</div>
+<h3 id="deploy-helm-chart">Deploy Helm Chart</h3>
+<p>To deploy Aurelius Atlas using the Helm chart, run the following commands:</p>
+<pre class="highlight"><code class="language-bash">helm dependency update
+helm install --generate-name -n &lt;namespace&gt; -f values.yaml --wait --timeout 15m0s .</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code>&lt;namespace&gt;</code> with the namespace where you want to deploy Aurelius Atlas.</p>
+</div>
+<h3 id="accessing-aurelius-atlas">Accessing Aurelius Atlas</h3>
+<p>Once the deployment is complete, you can access Aurelius Atlas using the DNS name you configured earlier. To
+access the platform, open a web browser and navigate to <code>https://&lt;dns-name&gt;/&lt;namespace&gt;/atlas/</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code>&lt;dns-name&gt;</code> with the DNS name you configured earlier, and <code>&lt;namespace&gt;</code> with the namespace where
+you deployed Aurelius Atlas.</p>
+</div>
+<h4 id="default-credentials">Default Credentials</h4>
+<p>By default, the helm chart creates the following users:</p>
+<table>
+<thead>
+<tr>
+<th>User type</th>
+<th>Username</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aurelius Atlas Admin</td>
+<td><code>atlas</code></td>
+</tr>
+<tr>
+<td>Elasticsearch Admin</td>
+<td><code>elastic</code></td>
+</tr>
+<tr>
+<td>Keycloak Admin</td>
+<td><code>admin</code></td>
+</tr>
+<tr>
+<td>Aurelius Atlas Data Steward (demo only)</td>
+<td><code>steward</code></td>
+</tr>
+<tr>
+<td>Aurelius Atlas Data Scientist (demo only)</td>
+<td><code>scientist</code></td>
+</tr>
+</tbody>
+</table>
+<p>The credentials for each user are randomized and stored in a Kubernetes secret. The helm chart includes a script
+to retrieve the passwords for each user. To retrieve the passwords, run the following command:</p>
+<pre class="highlight"><code class="language-bash">./get_passwords.sh &lt;namespace&gt;</code></pre>
+<p>This script will print the passwords for each user to the console.</p>
               
             </div>
           </div><footer>
