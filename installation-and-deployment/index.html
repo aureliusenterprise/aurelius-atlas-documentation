@@ -385,8 +385,8 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
 helm repo update
 helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.publishService.enabled=true \
-    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz
---set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=&lt;label&gt;</code></pre>
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz \
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=&lt;label&gt;</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Replace <code>&lt;label&gt;</code> with a DNS label name for the Azure Load Balancer. This label name should be unique within
