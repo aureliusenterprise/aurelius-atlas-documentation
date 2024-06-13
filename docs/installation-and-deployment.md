@@ -7,7 +7,8 @@ any cloud provider or on-premises Kubernetes cluster.
     For users who want to try out Aurelius Atlas without setting up a Kubernetes cluster, a Docker Compose file
     is also provided.
 
-    **Do not use the Docker Compose distribution for production deployments.**
+!!! danger
+    Do not use the Docker Compose distribution for production deployments.
 
 All distributions of Aurelius Atlas are available on GitHub:
 
