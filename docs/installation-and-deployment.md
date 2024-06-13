@@ -296,10 +296,11 @@ file contains the configuration settings for Aurelius Atlas.
 
 The following are the key configuration settings that you need to update:
 
-| Key                                         | Description                               |
-| ------------------------------------------- | ----------------------------------------- |
-| `{{ .Values.keycloak.keycloakFrontendURL}}` | Set this to your DNS name.                |
-| `{{ .Values.post_install.upload_data }}`    | Set this to `true` to upload sample data. |
+| Key                                          | Description                               |
+| -------------------------------------------- | ----------------------------------------- |
+| `{{ .Values.global.external_hostname }}`     | Set this to your DNS name.                |
+| `{{ .Values.keycloak.keycloakFrontendURL }}` | Set this to your DNS name.                |
+| `{{ .Values.post_install.upload_data }}`     | Set this to `true` to upload sample data. |
 
 !!! tip
     Aurelius Atlas ships with sample data that you can us to explore the platform. To load the sample data,
