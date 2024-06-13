@@ -23,7 +23,7 @@ All distributions of Aurelius Atlas are available on GitHub:
 
 ## Infrastructure Requirements
 
-The following are the infrastructure requirements for deploying Aurelius Atlas:
+The following are the minimal infrastructure requirements for deploying Aurelius Atlas:
 
 === "Kubernetes Cluster"
     For an on-premises Kubernetes cluster, the system requirements are:
@@ -77,12 +77,14 @@ Before you begin the installation process, ensure that you have the following pr
 === "Azure"
     Please ensure you have the following prerequisites for a deployment on Azure:
 
+    - [Helm](https://helm.sh/docs/intro/install/) installed
     - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed
     - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed
 
 === "Google Cloud"
     Please ensure you have the following prerequisites for a deployment on Google Cloud:
 
+    - [Helm](https://helm.sh/docs/intro/install/) installed
     - [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed
     - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed
     - A registered domain name for the Ingress controller
