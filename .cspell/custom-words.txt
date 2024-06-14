@@ -3,6 +3,7 @@ cloudapp
 clusterissuer
 codespaces
 emberstack
+flink
 healthz
 jetstack
 keycloak

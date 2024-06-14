@@ -22,5 +22,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed          
 
+plugins:
+  - mermaid2
+
 extra_css:
   - stylesheets/tabs.css
