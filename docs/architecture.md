@@ -32,7 +32,7 @@ graph LR
 
 The Web App is the main user interface for Aurelius Atlas. It is a single-page application (SPA) built with Angular.
 The Web App is responsible for displaying the data stored in Apache Atlas and Elasticsearch. It communicates with
-he backend services using REST APIs. Authentication is handled by Apache Keycloak.
+the backend services using REST APIs. Authentication is handled by Apache Keycloak.
 
 ## Apache Atlas
 
