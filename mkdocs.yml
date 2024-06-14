@@ -10,9 +10,9 @@ nav:
   - Home: index.md
   - Benefits and Features: benefits-and-features.md
   - Getting Started: getting-started.md
+  - User Stories: user-stories/index.md
   - Installation and Deployment: installation-and-deployment.md
   - Architecture: architecture.md
-  - User Guide: user-guide.md
   - Integrations: integrations.md
   - Support and Maintenance: support-and-maintenance.md
 
