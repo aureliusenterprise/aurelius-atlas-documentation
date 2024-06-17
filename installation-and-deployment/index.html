@@ -498,39 +498,46 @@ access the platform, open a web browser and navigate to <code>https://&lt;dns-na
 you deployed Aurelius Atlas.</p>
 </div>
 <h4 id="default-credentials">Default Credentials</h4>
-<p>By default, the helm chart creates the following users:</p>
+<p>By default, the following users are created:</p>
 <table>
 <thead>
 <tr>
 <th>User Type</th>
 <th>Username</th>
+<th>Default Password (docker-compose)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Aurelius Atlas Admin</td>
 <td><code>atlas</code></td>
+<td><code>atlas</code></td>
 </tr>
 <tr>
 <td>Elasticsearch Admin</td>
 <td><code>elastic</code></td>
+<td><code>elasticpw</code></td>
 </tr>
 <tr>
 <td>Keycloak Admin</td>
+<td><code>admin</code></td>
 <td><code>admin</code></td>
 </tr>
 <tr>
 <td>Aurelius Atlas Data Steward (demo only)</td>
 <td><code>steward</code></td>
+<td>-</td>
 </tr>
 <tr>
 <td>Aurelius Atlas Data Scientist (demo only)</td>
 <td><code>scientist</code></td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
-<p>The credentials for each user are randomized and stored in a Kubernetes secret. The helm chart includes a script
-to retrieve the passwords for each user. To retrieve the passwords, run the following command:</p>
+<p>For production deployments, the passwords for each user are randomized and stored in a Kubernetes secret. The
+helm chart includes a script to retrieve the passwords for each user. To retrieve the passwords, run the following
+command:</p>
 <pre class="highlight"><code class="language-bash">./get_passwords.sh &lt;namespace&gt;</code></pre>
 <p>This script will print the passwords for each user to the console.</p>
               
