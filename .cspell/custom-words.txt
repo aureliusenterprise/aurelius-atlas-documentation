@@ -2,6 +2,7 @@ autoplay
 cloudapp
 clusterissuer
 codespaces
+elasticpw
 emberstack
 flink
 healthz

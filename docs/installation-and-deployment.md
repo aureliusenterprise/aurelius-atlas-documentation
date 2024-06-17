@@ -346,18 +346,19 @@ access the platform, open a web browser and navigate to `https://<dns-name>/<nam
 
 #### Default Credentials
 
-By default, the helm chart creates the following users:
+By default, the following users are created:
 
-| User Type                                 | Username    |
-| ----------------------------------------- | ----------- |
-| Aurelius Atlas Admin                      | `atlas`     |
-| Elasticsearch Admin                       | `elastic`   |
-| Keycloak Admin                            | `admin`     |
-| Aurelius Atlas Data Steward (demo only)   | `steward`   |
-| Aurelius Atlas Data Scientist (demo only) | `scientist` |
+| User Type                                 | Username    | Default Password (docker-compose) |
+| ----------------------------------------- | ----------- | --------------------------------- |
+| Aurelius Atlas Admin                      | `atlas`     | `atlas`                           |
+| Elasticsearch Admin                       | `elastic`   | `elasticpw`                       |
+| Keycloak Admin                            | `admin`     | `admin`                           |
+| Aurelius Atlas Data Steward (demo only)   | `steward`   | -                                 |
+| Aurelius Atlas Data Scientist (demo only) | `scientist` | -                                 |
 
-The credentials for each user are randomized and stored in a Kubernetes secret. The helm chart includes a script
-to retrieve the passwords for each user. To retrieve the passwords, run the following command:
+For production deployments, the passwords for each user are randomized and stored in a Kubernetes secret. The
+helm chart includes a script to retrieve the passwords for each user. To retrieve the passwords, run the following
+command:
 
 ```bash
 ./get_passwords.sh <namespace>
