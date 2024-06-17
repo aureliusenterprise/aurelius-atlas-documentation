@@ -11,7 +11,7 @@ critical business questions. However, identifying relevant data, understanding w
 who to contact for access can be challenging, especially in organizations with a distributed data landscape and
 lacking data governance tools.
 
-[Read more](./data-discovery.md) about data discovery with Aurelius Atlas.
+[Data Discovery User Story](./data-discovery.md) Click here to see how we tackle this issue with Aurelius Atlas.
 
 ## Data Lineage
 
@@ -20,7 +20,7 @@ regulatory requirements. **Data stewards** and **compliance officers** need to t
 source to where it is consumed to ensure that it is used appropriately and that any transformations or processing
 steps are correctly applied.
 
-[Read more](./data-lineage.md) about data lineage with Aurelius Atlas.
+[Data Lineage User Story](./data-lineage.md) Read a user story about data lineage with Aurelius Atlas.
 
 ## Cross-Platform Data Governance
 
