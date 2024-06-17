@@ -9,3 +9,5 @@ keycloak
 letsencrypt
 mdformat
 mkdocs
+Merel
+Hofman
