@@ -24,12 +24,13 @@ steps are correctly applied.
 
 ## Cross-Platform Data Governance
 
-Modern enterprises often use a variety of data platforms and tools to manage and analyze data. Many platforms offer
-data governance tooling, but these tools are typically designed for use with that environment only. **Data
+Modern enterprises often use a variety of data platforms and tools to manage and analyze data. Many platforms
+offer data governance tooling, but these tools are typically designed for use with that environment only. **Data
 scientists and engineers**, **data stewards**, and **compliance officers** need a unified solution that can provide
 governance capabilities across multiple platforms.
 
-[Read more](./cross-platform-data-governance.md) about cross-platform data governance with Aurelius Atlas.
+[Cross Platform User Story](./cross-platform-data-governance.md) about
+cross-platform data governance with Aurelius Atlas.
 
 ## Data Quality Management
 
@@ -37,12 +38,15 @@ A key driver for data governance initiatives is often the need to improve data q
 a means to quickly identify data that is suitable for use in their analyses. Further, **data stewards** need tools
 to monitor data quality over time, identify issues, and track the resolution of data quality problems.
 
-[Read more](./data-quality-management.md) about data quality management with Aurelius Atlas.
+[Data Quality Management User Story](./data-quality-management.md) about data
+quality management with Aurelius Atlas.
 
 ## Data Governance Quality
 
 Data governance initiatives are often enterprise-wide efforts that require collaboration across different teams
-and departments. **Sponsors** and **data owners** need a means to track the implementation of data governance policies,
-monitor the progress of their respective teams, and identify areas where additional support or resources are needed.
+and departments. **Sponsors** and **data owners** need a means to track the implementation of data governance
+policies, monitor the progress of their respective teams, and identify areas where additional support or resources
+are needed.
 
-[Read more](./data-governance-quality.md) about data governance quality with Aurelius Atlas.
+[Data Governance Quality User Story](./data-governance-quality.md) about data
+governance quality with Aurelius Atlas.

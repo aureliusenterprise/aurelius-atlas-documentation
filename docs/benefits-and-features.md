@@ -1,7 +1,5 @@
 # Benefits and Features
 
-By using Aurelius Atlas, you can:
-
 ## Empower Business Decisions
 
 Aurelius Atlas provides a comprehensive view of your data assets, enabling business users to make informed
@@ -9,8 +7,8 @@ decisions based on the available data.
 
 ## Improve Efficiency
 
-The data catalog is designed for accessibility and ease of use, allowing users to quickly find the data they need,
-assess its fitness for purpose, and identify its stewards.
+The data catalog is designed for accessibility and ease of use, allowing users to quickly find the data they
+need, assess its fitness for purpose, and identify its stewards.
 
 ## Enhance Data Compliance
 
