@@ -14,7 +14,7 @@
       <script>
         // Current page data
         var mkdocs_page_name = "Support and Maintenance";
-        var mkdocs_page_input_path = "support-and-maintenance.md";
+        var mkdocs_page_input_path = "support-and-maintenance/index.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -68,7 +68,33 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Support and Maintenance</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#contact-us">Contact Us</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#email">Email</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#website">Website</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#user-communities">User Communities</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-deployment">Troubleshooting Deployment</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#connection-is-not-safe">Connection is not safe</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pods-stuck-in-initialization-phase">Pods Stuck in Initialization Phase</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#scale-up-the-node-pool">Scale Up the Node Pool</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently asked questions</a>
                 </li>
               </ul>
       </div>
@@ -95,11 +121,100 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="support-and-maintenance">Support and Maintenance</h1>
+<h2 id="contact-us">Contact Us</h2>
+<p>We are here to help you with any questions, issues, or feedback you may have about Aurelius Enterprise.
+Reach out to us through any of the following channels, and our team will respond as promptly as possible.</p>
+<h3 id="email">Email</h3>
+<p>For general inquiries, technical support, or any other questions, feel free to email us:</p>
+<ul>
+<li>📧 <a href="mailto:info@aureliusenterprise.com">info@aureliusenterprise.com</a></li>
+</ul>
+<p>Our support team monitors this inbox regularly and will get back to you within 24-48 hours.</p>
+<h3 id="website">Website</h3>
+<p>Visit our official website for more information about our products, services, and the latest updates:</p>
+<ul>
+<li>🔗 <a href="https://aureliusenterprise.com/">Aurelius Enterprise Website</a></li>
+</ul>
+<p>Our website features detailed documentation, tutorials, and resources to help you make the most out of our offerings.</p>
+<h3 id="user-communities">User Communities</h3>
+<p>Join our user communities to connect with other Aurelius Enterprise users,
+share your experiences, and stay updated on the latest news and developments.</p>
+<table>
+<thead>
+<tr>
+<th>Community</th>
+<th>Link</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub</td>
+<td><img alt="GitHub Logo" src="https://github.githubassets.com/favicon.ico" /> <a href="https://github.com/aureliusenterprise">Aurelius Enterprise on GitHub</a></td>
+<td>Contribute to projects, report issues, and collaborate with developers.</td>
+</tr>
+<tr>
+<td>LinkedIn</td>
+<td><img alt="LinkedIn Logo" src="https://static.licdn.com/scds/common/u/images/logos/favicons/v1/favicon.ico" /> <a href="https://www.linkedin.com/company/aurelius-enterprise/mycompany/">Aurelius Enterprise on LinkedIn</a></td>
+<td>Follow for company news, updates, and professional insights.</td>
+</tr>
+</tbody>
+</table>
+<p>Engage with us and other professionals in the field to expand your network and stay ahead in the industry.</p>
+<p>We look forward to hearing from you and assisting you with your needs!</p>
+<h2 id="troubleshooting-deployment">Troubleshooting Deployment</h2>
+<h3 id="connection-is-not-safe">Connection is not safe</h3>
+<p>After many deployment attempts, it can happen that the reflector pod is not restarted automatically.</p>
+<ol>
+<li>
+<p>Check if there is a secret called <code>letsencrypt-secret-aureliusdev</code> in our namespace:</p>
+<pre class="highlight"><code class="language-bash">kubectl -n &lt;namespace&gt; get secrets</code></pre>
+</li>
+<li>
+<p>If it is not there, then find the reflector pod in the default namespace:</p>
+<pre class="highlight"><code class="language-bash">kubectl get all</code></pre>
+</li>
+<li>
+<p>Delete reflector pod (A new one will be created automatically):</p>
+<pre class="highlight"><code class="language-bash">kubectl -n &lt;namespace&gt; delete pod/&lt;podname&gt;</code></pre>
+</li>
+</ol>
+<h3 id="pods-stuck-in-initialization-phase">Pods Stuck in Initialization Phase</h3>
+<p>If some pods are stuck in the initialization phase, the source can be resource limitations on the cloud provider.</p>
+<ol>
+<li>
+<p>Check the status of all pods:</p>
+<pre class="highlight"><code class="language-bash">kubectl -n &lt;namespace&gt; get pods</code></pre>
+</li>
+<li>
+<p>Identify the pods that are stuck in the initialization phase.</p>
+</li>
+<li>
+<p>Check the events for the pods to understand the issue:</p>
+<pre class="highlight"><code class="language-bash">kubectl -n &lt;namespace&gt; describe pod &lt;podname&gt;</code></pre>
+</li>
+<li>
+<p>If resource limitations are suspected, check the resource usage:</p>
+<pre class="highlight"><code class="language-bash">kubectl top nodes
+kubectl top pods -n &lt;namespace&gt;</code></pre>
+</li>
+</ol>
+<p>If resource limitations are causing pods to be stuck in the initialization phase,
+you may need to increase the resources in your cloud provider.
+Here are some steps to do this in Azure and Google Cloud:</p>
+<h4 id="scale-up-the-node-pool">Scale Up the Node Pool</h4>
+<ol>
+<li>Go to the Azure portal or Google Cloud Console.</li>
+<li>Navigate to your Kubernetes service.</li>
+<li>Select the node pool you want to scale.</li>
+<li>Click on "Scale" and increase the number of nodes.</li>
+</ol>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../integrations/" class="btn btn-neutral float-left" title="Integrations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../faq/" class="btn btn-neutral float-right" title="Frequently asked questions">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -124,6 +239,8 @@
     
       <span><a href="../integrations/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
