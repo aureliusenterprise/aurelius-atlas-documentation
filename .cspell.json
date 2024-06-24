@@ -12,6 +12,6 @@
         "custom-words"
     ],
     "words": [],
-    "ignoreWords": ["aureliusdev", "podname"],
+    "ignoreWords": [],
     "import": []
 }

@@ -1,5 +1,8 @@
 # Support and Maintenance
 
+This page provides essential information for contacting Aurelius Enterprise
+support, accessing our community, and troubleshooting common issues.
+
 ## Contact Us
 
 We are here to help you with any questions, issues, or feedback you may have about Aurelius Enterprise.
@@ -36,6 +39,8 @@ Engage with us and other professionals in the field to expand your network and s
 We look forward to hearing from you and assisting you with your needs!
 
 ## Troubleshooting Deployment
+
+This section provides detailed steps to address common deployment issues.
 
 ### Connection is not safe
 

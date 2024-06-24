@@ -1,5 +1,7 @@
 # Integrations
 
+This page provides public APIs that users can utilize to interact with Aurelius Atlas.
+
 ## Apache Atlas API
 
 Apache Atlas offers a versatile REST API designed for managing metadata entities,
@@ -9,24 +11,12 @@ retrieval, and relationship management.
 
 For detailed documentation and examples, refer to the [Apache Atlas API Documentation](https://atlas.apache.org/api/v2/index.html).
 
-## Data Governance API
+## Lineage Model API
 
-### `/data2model`
+This API enables fetching lineage information based on specified parameters
+such as GUID, depth, and direction. It integrates with external services to
+process and extract data, presenting structured lineage relationships between
+entities and processes. Users can retrieve lineage details in a clear and
+organized format using simple HTTP requests.
 
-- Endpoint for data modeling service.
-
-### `/consistency_metrics`
-
-- Endpoint for consistency metrics service.
-
-### `/compare`
-
-- Endpoint for comparison service.
-
-### `/lineage_model`
-
-- Endpoint for lineage modeling service.
-
-### `/data_governance`
-
-- Endpoint for data governance dashboard service.
+For further details and guidelines on usage, please visit the [API documentation](https://github.com/aureliusenterprise/aurelius/blob/main/backend/m4i-lineage-rest-api/README.md).

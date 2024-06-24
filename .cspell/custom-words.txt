@@ -11,3 +11,5 @@ keycloak
 letsencrypt
 mdformat
 mkdocs
+aureliusdev
+podname
