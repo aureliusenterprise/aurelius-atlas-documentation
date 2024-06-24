@@ -14,8 +14,8 @@ nav:
   - Installation and Deployment: installation-and-deployment.md
   - Architecture: architecture.md
   - Integrations: integrations.md
-  - Support and Maintenance: support-and-maintenance/index.md
-  - Frequently asked questions: faq.md
+  - Frequently Asked Questions: faq.md
+  - Support: support.md
 
 markdown_extensions:
   - admonition
