@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Cross platform data governance - Aurelius Enterprise Documentation</title>
+    <title>Cross-Platform Data Governance - Aurelius Enterprise Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,7 +14,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Cross platform data governance";
+        var mkdocs_page_name = "Cross-Platform Data Governance";
         var mkdocs_page_input_path = "user-stories/cross-platform-data-governance.md";
         var mkdocs_page_url = null;
       </script>
@@ -39,15 +39,11 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Getting Started</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../../benefits-and-features/">Benefits and Features</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting Started</a>
                 </li>
               </ul>
               <ul>
@@ -88,7 +84,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Cross platform data governance</li>
+      <li class="breadcrumb-item active">Cross-Platform Data Governance</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -97,7 +93,63 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="cross-platform-data-governance">Cross-Platform Data Governance</h1>
+<p>Organizations often use a mix of solutions from different vendors, incorporating various
+clouds and on-premise systems. Data governance solutions from different cloud providers
+focus on their specific platforms, making it difficult for organizations to get a comprehensive
+overview of available data and data flows across all solutions.</p>
+<h2 id="challenges">Challenges</h2>
+<ol>
+<li><strong>Fragmented Data Governance</strong>: Different platforms have isolated governance solutions.</li>
+<li><strong>Lack of Unified Data Catalog</strong>: No central repository to find and manage data across platforms.</li>
+<li><strong>Data Flow Visibility</strong>: Difficult to trace data lineage across multiple systems.</li>
+</ol>
+<h2 id="benefits-and-features">Benefits and Features</h2>
+<ul>
+<li><strong>Unified Data Governance</strong>: Aurelius Atlas collects governance information from various systems.</li>
+<li><strong>Comprehensive Data Catalog</strong>: Serves as a central repository for organization-wide data.</li>
+<li><strong>Cross-Platform Data Lineage</strong>: Visualizes data flows across different environments.</li>
+</ul>
+<h2 id="walkthrough">Walkthrough</h2>
+<p>Consider that we want to update the schema of a particular table in our data pipeline. We need to
+know who is using the data and where it is being used to ensure all schemas and pipelines
+are adjusted accordingly.</p>
+<h3 id="step-by-step-guide">Step-by-Step Guide</h3>
+<p>Start by searching for the table <strong>NL1-HR-001</strong> within the technical context.</p>
+<p><a href="../../img/screenshots/data-lineage/data-lineage-01.jpg"><img alt="Search for NL1-HR-001" src="../../img/screenshots/data-lineage/data-lineage-01.jpg" /></a></p>
+<p>Navigate through the search results to locate and click on the entity with type <em>Dataset</em> for more detailed
+information.</p>
+<p><a href="../../img/screenshots/data-lineage/data-lineage-03.jpg"><img alt="Search for NL1-HR-001" src="../../img/screenshots/data-lineage/data-lineage-03.jpg" /></a></p>
+<p>Once on the entity page of <strong>NL1-HR-001</strong>, you will see an overview providing essential details such as the
+entity's name and type, its hierarchical breadcrumb, a description, and a summary of all elements available on
+the page. Additionally, you can check the availability of the lineage model and find a navigation button for
+quick access to related sections.</p>
+<p>To explore the data lineage of <strong>NL1-HR-001</strong>, locate and click on the "Lineage Model" option provided either
+in segment 5 or via the navigation button in segment 6.</p>
+<p>The lineage analysis reveals that the data originates from a relational database, providing critical insights
+into its storage location and other pertinent details, as depicted in the image below:</p>
+<p><a href="../../img/screenshots/data-cross-platform/cross-platform-02.jpg"><img alt="Data Origin" src="../../img/screenshots/data-cross-platform/cross-platform-02.jpg" /></a></p>
+<p>From here, follow the data flow as it progresses into a Kafka topic. This step ensures effective communication
+of change events through Change Data Capture (CDC). You can examine the source code and specifics of how the
+data is stored and converted into a Kafka topic:</p>
+<p><a href="../../img/screenshots/data-cross-platform/cross-platform-03.jpg"><img alt="Data Transformation" src="../../img/screenshots/data-cross-platform/cross-platform-03.jpg" /></a></p>
+<p>Next, explore the final destination of the data, which is stored in an Elastic Search index. Understand the
+source code and detailed attributes associated with this storage, including the transformation process into
+an Elastic index:</p>
+<p><a href="../../img/screenshots/data-cross-platform/cross-platform-04.jpg"><img alt="Data Destination" src="../../img/screenshots/data-cross-platform/cross-platform-04.jpg" /></a></p>
+<p>In the lineage graph of <strong>NL1-HR-001</strong>, visualize the comprehensive data flow across different systems,
+including SQL server, Kafka, and Elastic. Aurelius Atlas ensures consistent data recording and visibility
+across these varied environments:</p>
+<p><a href="../../img/screenshots/data-cross-platform/cross-platform-05.jpg"><img alt="Data Flow" src="../../img/screenshots/data-cross-platform/cross-platform-05.jpg" /></a></p>
+<p>For more specific details, such as those related to the <strong>hr</strong> entity, click to uncover additional insights
+about this particular component:</p>
+<p><a href="../../img/screenshots/data-cross-platform/cross-platform-06.jpg"><img alt="Entity Details" src="../../img/screenshots/data-cross-platform/cross-platform-06.jpg" /></a></p>
+<p>Finally, review the available data in a Kibana dashboard. Click on the last event depicted in the lineage
+model to access and explore this comprehensive dashboard, which provides detailed information about the
+entity and its usage:</p>
+<p><a href="../../img/screenshots/data-cross-platform/cross-platform-07.jpg"><img alt="Kibana Dashboard" src="../../img/screenshots/data-cross-platform/cross-platform-07.jpg" /></a></p>
+<p>By following these steps, you can effectively trace the data lineage across multiple cloud solutions and
+ensure all subsequent processing is adjusted as required.</p>
               
             </div>
           </div><footer>

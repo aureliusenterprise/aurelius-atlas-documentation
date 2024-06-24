@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Data governance quality - Aurelius Enterprise Documentation</title>
+    <title>Enhancing Data Quality Management - Aurelius Enterprise Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,7 +14,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Data governance quality";
+        var mkdocs_page_name = "Enhancing Data Quality Management";
         var mkdocs_page_input_path = "user-stories/data-governance-quality.md";
         var mkdocs_page_url = null;
       </script>
@@ -39,15 +39,11 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Getting Started</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../../benefits-and-features/">Benefits and Features</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting Started</a>
                 </li>
               </ul>
               <ul>
@@ -88,7 +84,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Data governance quality</li>
+      <li class="breadcrumb-item active">Enhancing Data Quality Management</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -97,7 +93,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="enhancing-data-quality-management">Enhancing Data Quality Management</h1>
+<p>Data quality is a crucial aspect of data management, ensuring data is useful and reliable, leading
+to better business outcomes. Poor data quality, on the other hand, can result in misleading
+indicators, ineffective decision-making, and wasted resources.</p>
+<h2 id="challenges">Challenges</h2>
+<ol>
+<li><strong>Error-Prone Data</strong>: Inaccurate data can lead to wrong business decisions.</li>
+<li><strong>Incomplete Data</strong>: Missing values reduce the usability of datasets.</li>
+<li><strong>Outdated Data</strong>: Data that is not current can mislead analysis.</li>
+<li><strong>Lack of Uniqueness</strong>: Duplicate entries can cause inconsistencies.</li>
+<li><strong>Invalid Data</strong>: Data that does not fit predefined formats can lead to processing errors.</li>
+</ol>
+<h2 id="benefits-and-features">Benefits and Features</h2>
+<ul>
+<li><strong>Comprehensive Data Quality Metrics</strong>: Measures accuracy, completeness, timeliness, uniqueness, and validity.</li>
+<li><strong>Data Quality Scoring</strong>: Provides a percentage score for each quality rule, highlighting areas of improvement.</li>
+<li><strong>Root Cause Analysis</strong>: Helps identify and address the origins of data quality issues.</li>
+<li><strong>Cross-Platform Data Quality Insights</strong>: Tracks data quality across different systems and transformations.</li>
+</ul>
+<h2 id="walkthrough">Walkthrough</h2>
+<p>Consider a data engineer who needs high-quality data for a new analysis. The engineer uses
+Aurelius Atlas to discover and evaluate the data quality of a candidate dataset.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can follow along with the scenario on the Aurelius Atlas demo environment.</p>
+<p><a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a></p>
+</div>
+<p>Watch the video walkthrough below or read the step-by-step instructions.</p>
+<p><iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/QBZ80l5jpvE?si=nWc-ig7RxbGnq8ce"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+>
+</iframe>
+</p>
+<h3 id="step-by-step-guide">Step-by-Step Guide</h3>
+<p>Imagine you're a data engineer tasked with ensuring high-quality data for a new analysis using Aurelius Atlas.
+Start by navigating directly to the details page of the dataset you intend to use.</p>
+<p>[<img alt="Data Quality Overview" src="../../img/screenshots/data-governance-quality/data-quality-01.jpg" />]
+(../img/screenshots/data-governance-quality/data-quality-01.jpg)</p>
+<p>Here, you'll find an overview of its data quality metrics, which include measures such as accuracy, completeness,
+timeliness, uniqueness, and validity. This initial view allows you to understand the overall quality status of
+the dataset.</p>
+<p>Next, assess the quality of each field by navigating to the field details section.</p>
+<p>[<img alt="Field Quality" src="../../img/screenshots/data-governance-quality/data-quality-02.jpg" />]
+(../img/screenshots/data-governance-quality/data-quality-02.jpg)</p>
+<p>This section provides a detailed view of each field's quality, helping you identify areas that may require
+improvement. For instance, you might notice that fields like "FTE" and "location" meet your quality standards,
+while others, such as "HIER ORGANIZATION" exhibit lower precision.</p>
+<p>To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION" navigate to the data
+quality rules section.</p>
+<p>[<img alt="Data Quality Rules" src="../../img/screenshots/data-governance-quality/data-quality-03.jpg" />]
+(../img/screenshots/data-governance-quality/data-quality-03.jpg)</p>
+<p>Here, you can review all applied rules and their respective scores. For example, you might discover that
+inconsistencies in the syntax of the "HIER ORGANIZATION" field contribute to its lower quality score.</p>
+<p>To understand the implications of these findings and identify who within your organization is responsible for
+addressing these quality issues, navigate to the data attributes section.</p>
+<p>[<img alt="Data Attributes" src="../../img/screenshots/data-governance-quality/data-quality-04.jpg" />]
+(../img/screenshots/data-governance-quality/data-quality-04.jpg)</p>
+<p>This section provides detailed information about each attribute, including contact details for individuals
+accountable for the data. It helps you understand what each field represents and enables you to collaborate
+effectively to enhance data accuracy, completeness, and reliability for your analysis.</p>
+<p>By following these steps in Aurelius Atlas, you gain clarity on the quality measures applied to your dataset and
+can take actionable steps to ensure high-quality data for your analysis.</p>
               
             </div>
           </div><footer>
