@@ -14,7 +14,8 @@ nav:
   - Installation and Deployment: installation-and-deployment.md
   - Architecture: architecture.md
   - Integrations: integrations.md
-  - Support and Maintenance: support-and-maintenance.md
+  - Frequently Asked Questions: faq.md
+  - Support: support.md
 
 markdown_extensions:
   - admonition
@@ -27,3 +28,4 @@ plugins:
 
 extra_css:
   - stylesheets/tabs.css
+  - stylesheets/icons.css
