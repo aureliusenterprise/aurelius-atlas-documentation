@@ -14,7 +14,8 @@ nav:
   - Installation and Deployment: installation-and-deployment.md
   - Architecture: architecture.md
   - Integrations: integrations.md
-  - Support and Maintenance: support-and-maintenance.md
+  - Frequently Asked Questions: faq.md
+  - Support: support.md
 
 markdown_extensions:
   - admonition
@@ -22,5 +23,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed          
 
+plugins:
+  - mermaid2
+
 extra_css:
   - stylesheets/tabs.css
+  - stylesheets/icons.css

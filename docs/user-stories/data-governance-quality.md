@@ -62,9 +62,9 @@ Next, assess the quality of each field by navigating to the field details sectio
 
 This section provides a detailed view of each field's quality, helping you identify areas that may require
 improvement. For instance, you might notice that fields like "FTE" and "location" meet your quality standards,
-while others, such as "HIER ORGANIZATION," exhibit lower precision.
+while others, such as "HIER ORGANIZATION" exhibit lower precision.
 
-To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION," navigate to the data
+To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION" navigate to the data
 quality rules section.
 
 \[![Data Quality Rules](../img/screenshots/data-governance-quality/data-quality-03.jpg)\]
