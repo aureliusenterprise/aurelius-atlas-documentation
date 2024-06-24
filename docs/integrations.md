@@ -14,6 +14,6 @@ registering data producers and consumers, as well as any data transformations th
 
 !!! tip
     Integrate your [DevOps](https://www.gartner.com/en/information-technology/glossary/devops) and [DataOps](https://www.gartner.com/en/information-technology/glossary/dataops)
-    pipelines with Aurelius Atlas using the Lineage Model API
+    pipelines with Aurelius Atlas using the Lineage API
 
 For further details and guidelines on usage, please visit the [API documentation](https://github.com/aureliusenterprise/aurelius/blob/main/backend/m4i-lineage-rest-api/README.md).
