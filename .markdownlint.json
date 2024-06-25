@@ -6,7 +6,7 @@
         "tables": false
     },
     "MD033": {
-        "allowed_elements": ["a", "div"]
+        "allowed_elements": ["a", "div", "span", "iframe"]
     },
     "MD046": false
 }

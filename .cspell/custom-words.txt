@@ -1,3 +1,4 @@
+aureliusdev
 autoplay
 cloudapp
 clusterissuer
@@ -5,11 +6,13 @@ codespaces
 elasticpw
 emberstack
 flink
+HIER
 healthz
+hofman
 jetstack
 keycloak
 letsencrypt
 mdformat
+merel
 mkdocs
-aureliusdev
 podname
