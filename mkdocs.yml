@@ -16,6 +16,7 @@ nav:
   - Integrations: integrations.md
   - Frequently Asked Questions: faq.md
   - Support: support.md
+  - About Us: about-us.md
 
 markdown_extensions:
   - admonition
