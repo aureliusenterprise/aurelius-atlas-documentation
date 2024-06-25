@@ -77,14 +77,11 @@ screenshot below.
 
 Here's an explanation of the highlighted elements:
 
-1. **Business Context**: The landing page has a dedicated section to help
-2. you get started exploring the business
-3. context of the data. You can enter search terms related to your business
-4. question to find relevant data sets.
-5. **Info Panel**: Click the question mark icon for an explanation of the
-6. business context meta model.
-7. **Search Bar**: Queries made through this search bar will have business
-8. context filters pre-applied.
+1. **Business Context**: The landing page has a dedicated section to help you
+    get started exploring the business context of the data. You can enter search terms related
+    to your business question to find relevant data sets.
+2. **Info Panel**: Click the question mark icon for an explanation of the business context meta model.
+3. **Search Bar**: Queries made through this search bar will have business context filters pre-applied.
 
 To search for employees, click the search icon and enter the term _employee_.
 This will generate a list of results related to employees.
@@ -107,12 +104,12 @@ _Internal_. That will take us to the details of the entity.
 
 In this overview, we can find the following segments:
 
-1. **Name and Type of the Entity**
-2. **Business Hierarchy**: Shows which domain this entity is related to.
-3. **Description**
-4. **People Responsible for this Data**
-5. **Summary of All the Elements of the Page**
-6. **Button to Navigate Through Each Section Quickly**
+1. Name and Type of the Entity
+2. Business Hierarchy: Shows which domain this entity is related to.
+3. Description
+4. People Responsible for this Data
+5. Summary of All the Elements of the Page
+6. Button to Navigate Through Each Section Quickly
 
 From this overview, we can effectively answer one of our questions:
 _Who do I need to ask for permission to access the data?_
@@ -126,14 +123,19 @@ Therefore, click on _datasets_ in segment (5) or use the navigation button (6).
 As we scroll down to the dataset section, we find a new set of
 descriptions and functionalities such as:
 
-1. **Results of the Datasets**
-2. **Name of the Dataset and Where It Is Located in the Hierarchy**
-3. **Filter Down the Datasets**
-4. **Look for the Entities Inside This Dataset**
-5. **Type of Storage**
+1. Results of the Datasets
+2. Name of the Dataset and Where It Is Located in the Hierarchy
+3. Filter Down the Datasets
+4. Look for the Entities Inside This Dataset
+5. Type of Storage
 
 As we zoom in on the dataset's breadcrumbs, we can answer our
 remaining questions. _Where is the data stored?_ <span style="color:green">
 **N1L** -> **NL1-HR** -> **NL1-HR-001** ✔</span>.
 
 [![Data Discovery](../img/screenshots/data-discovery/data-discovery-6.jpg)](../img/screenshots/data-discovery/data-discovery-6.jpg)
+
+In summary, streamlining data discovery is crucial for data scientists and engineers who need quick access to
+relevant data for critical business questions. Aurelius Atlas addresses the common challenges in
+this process by providing a centralized platform that enhances visibility into available
+data, its storage locations, and the responsible contacts

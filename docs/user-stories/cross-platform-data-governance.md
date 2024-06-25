@@ -23,6 +23,11 @@ Consider that we want to update the schema of a particular table in our data pip
 know who is using the data and where it is being used to ensure all schemas and pipelines
 are adjusted accordingly.
 
+!!! tip
+    You can follow along with the scenario on the Aurelius Atlas demo environment.
+
+    <a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+
 ### Step-by-Step Guide
 
 Start by searching for the table **NL1-HR-001** within the technical context.
@@ -77,4 +82,4 @@ entity and its usage:
 [![Kibana Dashboard](../img/screenshots/data-cross-platform/cross-platform-07.jpg)](../img/screenshots/data-cross-platform/cross-platform-07.jpg)
 
 By following these steps, you can effectively trace the data lineage across multiple cloud solutions and
-ensure all subsequent processing is adjusted as required.
+ensure all subsequent processing is adjusted as required. As a result, we can update our schema accordingly.
