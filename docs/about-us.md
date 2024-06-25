@@ -28,7 +28,7 @@ marine. Our projects include:
 - Data Governance Initiatives (Tooling + Change Management)
 - Enterprise Architecture Platform
 
-## Technologies we use
+## Technologies we Use
 
 We leverage a variety of advanced technologies and tools to deliver robust and scalable solutions. Our expertise
 includes: Python, SQL, Apache Kafka, Apache Flink, Elasticsearch, MQTT, OPC-UA, Apache Atlas, Docker, Kubernetes,
