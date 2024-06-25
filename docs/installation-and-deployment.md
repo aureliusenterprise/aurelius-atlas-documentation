@@ -262,6 +262,21 @@ NAME                          READY   AGE
 aurelius-atlas-ingress-cert   True    24h
 ```
 
+#### Set up DNS
+
+If you are deploying Aurelius Atlas on a cloud provider, but want to use your own domain name, you can set up
+a DNS record to point to the Load Balancer's IP address. To find the IP address of the Load Balancer, run the
+following command:
+
+```bash
+kubectl get service -n ingress-nginx
+```
+
+The output will show the external IP address of the Load Balancer.
+
+!!! tip
+    Give this IP address to your network administrator and ask them to create a DNS record for your domain.
+
 ### Elastic Cloud
 
 Aurelius Atlas uses [Elastic Cloud on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html)
@@ -331,18 +346,19 @@ access the platform, open a web browser and navigate to `https://<dns-name>/<nam
 
 #### Default Credentials
 
-By default, the helm chart creates the following users:
+By default, the following users are created:
 
-| User Type                                 | Username    |
-| ----------------------------------------- | ----------- |
-| Aurelius Atlas Admin                      | `atlas`     |
-| Elasticsearch Admin                       | `elastic`   |
-| Keycloak Admin                            | `admin`     |
-| Aurelius Atlas Data Steward (demo only)   | `steward`   |
-| Aurelius Atlas Data Scientist (demo only) | `scientist` |
+| User Type                                 | Username    | Default Password (docker-compose) |
+| ----------------------------------------- | ----------- | --------------------------------- |
+| Aurelius Atlas Admin                      | `atlas`     | `atlas`                           |
+| Elasticsearch Admin                       | `elastic`   | `elasticpw`                       |
+| Keycloak Admin                            | `admin`     | `admin`                           |
+| Aurelius Atlas Data Steward (demo only)   | `steward`   | -                                 |
+| Aurelius Atlas Data Scientist (demo only) | `scientist` | -                                 |
 
-The credentials for each user are randomized and stored in a Kubernetes secret. The helm chart includes a script
-to retrieve the passwords for each user. To retrieve the passwords, run the following command:
+For production deployments, the passwords for each user are randomized and stored in a Kubernetes secret. The
+helm chart includes a script to retrieve the passwords for each user. To retrieve the passwords, run the following
+command:
 
 ```bash
 ./get_passwords.sh <namespace>

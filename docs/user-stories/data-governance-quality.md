@@ -60,11 +60,12 @@ Next, click on the "Logistics" entity flagged with a warning symbol to investiga
 \[![Identify Issues](../img/screenshots/data-quality-management/data-management-02.jpg)\]
 (../img/screenshots/data-quality-management/data-management-02.jpg)
 
-Upon accessing the details page, navigate to the "Governance Quality Rules" section to review specific rules
-applied to the entity:
+This section provides a detailed view of each field's quality, helping you identify areas that may require
+improvement. For instance, you might notice that fields like "FTE" and "location" meet your quality standards,
+while others, such as "HIER ORGANIZATION" exhibit lower precision.
 
-\[![Review Details](../img/screenshots/data-quality-management/data-management-03.jpg)\]
-(../img/screenshots/data-quality-management/data-management-03.jpg)
+To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION" navigate to the data
+quality rules section.
 
 Here, you can assess the compliance status of the "Logistics" entity with the applied data governance rules:
 
