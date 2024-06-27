@@ -15,7 +15,7 @@
       <script>
         // Current page data
         var mkdocs_page_name = "User Stories";
-        var mkdocs_page_input_path = "user-stories/index.md";
+        var mkdocs_page_input_path = "user-stories.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -49,15 +49,83 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">User Stories</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#data-discovery">Data Discovery</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#data-lineage">Data Lineage</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#cross-platform-data-governance">Cross-Platform Data Governance</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges">Challenges</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#data-quality-management">Data Quality Management</a>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features">Benefits and Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough">Walkthrough</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide">Step-by-Step Guide</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-discovery">Data Discovery</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_1">Challenges</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_1">Benefits and Features</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#business-context">Business Context</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#storage-locations">Storage Locations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#accountability">Accountability</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_1">Walkthrough</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide_1">Step-by-Step Guide</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#data-governance-quality">Data Governance Quality</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_2">Challenges</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_2">Benefits and Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_2">Walkthrough</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide_2">Step-by-Step Guide</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-lineage">Data Lineage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_3">Challenges</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_3">Benefits and Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_3">Walkthrough</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide_3">Step-by-Step Guide</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-quality-management">Data Quality Management</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_4">Challenges</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_4">Benefits and Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_4">Walkthrough</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide_4">Step-by-Step Guide</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -110,41 +178,370 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="user-stories">User Stories</h1>
-<p>Aurelius Atlas is designed to address common challenges faced by data scientists, data engineers, and other
-professionals working with data. The following user stories illustrate how the platform can help users overcome
-these challenges and improve their data analytics workflows.</p>
+<p>This page provides a collection of common scenarios that illustrate how Aurelius Atlas can help users address
+common data governance challenges. Each user story highlights a specific use case and includes a walkthrough
+to demonstrate how the platform can be used to solve the problem.</p>
+<h2 id="cross-platform-data-governance">Cross-Platform Data Governance</h2>
+<p>Organizations often use a mix of solutions from different vendors, incorporating various
+clouds and on-premise systems. Data governance solutions from different cloud providers
+focus on their specific platforms, making it difficult for organizations to get a comprehensive
+overview of available data and data flows across all solutions.</p>
+<h3 id="challenges">Challenges</h3>
+<ol>
+<li><strong>Fragmented Data Governance</strong>: Different platforms have isolated governance solutions.</li>
+<li><strong>Lack of Unified Data Catalog</strong>: No central repository to find and manage data across platforms.</li>
+<li><strong>Data Flow Visibility</strong>: Difficult to trace data lineage across multiple systems.</li>
+</ol>
+<h3 id="benefits-and-features">Benefits and Features</h3>
+<ul>
+<li><strong>Unified Data Governance</strong>: Aurelius Atlas collects governance information from various systems.</li>
+<li><strong>Comprehensive Data Catalog</strong>: Serves as a central repository for organization-wide data.</li>
+<li><strong>Cross-Platform Data Lineage</strong>: Visualizes data flows across different environments.</li>
+</ul>
+<h3 id="walkthrough">Walkthrough</h3>
+<p>Consider that we want to update the schema of a particular table in our data pipeline. We need to
+know who is using the data and where it is being used to ensure all schemas and pipelines
+are adjusted accordingly.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can follow along with the scenario on the Aurelius Atlas demo environment.</p>
+<p><a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a></p>
+</div>
+<h4 id="step-by-step-guide">Step-by-Step Guide</h4>
+<p>Start by searching for the table <strong>NL1-HR-001</strong> within the technical context.</p>
+<p><a href="../img/screenshots/data-lineage/data-lineage-01.jpg"><img alt="Search for NL1-HR-001" src="../img/screenshots/data-lineage/data-lineage-01.jpg" /></a></p>
+<p>Navigate through the search results to locate and click on the entity with type <em>Dataset</em> for more detailed
+information.</p>
+<p><a href="../img/screenshots/data-lineage/data-lineage-03.jpg"><img alt="Search for NL1-HR-001" src="../img/screenshots/data-lineage/data-lineage-03.jpg" /></a></p>
+<p>Once on the entity page of <strong>NL1-HR-001</strong>, you will see an overview providing essential details such as the
+entity's name and type, its hierarchical breadcrumb, a description, and a summary of all elements available on
+the page. Additionally, you can check the availability of the lineage model and find a navigation button for
+quick access to related sections.</p>
+<p>To explore the data lineage of <strong>NL1-HR-001</strong>, locate and click on the "Lineage Model" option provided either
+in segment 5 or via the navigation button in segment 6.</p>
+<p>The lineage analysis reveals that the data originates from a relational database, providing critical insights
+into its storage location and other pertinent details, as depicted in the image below:</p>
+<p><a href="../img/screenshots/data-cross-platform/cross-platform-02.jpg"><img alt="Data Origin" src="../img/screenshots/data-cross-platform/cross-platform-02.jpg" /></a></p>
+<p>From here, follow the data flow as it progresses into a Kafka topic. This step ensures effective communication
+of change events through Change Data Capture (CDC). You can examine the source code and specifics of how the
+data is stored and converted into a Kafka topic:</p>
+<p><a href="../img/screenshots/data-cross-platform/cross-platform-03.jpg"><img alt="Data Transformation" src="../img/screenshots/data-cross-platform/cross-platform-03.jpg" /></a></p>
+<p>Next, explore the final destination of the data, which is stored in an Elastic Search index. Understand the
+source code and detailed attributes associated with this storage, including the transformation process into
+an Elastic index:</p>
+<p><a href="../img/screenshots/data-cross-platform/cross-platform-04.jpg"><img alt="Data Destination" src="../img/screenshots/data-cross-platform/cross-platform-04.jpg" /></a></p>
+<p>In the lineage graph of <strong>NL1-HR-001</strong>, visualize the comprehensive data flow across different systems,
+including SQL server, Kafka, and Elastic. Aurelius Atlas ensures consistent data recording and visibility
+across these varied environments:</p>
+<p><a href="../img/screenshots/data-cross-platform/cross-platform-05.jpg"><img alt="Data Flow" src="../img/screenshots/data-cross-platform/cross-platform-05.jpg" /></a></p>
+<p>For more specific details, such as those related to the <strong>hr</strong> entity, click to uncover additional insights
+about this particular component:</p>
+<p><a href="../img/screenshots/data-cross-platform/cross-platform-06.jpg"><img alt="Entity Details" src="../img/screenshots/data-cross-platform/cross-platform-06.jpg" /></a></p>
+<p>Finally, review the available data in a Kibana dashboard. Click on the last event depicted in the lineage
+model to access and explore this comprehensive dashboard, which provides detailed information about the
+entity and its usage:</p>
+<p><a href="../img/screenshots/data-cross-platform/cross-platform-07.jpg"><img alt="Kibana Dashboard" src="../img/screenshots/data-cross-platform/cross-platform-07.jpg" /></a></p>
+<p>By following these steps, you can effectively trace the data lineage across multiple cloud solutions and
+ensure all subsequent processing is adjusted as required. As a result, we can update our schema accordingly.</p>
 <h2 id="data-discovery">Data Discovery</h2>
 <p>In a data analytics project, <strong>data scientists</strong> or <strong>data engineers</strong> often need to find specific data to answer
 critical business questions. However, identifying relevant data, understanding where it is stored, and knowing
-who to contact for access can be challenging, especially in organizations with a distributed data landscape and
-lacking data governance tools.</p>
-<p><a href="data-discovery/">Data Discovery User Story</a> Click here to see how we tackle this issue with Aurelius Atlas.</p>
-<h2 id="data-lineage">Data Lineage</h2>
-<p>Understanding the lineage of data is crucial for ensuring data quality, traceability, and compliance with
-regulatory requirements. <strong>Data stewards</strong> and <strong>compliance officers</strong> need to track the flow of data from its
-source to where it is consumed to ensure that it is used appropriately and that any transformations or processing
-steps are correctly applied.</p>
-<p><a href="data-lineage/">Data Lineage User Story</a> Read a user story about data lineage with Aurelius Atlas.</p>
-<h2 id="cross-platform-data-governance">Cross-Platform Data Governance</h2>
-<p>Modern enterprises often use a variety of data platforms and tools to manage and analyze data. Many platforms
-offer data governance tooling, but these tools are typically designed for use with that environment only. <strong>Data
-scientists and engineers</strong>, <strong>data stewards</strong>, and <strong>compliance officers</strong> need a unified solution that can provide
-governance capabilities across multiple platforms.</p>
-<p><a href="cross-platform-data-governance/">Cross Platform User Story</a> about
-cross-platform data governance with Aurelius Atlas.</p>
-<h2 id="data-quality-management">Data Quality Management</h2>
-<p>A key driver for data governance initiatives is often the need to improve data quality. <strong>Data engineers</strong> require
-a means to quickly identify data that is suitable for use in their analyses. Further, <strong>data stewards</strong> need tools
-to monitor data quality over time, identify issues, and track the resolution of data quality problems.</p>
-<p><a href="data-quality-management/">Data Quality Management User Story</a> about data
-quality management with Aurelius Atlas.</p>
+who to contact for access can be challenging, especially in organizations lacking data governance tools. This
+process typically involves reaching out to multiple people and can be time-consuming and inefficient.</p>
+<h3 id="challenges_1">Challenges</h3>
+<ol>
+<li>Lack of visibility into available data.</li>
+<li>Uncertainty about data storage locations.</li>
+<li>Difficulty identifying the accountable individuals for data access.</li>
+<li>Time-consuming processes to understand data attributes and their meanings.</li>
+<li>Inefficiency for engineers, particularly those with smaller networks within the organization.</li>
+</ol>
+<h3 id="benefits-and-features_1">Benefits and Features</h3>
+<p>Aurelius Atlas provides a centralized solution that makes information
+about data availability, storage locations, and accountable contacts
+easily accessible. The tool facilitates quicker and more efficient
+data discovery and access, reducing the time and effort required to
+find and understand relevant data.</p>
+<h4 id="business-context">Business Context</h4>
+<p>Users can search for data by entering relevant terms related to their
+business context. The platform shows which data sets are available that
+match the search criteria. Comprehensive explanations of individual atomic
+attributes help users understand the meaning and relevance of the data.</p>
+<h4 id="storage-locations">Storage Locations</h4>
+<p>Information about where the data is stored is readily accessible.</p>
+<h4 id="accountability">Accountability</h4>
+<p>Users can see who is responsible for the data, making it easier to request access.</p>
+<h3 id="walkthrough_1">Walkthrough</h3>
+<p>Let's consider a scenario where a data scientist needs to calculate the number
+of people who currently work for their company as part of the annual report.
+Therefore, the data scientist needs to know:</p>
+<ul>
+<li>Where is the data stored?</li>
+<li>Who do I need to ask for permission to access the data?</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can follow along with the scenario on the Aurelius Atlas demo environment.</p>
+<p><a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a></p>
+</div>
+<p>Watch the video walkthrough below or read the step-by-step instructions.</p>
+<p><iframe
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/gt-NzPn5KCU?si=ASCaTPWaTLI8-8MO"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+>
+</iframe>
+</p>
+<h4 id="step-by-step-guide_1">Step-by-Step Guide</h4>
+<p>Let's start on the Aurelius Atlas landing page. Here, the data scientist
+can enter search terms like <em>employee</em>, <em>staff</em>, or <em>workforce</em>. See the
+screenshot below.</p>
+<p><a href="../img/screenshots/data-discovery/business-context.jpg"><img alt="Data Discovery" src="../img/screenshots/data-discovery/business-context.jpg" /></a></p>
+<p>Here's an explanation of the highlighted elements:</p>
+<ol>
+<li><strong>Business Context</strong>: The landing page has a dedicated section to help you
+    get started exploring the business context of the data. You can enter search terms related
+    to your business question to find relevant data sets.</li>
+<li><strong>Info Panel</strong>: Click the question mark icon for an explanation of the business context meta model.</li>
+<li><strong>Search Bar</strong>: Queries made through this search bar will have business context filters pre-applied.</li>
+</ol>
+<p>To search for employees, click the search icon and enter the term <em>employee</em>.
+This will generate a list of results related to employees.</p>
+<p>As a data scientist seeking entities representing employees, use the sidebar to
+drill down and filter the results by data entities. Applying this filter will
+narrow the results to 4 entities.</p>
+<p>With this smaller set of results, review each entity individually. Compare the
+entities <em>Personnel</em> and <em>Internal</em> by examining their breadcrumbs. The breadcrumbs
+indicate that <em>Internal</em> is a child entity of <em>Personnel</em>, showing a hierarchical
+relationship between these concepts.</p>
+<p><a href="../img/screenshots/data-discovery/data-discovery-2.jpg"><img alt="Data Discovery" src="../img/screenshots/data-discovery/data-discovery-2.jpg" /></a></p>
+<p>We are only interested in permanent employees, therefore select the entity
+<em>Internal</em>. That will take us to the details of the entity.</p>
+<p><a href="../img/screenshots/data-discovery/data-discovery-3.jpg"><img alt="Data Discovery" src="../img/screenshots/data-discovery/data-discovery-3.jpg" /></a></p>
+<p>In this overview, we can find the following segments:</p>
+<ol>
+<li>Name and Type of the Entity</li>
+<li>Business Hierarchy: Shows which domain this entity is related to.</li>
+<li>Description</li>
+<li>People Responsible for this Data</li>
+<li>Summary of All the Elements of the Page</li>
+<li>Button to Navigate Through Each Section Quickly</li>
+</ol>
+<p>From this overview, we can effectively answer one of our questions:
+<em>Who do I need to ask for permission to access the data?</em>
+<span style="color:green"><strong>Merel Hofman</strong> ✔</span>.</p>
+<p>However, we still need to find out where this data is stored.
+Therefore, click on <em>datasets</em> in segment (5) or use the navigation button (6).</p>
+<p><a href="../img/screenshots/data-discovery/data-discovery-5.jpg"><img alt="Data Discovery" src="../img/screenshots/data-discovery/data-discovery-5.jpg" /></a></p>
+<p>As we scroll down to the dataset section, we find a new set of
+descriptions and functionalities such as:</p>
+<ol>
+<li>Results of the Datasets</li>
+<li>Name of the Dataset and Where It Is Located in the Hierarchy</li>
+<li>Filter Down the Datasets</li>
+<li>Look for the Entities Inside This Dataset</li>
+<li>Type of Storage</li>
+</ol>
+<p>As we zoom in on the dataset's breadcrumbs, we can answer our
+remaining questions. <em>Where is the data stored?</em> <span style="color:green">
+<strong>N1L</strong> -&gt; <strong>NL1-HR</strong> -&gt; <strong>NL1-HR-001</strong> ✔</span>.</p>
+<p><a href="../img/screenshots/data-discovery/data-discovery-6.jpg"><img alt="Data Discovery" src="../img/screenshots/data-discovery/data-discovery-6.jpg" /></a></p>
+<p>In summary, streamlining data discovery is crucial for data scientists and engineers who need quick access to
+relevant data for critical business questions. Aurelius Atlas addresses the common challenges in
+this process by providing a centralized platform that enhances visibility into available
+data, its storage locations, and the responsible contacts</p>
 <h2 id="data-governance-quality">Data Governance Quality</h2>
-<p>Data governance initiatives are often enterprise-wide efforts that require collaboration across different teams
-and departments. <strong>Sponsors</strong> and <strong>data owners</strong> need a means to track the implementation of data governance
-policies, monitor the progress of their respective teams, and identify areas where additional support or resources
-are needed.</p>
-<p><a href="data-governance-quality/">Data Governance Quality User Story</a> about data
-governance quality with Aurelius Atlas.</p>
+<p>Implementing data management in an organization involves multiple facets: setting up the data governance
+organization, establishing business and technical data governance models, and monitoring data quality. Keeping
+track of progress across these activities can be challenging. Aurelius Atlas provides a comprehensive tool for
+key stakeholders to monitor implementation progress and data governance quality, aiding better decision-making
+for future improvements.</p>
+<h3 id="challenges_2">Challenges</h3>
+<ol>
+<li><strong>Comprehensive Oversight</strong>: Difficulty in monitoring progress across various data governance activities.</li>
+<li><strong>Quality Assurance</strong>: Ensuring data governance rules are followed across the organization.</li>
+<li><strong>Prioritization</strong>: Identifying areas needing immediate attention for improvement.</li>
+<li><strong>Transparency</strong>: Communicating the status of data governance compliance to stakeholders.</li>
+</ol>
+<h3 id="benefits-and-features_2">Benefits and Features</h3>
+<ul>
+<li><strong>Holistic Monitoring</strong>: Track implementation progress and data governance quality.</li>
+<li><strong>Rule Compliance</strong>: Assess compliance with data governance rules for each entity.</li>
+<li><strong>Quality Scores</strong>: Provide overall data governance quality scores for entities.</li>
+<li><strong>Actionable Insights</strong>: Identify potential issues and focus on necessary improvements.</li>
+</ul>
+<h3 id="walkthrough_2">Walkthrough</h3>
+<p>Consider a business data steward responsible for maintaining data governance quality in their domain. The steward
+uses Aurelius Atlas to review potential issues and delve into the details.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can follow along with the scenario on the Aurelius Atlas demo environment.</p>
+<p><a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a></p>
+</div>
+<p>Watch the video walkthrough below or read the step-by-step instructions.</p>
+<p><iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/q6yFKAfdbSk?si=Rm-DLwhgZdBGksc1"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+>
+</iframe>
+</p>
+<h4 id="step-by-step-guide_2">Step-by-Step Guide</h4>
+<p>Let's begin by searching for the "Logistics" domain within Aurelius Atlas to assess its data governance quality.
+Click on the button as shown in the image below:</p>
+<p><a href="../img/screenshots/data-quality-management/data-management-01.jpg"><img alt="Search Results" src="../img/screenshots/data-quality-management/data-management-01.jpg" /></a></p>
+<p>Icons such as data type indicators, check marks for fully populated entities, and warning symbols for incomplete
+ones help us quickly identify areas needing attention.</p>
+<p>Next, click on the "Logistics" entity flagged with a warning symbol to investigate further:</p>
+<p><a href="../img/screenshots/data-quality-management/data-management-02.jpg"><img alt="Identify Issues" src="../img/screenshots/data-quality-management/data-management-02.jpg" /></a></p>
+<p>This section provides a detailed view of each field's quality, helping you identify areas that may require
+improvement. For instance, you might notice that fields like "FTE" and "location" meet your quality standards,
+while others, such as "HIER ORGANIZATION" exhibit lower precision.</p>
+<p>To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION" navigate to the data
+quality rules section.</p>
+<p>Here, you can assess the compliance status of the "Logistics" entity with the applied data governance rules:</p>
+<p><a href="../img/screenshots/data-quality-management/data-management-04.jpg"><img alt="Assess Compliance" src="../img/screenshots/data-quality-management/data-management-04.jpg" /></a></p>
+<p>Check if all required data entities are complete or if there are any missing elements that require attention.</p>
+<p>By following these steps, you can effectively monitor and improve data governance quality, ensuring compliance
+with established rules and standards across your organization.</p>
+<h2 id="data-lineage">Data Lineage</h2>
+<p>In organizations, data from various sources undergoes transformation using specific technologies, involving
+multiple steps where changes can impact downstream processes. Data scientists and integration experts rely on
+impact analysis to assess these effects. They face challenges such as dependency management, unclear data lineage,
+complex impact assessment, and identifying ownership.</p>
+<h3 id="challenges_3">Challenges</h3>
+<ol>
+<li><strong>Dependency Management</strong>: Overlooking dependent steps can lead to data processing failures.</li>
+<li><strong>Data Lineage Clarity</strong>: Lack of visibility into data flow complicates tracing origins.</li>
+<li><strong>Impact Assessment</strong>: Assessing changes across interconnected systems is time-consuming.</li>
+<li><strong>Ownership Identification</strong>: Identifying responsible parties for data usage is challenging.</li>
+</ol>
+<h3 id="benefits-and-features_3">Benefits and Features</h3>
+<ul>
+<li><strong>Data Integrity</strong>: Visualizing data lineage ensures reliability.</li>
+<li><strong>Change Management</strong>: Tools assess schema or transformation impacts.</li>
+<li><strong>Data Governance</strong>: Tracks data usage and responsibilities.</li>
+<li><strong>Efficiency</strong>: Centralized access accelerates decision-making.</li>
+</ul>
+<h3 id="walkthrough_3">Walkthrough</h3>
+<p>Consider an implementer extending a table schema to ensure subsequent processing adjustments.</p>
+<h4 id="step-by-step-guide_3">Step-by-Step Guide</h4>
+<p>The table we want to extend is <strong>NL1-HR-001</strong>. Since we're interested in the
+technical specifications of the table, use the Technical Context
+search input and search for <strong>NL1-HR-001</strong>.</p>
+<p><a href="../img/screenshots/data-lineage/data-lineage-01.jpg"><img alt="Search for NL1-HR-001" src="../img/screenshots/data-lineage/data-lineage-01.jpg" /></a></p>
+<p>We will receive a list of all results related to <strong>NL1-HR-001</strong>. We are
+interested in the table, so click on the entity <strong>NL1-HR-001</strong> with type <em>Dataset</em>.
+0
+<a href="../img/screenshots/data-lineage/data-lineage-03.jpg"><img alt="Navigate to Lineage Model" src="../img/screenshots/data-lineage/data-lineage-03.jpg" /></a></p>
+<p>In this overview, we find the following segments:</p>
+<ol>
+<li>Name and type of the entity.</li>
+<li>Breadcrumb showing the entity hierarchy.</li>
+<li>Description of the entity.</li>
+<li>Summary of all page elements.</li>
+<li>Lineage model availability.</li>
+<li>Navigation button for quick access.</li>
+</ol>
+<p>We are looking for the data lineage. Therefore, click on <em>Lineage Model</em>
+in segment (5) or use the navigation button (6).</p>
+<p><a href="../img/screenshots/data-lineage/data-lineage-04.jpg"><img alt="Navigate to Lineage Model" src="../img/screenshots/data-lineage/data-lineage-04.jpg" /></a></p>
+<p>The lineage model shows the position of the entity in the data flow. It clarifies
+where the data comes from and where it flows to. In this case, we see that the
+entity <strong>NL1-HR-001</strong> is a source dataset used and processed in the organization.</p>
+<p>To get details of each entity in the lineage model, click on the icon in the
+image to open the detail panel on the right-hand side.</p>
+<p><a href="../img/screenshots/data-lineage/data-lineage-05.jpg"><img alt="Entity Details" src="../img/screenshots/data-lineage/data-lineage-05.jpg" /></a></p>
+<p>In the details, we find:</p>
+<ol>
+<li>Name and type of the entity.</li>
+<li>Summary of data governance metrics.</li>
+<li>Properties of the entity.</li>
+</ol>
+<p><a href="../img/screenshots/data-lineage/data-lineage-07.jpg"><img alt="Entity Details" src="../img/screenshots/data-lineage/data-lineage-07.jpg" /></a></p>
+<p>Let’s follow the flow of the data. If you click on the next entity called Change-event,
+you can see how the data changes to a Kafka topic. Thereafter, you can see
+that this Kafka topic converts into an Elastic index.</p>
+<p>With the lineage graph, you can see where the data is going and where it comes from.
+This is not limited to a particular system but spans across different
+applications and environments tracking governance information. Following these steps,
+the implementer can learn where the data is used and what subsequent processing can
+be affected by extending the schema.</p>
+<h2 id="data-quality-management">Data Quality Management</h2>
+<p>Data quality is a crucial aspect of data management, ensuring data is useful and reliable, leading
+to better business outcomes. Poor data quality, on the other hand, can result in misleading
+indicators, ineffective decision-making, and wasted resources.</p>
+<h3 id="challenges_4">Challenges</h3>
+<ol>
+<li><strong>Error-Prone Data</strong>: Inaccurate data can lead to wrong business decisions.</li>
+<li><strong>Incomplete Data</strong>: Missing values reduce the usability of datasets.</li>
+<li><strong>Outdated Data</strong>: Data that is not current can mislead analysis.</li>
+<li><strong>Lack of Uniqueness</strong>: Duplicate entries can cause inconsistencies.</li>
+<li><strong>Invalid Data</strong>: Data that does not fit predefined formats can lead to processing errors.</li>
+</ol>
+<h3 id="benefits-and-features_4">Benefits and Features</h3>
+<ul>
+<li><strong>Comprehensive Data Quality Metrics</strong>: Measures accuracy, completeness, timeliness, uniqueness, and validity.</li>
+<li><strong>Data Quality Scoring</strong>: Provides a percentage score for each quality rule, highlighting areas of improvement.</li>
+<li><strong>Root Cause Analysis</strong>: Helps identify and address the origins of data quality issues.</li>
+<li><strong>Cross-Platform Data Quality Insights</strong>: Tracks data quality across different systems and transformations.</li>
+</ul>
+<h3 id="walkthrough_4">Walkthrough</h3>
+<p>Consider a data engineer who needs high-quality data for a new analysis. The engineer uses
+Aurelius Atlas to discover and evaluate the data quality of a candidate dataset.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can follow along with the scenario on the Aurelius Atlas demo environment.</p>
+<p><a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a></p>
+</div>
+<p>Watch the video walkthrough below or read the step-by-step instructions.</p>
+<p><iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/QBZ80l5jpvE?si=nWc-ig7RxbGnq8ce"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+>
+</iframe>
+</p>
+<h4 id="step-by-step-guide_4">Step-by-Step Guide</h4>
+<p>Imagine you're a data engineer tasked with ensuring high-quality data for a new analysis using Aurelius Atlas.
+Start by navigating directly to the details page of the dataset you intend to use.</p>
+<p><a href="../img/screenshots/data-governance-quality/data-quality-01.jpg"><img alt="Data Quality Overview" src="../img/screenshots/data-governance-quality/data-quality-01.jpg" /></a></p>
+<p>Here, you'll find an overview of its data quality metrics, which include measures such as accuracy, completeness,
+timeliness, uniqueness, and validity. This initial view allows you to understand the overall quality status of
+the dataset.</p>
+<p>Next, assess the quality of each field by navigating to the field details section.</p>
+<p><a href="../img/screenshots/data-governance-quality/data-quality-02.jpg"><img alt="Field Quality" src="../img/screenshots/data-governance-quality/data-quality-02.jpg" /></a></p>
+<p>This section provides a detailed view of each field's quality, helping you identify areas that may require
+improvement. For instance, you might notice that fields like "FTE" and "location" meet your quality standards,
+while others, such as "HIER ORGANIZATION," exhibit lower precision.</p>
+<p>To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION," navigate to the data
+quality rules section.</p>
+<p><a href="../img/screenshots/data-governance-quality/data-quality-03.jpg"><img alt="Data Quality Rules" src="../img/screenshots/data-governance-quality/data-quality-03.jpg" /></a></p>
+<p>Here, you can review all applied rules and their respective scores. For example, you might discover that
+inconsistencies in the syntax of the "HIER ORGANIZATION" field contribute to its lower quality score.</p>
+<p>To understand the implications of these findings and identify who within your organization is responsible for
+addressing these quality issues, navigate to the data attributes section.</p>
+<p><a href="../img/screenshots/data-governance-quality/data-quality-04.jpg"><img alt="Data Attributes" src="../img/screenshots/data-governance-quality/data-quality-04.jpg" /></a></p>
+<p>This section provides detailed information about each attribute, including contact details for individuals
+accountable for the data. It helps you understand what each field represents and enables you to collaborate
+effectively to enhance data accuracy, completeness, and reliability for your analysis.</p>
+<p>By following these steps in Aurelius Atlas, you gain clarity on the quality measures applied to your dataset and
+can take actionable steps to ensure high-quality data for your analysis.</p>
               
             </div>
           </div><footer>
