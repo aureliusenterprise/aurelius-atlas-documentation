@@ -49,13 +49,29 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">User Stories</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#cross-platform-data-governance">Cross-Platform Data Governance</a>
+    <li class="toctree-l2"><a class="reference internal" href="#building-the-data-governance-model">Building the Data Governance Model</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#challenges">Challenges</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features">Benefits and Features</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#walkthrough">Walkthrough</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#manual-entity-creation">Manual Entity Creation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automated-data-lineage">Automated Data Lineage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cross-platform-data-governance">Cross-Platform Data Governance</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_1">Challenges</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_1">Benefits and Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_1">Walkthrough</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide">Step-by-Step Guide</a>
     </li>
@@ -65,9 +81,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#data-discovery">Data Discovery</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#challenges_1">Challenges</a>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_2">Challenges</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_1">Benefits and Features</a>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_2">Benefits and Features</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#business-context">Business Context</a>
     </li>
@@ -77,7 +93,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_1">Walkthrough</a>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_2">Walkthrough</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide_1">Step-by-Step Guide</a>
     </li>
@@ -87,11 +103,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#data-governance-quality">Data Governance Quality</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#challenges_2">Challenges</a>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_3">Challenges</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_2">Benefits and Features</a>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_3">Benefits and Features</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_2">Walkthrough</a>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_3">Walkthrough</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide_2">Step-by-Step Guide</a>
     </li>
@@ -101,11 +117,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#data-lineage">Data Lineage</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#challenges_3">Challenges</a>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_4">Challenges</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_3">Benefits and Features</a>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_4">Benefits and Features</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_3">Walkthrough</a>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_4">Walkthrough</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide_3">Step-by-Step Guide</a>
     </li>
@@ -115,11 +131,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#data-quality-management">Data Quality Management</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#challenges_4">Challenges</a>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_5">Challenges</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_4">Benefits and Features</a>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_5">Benefits and Features</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_4">Walkthrough</a>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_5">Walkthrough</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#step-by-step-guide_4">Step-by-Step Guide</a>
     </li>
@@ -181,24 +197,72 @@
 <p>This page provides a collection of common scenarios that illustrate how Aurelius Atlas can help users address
 common data governance challenges. Each user story highlights a specific use case and includes a walkthrough
 to demonstrate how the platform can be used to solve the problem.</p>
+<h2 id="building-the-data-governance-model">Building the Data Governance Model</h2>
+<p>Establishing a data governance model is a critical step for organizations to ensure data quality, compliance,
+and security. However, creating and maintaining a data governance model can be complex and time-consuming. Aurelius
+Atlas simplifies this process by providing a centralized platform for defining and managing the data catalog,
+data quality rules, and data lineage.</p>
+<h3 id="challenges">Challenges</h3>
+<ol>
+<li><strong>Complexity</strong>: Contributing to the data governance model can be challenging for non-technical users.</li>
+<li><strong>Scalability</strong>: Managing data governance across multiple systems and environments.</li>
+</ol>
+<h3 id="benefits-and-features">Benefits and Features</h3>
+<ul>
+<li><strong>User-Friendly Interface</strong>: Simplifies the process of defining and managing data governance rules through
+    an easy-to-use editor.</li>
+<li><strong>Automated Data Lineage</strong>: Integrate your DevOps and DataOps processes with Aurelius Atlas to automatically
+    generate data lineage from your data pipelines.</li>
+</ul>
+<h3 id="walkthrough">Walkthrough</h3>
+<p>Consider a scenario where a data governance manager needs to define a new data domain in the data governance model.
+The manager uses Aurelius Atlas to create the new domain, define some of its attributes, and assign a domain owner.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can follow along with the scenario on the Aurelius Atlas demo environment.</p>
+<p><a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a></p>
+</div>
+<h4 id="manual-entity-creation">Manual Entity Creation</h4>
+<p>Start by navigating to the Aurelius Atlas landing page. Here, you can access the editor to create new entities
+in the data governance model. Click on the <em>plus</em> button next to the search bar to open the editor.</p>
+<p><a href="../img/screenshots/building-the-model/building-the-model-01.jpg"><img alt="Open the Editor" src="../img/screenshots/building-the-model/building-the-model-01.jpg" /></a></p>
+<p>The editor provides a user-friendly interface for defining new entities in the data governance model. Start by
+selecting the entity type, in this case, a "Data Domain." Enter the name of the new domain, such as "Equipment,"
+and add a description to provide additional context. Finally, assign a domain owner to take responsibility for
+the new domain.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Include related keywords in the definition to make it easier for users to find the domain.</p>
+</div>
+<p><a href="../img/screenshots/building-the-model/building-the-model-02.jpg"><img alt="Create a New Data Domain" src="../img/screenshots/building-the-model/building-the-model-02.jpg" /></a></p>
+<p>Once you have defined all the necessary attributes for the new domain, click the <em>Save</em> button to add the domain
+to the data governance model. You are automatically redirected to the details page of the new domain, where you
+can review the information you have entered.</p>
+<p><a href="../img/screenshots/building-the-model/building-the-model-03.jpg"><img alt="Review the New Data Domain" src="../img/screenshots/building-the-model/building-the-model-03.jpg" /></a></p>
+<h3 id="automated-data-lineage">Automated Data Lineage</h3>
+<p>In addition to manually creating entities in the data governance model, Aurelius Atlas also supports automated
+data lineage generation. By integrating your DevOps and DataOps pipelines with Aurelius Atlas, you can automatically
+register data producers, consumers, and transformations to generate comprehensive data lineage.</p>
+<p><a href="../integrations/#lineage-api">Read more about the Lineage API</a> to learn how to integrate your pipelines with
+Aurelius Atlas.</p>
 <h2 id="cross-platform-data-governance">Cross-Platform Data Governance</h2>
 <p>Organizations often use a mix of solutions from different vendors, incorporating various
 clouds and on-premise systems. Data governance solutions from different cloud providers
 focus on their specific platforms, making it difficult for organizations to get a comprehensive
 overview of available data and data flows across all solutions.</p>
-<h3 id="challenges">Challenges</h3>
+<h3 id="challenges_1">Challenges</h3>
 <ol>
 <li><strong>Fragmented Data Governance</strong>: Different platforms have isolated governance solutions.</li>
 <li><strong>Lack of Unified Data Catalog</strong>: No central repository to find and manage data across platforms.</li>
 <li><strong>Data Flow Visibility</strong>: Difficult to trace data lineage across multiple systems.</li>
 </ol>
-<h3 id="benefits-and-features">Benefits and Features</h3>
+<h3 id="benefits-and-features_1">Benefits and Features</h3>
 <ul>
 <li><strong>Unified Data Governance</strong>: Aurelius Atlas collects governance information from various systems.</li>
 <li><strong>Comprehensive Data Catalog</strong>: Serves as a central repository for organization-wide data.</li>
 <li><strong>Cross-Platform Data Lineage</strong>: Visualizes data flows across different environments.</li>
 </ul>
-<h3 id="walkthrough">Walkthrough</h3>
+<h3 id="walkthrough_1">Walkthrough</h3>
 <p>Consider that we want to update the schema of a particular table in our data pipeline. We need to
 know who is using the data and where it is being used to ensure all schemas and pipelines
 are adjusted accordingly.</p>
@@ -248,7 +312,7 @@ ensure all subsequent processing is adjusted as required. As a result, we can up
 critical business questions. However, identifying relevant data, understanding where it is stored, and knowing
 who to contact for access can be challenging, especially in organizations lacking data governance tools. This
 process typically involves reaching out to multiple people and can be time-consuming and inefficient.</p>
-<h3 id="challenges_1">Challenges</h3>
+<h3 id="challenges_2">Challenges</h3>
 <ol>
 <li>Lack of visibility into available data.</li>
 <li>Uncertainty about data storage locations.</li>
@@ -256,7 +320,7 @@ process typically involves reaching out to multiple people and can be time-consu
 <li>Time-consuming processes to understand data attributes and their meanings.</li>
 <li>Inefficiency for engineers, particularly those with smaller networks within the organization.</li>
 </ol>
-<h3 id="benefits-and-features_1">Benefits and Features</h3>
+<h3 id="benefits-and-features_2">Benefits and Features</h3>
 <p>Aurelius Atlas provides a centralized solution that makes information
 about data availability, storage locations, and accountable contacts
 easily accessible. The tool facilitates quicker and more efficient
@@ -271,7 +335,7 @@ attributes help users understand the meaning and relevance of the data.</p>
 <p>Information about where the data is stored is readily accessible.</p>
 <h4 id="accountability">Accountability</h4>
 <p>Users can see who is responsible for the data, making it easier to request access.</p>
-<h3 id="walkthrough_1">Walkthrough</h3>
+<h3 id="walkthrough_2">Walkthrough</h3>
 <p>Let's consider a scenario where a data scientist needs to calculate the number
 of people who currently work for their company as part of the annual report.
 Therefore, the data scientist needs to know:</p>
@@ -361,21 +425,21 @@ organization, establishing business and technical data governance models, and mo
 track of progress across these activities can be challenging. Aurelius Atlas provides a comprehensive tool for
 key stakeholders to monitor implementation progress and data governance quality, aiding better decision-making
 for future improvements.</p>
-<h3 id="challenges_2">Challenges</h3>
+<h3 id="challenges_3">Challenges</h3>
 <ol>
 <li><strong>Comprehensive Oversight</strong>: Difficulty in monitoring progress across various data governance activities.</li>
 <li><strong>Quality Assurance</strong>: Ensuring data governance rules are followed across the organization.</li>
 <li><strong>Prioritization</strong>: Identifying areas needing immediate attention for improvement.</li>
 <li><strong>Transparency</strong>: Communicating the status of data governance compliance to stakeholders.</li>
 </ol>
-<h3 id="benefits-and-features_2">Benefits and Features</h3>
+<h3 id="benefits-and-features_3">Benefits and Features</h3>
 <ul>
 <li><strong>Holistic Monitoring</strong>: Track implementation progress and data governance quality.</li>
 <li><strong>Rule Compliance</strong>: Assess compliance with data governance rules for each entity.</li>
 <li><strong>Quality Scores</strong>: Provide overall data governance quality scores for entities.</li>
 <li><strong>Actionable Insights</strong>: Identify potential issues and focus on necessary improvements.</li>
 </ul>
-<h3 id="walkthrough_2">Walkthrough</h3>
+<h3 id="walkthrough_3">Walkthrough</h3>
 <p>Consider a business data steward responsible for maintaining data governance quality in their domain. The steward
 uses Aurelius Atlas to review potential issues and delve into the details.</p>
 <div class="admonition tip">
@@ -419,21 +483,21 @@ with established rules and standards across your organization.</p>
 multiple steps where changes can impact downstream processes. Data scientists and integration experts rely on
 impact analysis to assess these effects. They face challenges such as dependency management, unclear data lineage,
 complex impact assessment, and identifying ownership.</p>
-<h3 id="challenges_3">Challenges</h3>
+<h3 id="challenges_4">Challenges</h3>
 <ol>
 <li><strong>Dependency Management</strong>: Overlooking dependent steps can lead to data processing failures.</li>
 <li><strong>Data Lineage Clarity</strong>: Lack of visibility into data flow complicates tracing origins.</li>
 <li><strong>Impact Assessment</strong>: Assessing changes across interconnected systems is time-consuming.</li>
 <li><strong>Ownership Identification</strong>: Identifying responsible parties for data usage is challenging.</li>
 </ol>
-<h3 id="benefits-and-features_3">Benefits and Features</h3>
+<h3 id="benefits-and-features_4">Benefits and Features</h3>
 <ul>
 <li><strong>Data Integrity</strong>: Visualizing data lineage ensures reliability.</li>
 <li><strong>Change Management</strong>: Tools assess schema or transformation impacts.</li>
 <li><strong>Data Governance</strong>: Tracks data usage and responsibilities.</li>
 <li><strong>Efficiency</strong>: Centralized access accelerates decision-making.</li>
 </ul>
-<h3 id="walkthrough_3">Walkthrough</h3>
+<h3 id="walkthrough_4">Walkthrough</h3>
 <p>Consider an implementer extending a table schema to ensure subsequent processing adjustments.</p>
 <h4 id="step-by-step-guide_3">Step-by-Step Guide</h4>
 <p>The table we want to extend is <strong>NL1-HR-001</strong>. Since we're interested in the
@@ -481,7 +545,7 @@ be affected by extending the schema.</p>
 <p>Data quality is a crucial aspect of data management, ensuring data is useful and reliable, leading
 to better business outcomes. Poor data quality, on the other hand, can result in misleading
 indicators, ineffective decision-making, and wasted resources.</p>
-<h3 id="challenges_4">Challenges</h3>
+<h3 id="challenges_5">Challenges</h3>
 <ol>
 <li><strong>Error-Prone Data</strong>: Inaccurate data can lead to wrong business decisions.</li>
 <li><strong>Incomplete Data</strong>: Missing values reduce the usability of datasets.</li>
@@ -489,14 +553,14 @@ indicators, ineffective decision-making, and wasted resources.</p>
 <li><strong>Lack of Uniqueness</strong>: Duplicate entries can cause inconsistencies.</li>
 <li><strong>Invalid Data</strong>: Data that does not fit predefined formats can lead to processing errors.</li>
 </ol>
-<h3 id="benefits-and-features_4">Benefits and Features</h3>
+<h3 id="benefits-and-features_5">Benefits and Features</h3>
 <ul>
 <li><strong>Comprehensive Data Quality Metrics</strong>: Measures accuracy, completeness, timeliness, uniqueness, and validity.</li>
 <li><strong>Data Quality Scoring</strong>: Provides a percentage score for each quality rule, highlighting areas of improvement.</li>
 <li><strong>Root Cause Analysis</strong>: Helps identify and address the origins of data quality issues.</li>
 <li><strong>Cross-Platform Data Quality Insights</strong>: Tracks data quality across different systems and transformations.</li>
 </ul>
-<h3 id="walkthrough_4">Walkthrough</h3>
+<h3 id="walkthrough_5">Walkthrough</h3>
 <p>Consider a data engineer who needs high-quality data for a new analysis. The engineer uses
 Aurelius Atlas to discover and evaluate the data quality of a candidate dataset.</p>
 <div class="admonition tip">
