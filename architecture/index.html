@@ -53,17 +53,23 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current" href="#">Architecture</a>
 <ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="#web-app">Web App</a>
+<li class="toctree-l2"><a class="reference internal" href="#components">Components</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#web-app">Web App</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#apache-atlas">Apache Atlas</a>
+<li class="toctree-l3"><a class="reference internal" href="#apache-atlas">Apache Atlas</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#apache-keycloak">Apache Keycloak</a>
+<li class="toctree-l3"><a class="reference internal" href="#keycloak">Keycloak</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#apache-kafka">Apache Kafka</a>
+<li class="toctree-l3"><a class="reference internal" href="#apache-kafka">Apache Kafka</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#apache-flink">Apache Flink</a>
+<li class="toctree-l3"><a class="reference internal" href="#apache-flink">Apache Flink</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#elasticsearch">Elasticsearch</a>
+<li class="toctree-l3"><a class="reference internal" href="#elasticsearch">Elasticsearch</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#security">Security</a>
 </li>
 </ul>
 </li>
@@ -105,7 +111,9 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="architecture">Architecture</h1>
-<p>This page describes the architecture of Aurelius Atlas. The system consists of the following main components:</p>
+<p>This page describes the architecture of Aurelius Atlas.</p>
+<h2 id="components">Components</h2>
+<p>The system consists of the following main components:</p>
 <div class="mermaid">graph LR
     subgraph Aurelius Atlas
         subgraph Kubernetes
@@ -114,7 +122,7 @@
             end
             subgraph Backend
                 ApacheAtlas["Apache Atlas"]
-                ApacheKeycloak[""Apache Keycloak""]
+                Keycloak["Keycloak"]
                 ApacheKafka["Apache Kafka"]
                 ApacheFlink["Apache Flink"]
                 Elasticsearch["Elasticsearch"]
@@ -122,36 +130,49 @@
         end
     end
 
-    ApacheAtlas --&gt; ApacheKeycloak
+    ApacheAtlas --&gt; Keycloak
     ApacheAtlas --&gt; ApacheKafka
     ApacheKafka --&gt; ApacheFlink
     ApacheFlink --&gt; Elasticsearch
-    WebApp --&gt; ApacheKeycloak
+    WebApp --&gt; Keycloak
     WebApp --&gt; ApacheAtlas
     WebApp --&gt; Elasticsearch</div>
-<h2 id="web-app">Web App</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The diagram shows the components of Aurelius Atlas required to realize the primary data flow. Other components,
+such as backend services serving the Web App and microservices running on Apache Flink, are not shown for simplicity.</p>
+</div>
+<h3 id="web-app">Web App</h3>
 <p>The Web App is the main user interface for Aurelius Atlas. It is a single-page application (SPA) built with Angular.
 The Web App is responsible for displaying the data stored in Apache Atlas and Elasticsearch. It communicates with
 the backend services using REST APIs. Authentication is handled by Apache Keycloak.</p>
-<h2 id="apache-atlas">Apache Atlas</h2>
+<h3 id="apache-atlas">Apache Atlas</h3>
 <p>Apache Atlas is a metadata management and governance platform. It provides a scalable and extensible set of core
 metadata services for data governance. Apache Atlas is used to store metadata about data assets, such as definitions,
 relationships, and classifications.</p>
-<h2 id="apache-keycloak">Apache Keycloak</h2>
-<p>Apache Keycloak is an open-source identity and access management solution. It acts as the main identity provider
+<h3 id="keycloak">Keycloak</h3>
+<p>Keycloak is an open-source identity and access management solution. It acts as the main identity provider
 for Aurelius Atlas, handling user authentication and authorization. All interactions with the Web App and backend
-services are authenticated and authorized by Apache Keycloak.</p>
-<h2 id="apache-kafka">Apache Kafka</h2>
+services are authenticated and authorized by Keycloak.</p>
+<h3 id="apache-kafka">Apache Kafka</h3>
 <p>Apache Kafka is a distributed event streaming platform. It is used as the messaging backbone for back-end data
 processing and integration. Apache Atlas publishes metadata change events to Apache Kafka, which are consumed by
 Apache Flink for real-time processing.</p>
-<h2 id="apache-flink">Apache Flink</h2>
+<h3 id="apache-flink">Apache Flink</h3>
 <p>Apache Flink is a distributed stream processing framework. It is used to process metadata change events from Apache
 Atlas in real-time. Apache Flink enriches the metadata events and stores them in Elasticsearch to enable advanced
 user queries in the Web App.</p>
-<h2 id="elasticsearch">Elasticsearch</h2>
+<h3 id="elasticsearch">Elasticsearch</h3>
 <p>Elasticsearch is a distributed search and analytics engine. It is used to store the enriched metadata from Apache
 Flink. Elasticsearch provides fast and scalable full-text search capabilities for the Web App.</p>
+<h2 id="security">Security</h2>
+<p>All communication between the public-facing components of Aurelius Atlas is secured with TLS. Authentication and
+authorization are enforced using Keycloak.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You have the option to integrate keycloak with your existing identity and access management system. See the
+<a href="https://www.keycloak.org/docs/latest/server_admin/#_identity_broker">Keycloak documentation</a> for more details.</p>
+</div>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
