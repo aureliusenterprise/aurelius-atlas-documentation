@@ -32,6 +32,9 @@ The manager uses Aurelius Atlas to create the new domain, define some of its att
     As opposed to the other user stories, this scenario is not available in the demo environment. To
     follow along, deploy your own instance of Aurelius Atlas by following the [installation guide](./installation-and-deployment.md).
 
+    Further, make sure that you have the necessary permissions to create new entities in the data governance model.
+    You should at least have the role of _Data Steward_ in the system.
+
 #### Manual Entity Creation
 
 Start by navigating to the Aurelius Atlas landing page. Here, you can access the editor to create new entities
