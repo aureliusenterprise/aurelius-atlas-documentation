@@ -40,7 +40,7 @@ in the data governance model. Click on the _plus_ button next to the search bar 
 [![Open the Editor](./img/screenshots/building-the-model/building-the-model-01.jpg)](./img/screenshots/building-the-model/building-the-model-01.jpg)
 
 The editor provides a user-friendly interface for defining new entities in the data governance model. Start by
-selecting the entity type, in this case, a "Data Domain." Enter the name of the new domain, such as "Equipment,"
+selecting the entity type, in this case, a _Data Domain_. Enter the name of the new domain, such as _Equipment_,
 and add a description to provide additional context. Finally, assign a domain owner to take responsibility for
 the new domain.
 
