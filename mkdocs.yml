@@ -9,8 +9,7 @@ theme:
 nav:
   - Getting Started: index.md
   - Benefits and Features: benefits-and-features.md
-  # - Getting Started: getting-started.md
-  - User Stories: user-stories/index.md
+  - User Stories: user-stories.md
   - Installation and Deployment: installation-and-deployment.md
   - Architecture: architecture.md
   - Integrations: integrations.md
