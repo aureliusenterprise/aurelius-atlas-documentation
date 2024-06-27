@@ -4,6 +4,67 @@ This page provides a collection of common scenarios that illustrate how Aurelius
 common data governance challenges. Each user story highlights a specific use case and includes a walkthrough
 to demonstrate how the platform can be used to solve the problem.
 
+## Building the Data Governance Model
+
+Establishing a data governance model is a critical step for organizations to ensure data quality, compliance,
+and security. However, creating and maintaining a data governance model can be complex and time-consuming. Aurelius
+Atlas simplifies this process by providing a centralized platform for defining and managing the data catalog,
+data quality rules, and data lineage.
+
+### Challenges
+
+1. **Complexity**: Contributing to the data governance model can be challenging for non-technical users.
+2. **Scalability**: Managing data governance across multiple systems and environments.
+
+### Benefits and Features
+
+- **User-Friendly Interface**: Simplifies the process of defining and managing data governance rules through
+    an easy-to-use editor.
+- **Automated Data Lineage**: Integrate your DevOps and DataOps processes with Aurelius Atlas to automatically
+    generate data lineage from your data pipelines.
+
+### Walkthrough
+
+Consider a scenario where a data governance manager needs to define a new data domain in the data governance model.
+The manager uses Aurelius Atlas to create the new domain, define some of its attributes, and assign a domain owner.
+
+!!! tip
+    You can follow along with the scenario on the Aurelius Atlas demo environment.
+
+    <a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+
+#### Manual Entity Creation
+
+Start by navigating to the Aurelius Atlas landing page. Here, you can access the editor to create new entities
+in the data governance model. Click on the _plus_ button next to the search bar to open the editor.
+
+[![Open the Editor](./img/screenshots/building-the-model/building-the-model-01.jpg)](./img/screenshots/building-the-model/building-the-model-01.jpg)
+
+The editor provides a user-friendly interface for defining new entities in the data governance model. Start by
+selecting the entity type, in this case, a "Data Domain." Enter the name of the new domain, such as "Equipment,"
+and add a description to provide additional context. Finally, assign a domain owner to take responsibility for
+the new domain.
+
+!!! tip
+    Include related keywords in the definition to make it easier for users to find the domain.
+
+[![Create a New Data Domain](./img/screenshots/building-the-model/building-the-model-02.jpg)](./img/screenshots/building-the-model/building-the-model-02.jpg)
+
+Once you have defined all the necessary attributes for the new domain, click the _Save_ button to add the domain
+to the data governance model. You are automatically redirected to the details page of the new domain, where you
+can review the information you have entered.
+
+[![Review the New Data Domain](./img/screenshots/building-the-model/building-the-model-03.jpg)](./img/screenshots/building-the-model/building-the-model-03.jpg)
+
+### Automated Data Lineage
+
+In addition to manually creating entities in the data governance model, Aurelius Atlas also supports automated
+data lineage generation. By integrating your DevOps and DataOps pipelines with Aurelius Atlas, you can automatically
+register data producers, consumers, and transformations to generate comprehensive data lineage.
+
+[Read more about the Lineage API](./integrations.md#lineage-api) to learn how to integrate your pipelines with
+Aurelius Atlas.
+
 ## Cross-Platform Data Governance
 
 Organizations often use a mix of solutions from different vendors, incorporating various
