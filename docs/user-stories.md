@@ -29,7 +29,7 @@ Consider a scenario where a data governance manager needs to define a new data d
 The manager uses Aurelius Atlas to create the new domain, define some of its attributes, and assign a domain owner.
 
 !!! warning
-    As opposed to the other user stories, this scenario is not available in the online demo environment. To
+    As opposed to the other user stories, this scenario is not available in the demo environment. To
     follow along, deploy your own instance of Aurelius Atlas by following the [installation guide](./installation-and-deployment.md).
 
 #### Manual Entity Creation
