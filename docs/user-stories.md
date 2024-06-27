@@ -28,10 +28,9 @@ data quality rules, and data lineage.
 Consider a scenario where a data governance manager needs to define a new data domain in the data governance model.
 The manager uses Aurelius Atlas to create the new domain, define some of its attributes, and assign a domain owner.
 
-!!! tip
-    You can follow along with the scenario on the Aurelius Atlas demo environment.
-
-    <a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+!!! warning
+    As opposed to the other user stories, this scenario is not available in the online demo environment. To
+    follow along, deploy your own instance of Aurelius Atlas by following the [installation guide](./installation-and-deployment.md).
 
 #### Manual Entity Creation
 
