@@ -11,7 +11,7 @@ To access the online demo environment, click the button below:
 !!! note
     A Google account is required to access the demo.
 
-Log in with your Google account to start exploring Aurelius Atlas. You can follow along with the [user guide](./user-stories/index.md)
+Log in with your Google account to start exploring Aurelius Atlas. You can follow along with the [user guide](./user-stories.md#data-discovery)
 to learn how to use the platform.
 
 ## What does open source mean?
@@ -26,8 +26,8 @@ Aurelius Atlas is published under the [Elastic License 2.0](https://www.elastic.
 
 ## How can I load my data into Aurelius Atlas?
 
-You can find a detailed tutorial on how to load your data into Aurelius Atlas in the [getting started](getting-started.md)
-section.
+You can find a detailed tutorial on how to load your data into Aurelius Atlas in the
+[building the data governance model](./user-stories.md#building-the-data-governance-model) user story.
 
 ## Troubleshooting Deployment
 
