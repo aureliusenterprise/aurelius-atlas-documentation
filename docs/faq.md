@@ -26,8 +26,8 @@ Aurelius Atlas is published under the [Elastic License 2.0](https://www.elastic.
 
 ## How can I load my data into Aurelius Atlas?
 
-You can find a detailed tutorial on how to load your data into Aurelius Atlas in the
-[building the data governance model](./user-stories.md#building-the-data-governance-model) user story.
+You can find a detailed tutorial on how to load your data into Aurelius Atlas in our
+[user stories](./user-stories.md#building-the-data-governance-model).
 
 ## Troubleshooting Deployment
 
