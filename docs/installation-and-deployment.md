@@ -365,3 +365,66 @@ command:
 ```
 
 This script will print the passwords for each user to the console.
+
+## Access Management
+
+### Enable social login
+
+Social login is not enabled by default, to enable it in Aurelius Atlas, please follow the steps below:
+
+1. Register an OAuth 2.0 client application with Google, GitHub or Facebook.
+    (To see the full list please [keycloak website](https://www.keycloak.org/) )
+    This will be used as an identity provider in Keycloak.
+
+    - [google](https://keycloakthemes.com/blog/how-to-setup-sign-in-with-google-using-keycloak)
+    - [github](https://medium.com/keycloak/github-as-identity-provider-in-keyclaok-dca95a9d80ca)
+    - [facebook](https://medium.com/@didelotkev/facebook-as-identity-provider-in-keycloak-cf298b47cb84)
+
+2. Update the `values.yaml` file so a different keycloak configuration is loaded.
+
+    Set the `{{ .Values.keycloak.realm_file_name }}` key to `realm_m4i_with_provider.json`
+
+3. Customize the realm configuration file (`charts/keycloak/realms/realm_m4i_with_provider.json`),
+    by setting your credentials:
+
+| Key                                            | Description                             |
+| ---------------------------------------------- | --------------------------------------- |
+| `{{ .identityProviders.config.clientId }}`     | The client ID of OAuth 2.0 client.      |
+| `{{ .identityProviders.config.clientSecret }}` | The client secret of  OAuth 2.0 client. |
+
+!!! tip
+    If your deployment is already running, you can enable the identity provider through the Keycloak UI.
+
+**To enable social login on the keycloak UI:**
+
+- Navigate to the Keycloak administration console.
+- Click "Identity providers" in the menu, then choose the desired provider from the dropdown menu.
+- Set the Client ID and Client Secret. The rest of the settings can remain default.
+
+### Managing Users
+
+In **Aurelius Atlas**, you have the flexibility to control user access through role-based permissions.
+Users can either have **read-only** access or **read/edit** permissions, depending on their role within
+the system. By default, all users are assigned the **viewing** role, but administrators
+can manage and modify roles as needed.
+
+- **Viewing Role (Default):** Users with this role can **view** data but cannot make any changes.
+- **Editing Role:** Users with this role have permission to **edit** data and perform updates.
+
+### Register New Users
+
+When **social login** is enabled, users can easily register through the **login UI**.
+
+For greater control over user management, administrators can also **manually create users** directly
+within the **Keycloak UI**. For more information please visit the
+official [Keycloak documentation](https://www.keycloak.org/docs/latest/server_admin/#assembly-managing-users_server_administration_guide).
+
+### Managing Roles in Keycloak UI
+
+Administrators can fully manage user roles through the **Keycloak Admin UI**.
+
+**Editing User Roles:**
+
+1. In the Keycloak Admin Console, navigate to the **Users** section.
+2. Select the desired user and go to the **Role Mappings** tab.
+3. Assign `ROLE_ADMIN` to grant the user editing rights, or remove roles to make it a read-only user.
