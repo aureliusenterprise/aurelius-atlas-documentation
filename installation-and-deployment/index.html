@@ -99,6 +99,18 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#access-management">Access Management</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#enable-social-login">Enable social login</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-users">Managing Users</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#register-new-users">Register New Users</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#managing-roles-in-keycloak-ui">Managing Roles in Keycloak UI</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -545,6 +557,79 @@ helm chart includes a script to retrieve the passwords for each user. To retriev
 command:</p>
 <pre class="highlight"><code class="language-bash">./get_passwords.sh &lt;namespace&gt;</code></pre>
 <p>This script will print the passwords for each user to the console.</p>
+<h2 id="access-management">Access Management</h2>
+<h3 id="enable-social-login">Enable social login</h3>
+<p>Social login is not enabled by default, to enable it in Aurelius Atlas, please follow the steps below:</p>
+<ol>
+<li>
+<p>Register an OAuth 2.0 client application with Google, GitHub or Facebook.
+    (To see the full list please <a href="https://www.keycloak.org/">keycloak website</a> )
+    This will be used as an identity provider in Keycloak.</p>
+<ul>
+<li><a href="https://keycloakthemes.com/blog/how-to-setup-sign-in-with-google-using-keycloak">google</a></li>
+<li><a href="https://medium.com/keycloak/github-as-identity-provider-in-keyclaok-dca95a9d80ca">github</a></li>
+<li><a href="https://medium.com/@didelotkev/facebook-as-identity-provider-in-keycloak-cf298b47cb84">facebook</a></li>
+</ul>
+</li>
+<li>
+<p>Update the <code>values.yaml</code> file so a different keycloak configuration is loaded.</p>
+<p>Set the <code>{{ .Values.keycloak.realm_file_name }}</code> key to <code>realm_m4i_with_provider.json</code></p>
+</li>
+<li>
+<p>Customize the realm configuration file (<code>charts/keycloak/realms/realm_m4i_with_provider.json</code>),
+    by setting your credentials:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{{ .identityProviders.config.clientId }}</code></td>
+<td>The client ID of OAuth 2.0 client.</td>
+</tr>
+<tr>
+<td><code>{{ .identityProviders.config.clientSecret }}</code></td>
+<td>The client secret of  OAuth 2.0 client.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If your deployment is already running, you can enable the identity provider through the Keycloak UI.</p>
+</div>
+<p><strong>To enable social login on the keycloak UI:</strong></p>
+<ul>
+<li>Navigate to the Keycloak administration console.</li>
+<li>Click "Identity providers" in the menu, then choose the desired provider from the dropdown menu.</li>
+<li>Set the Client ID and Client Secret. The rest of the settings can remain default.</li>
+</ul>
+<h3 id="managing-users">Managing Users</h3>
+<p>In <strong>Aurelius Atlas</strong>, you have the flexibility to control user access through role-based permissions.
+Users can either have <strong>read-only</strong> access or <strong>read/edit</strong> permissions, depending on their role within
+the system. By default, all users are assigned the <strong>viewing</strong> role, but administrators
+can manage and modify roles as needed.</p>
+<ul>
+<li><strong>Viewing Role (Default):</strong> Users with this role can <strong>view</strong> data but cannot make any changes.</li>
+<li><strong>Editing Role:</strong> Users with this role have permission to <strong>edit</strong> data and perform updates.</li>
+</ul>
+<h3 id="register-new-users">Register New Users</h3>
+<p>When <strong>social login</strong> is enabled, users can easily register through the <strong>login UI</strong>.</p>
+<p>For greater control over user management, administrators can also <strong>manually create users</strong> directly
+within the <strong>Keycloak UI</strong>. For more information please visit the
+official <a href="https://www.keycloak.org/docs/latest/server_admin/#assembly-managing-users_server_administration_guide">Keycloak documentation</a>.</p>
+<h3 id="managing-roles-in-keycloak-ui">Managing Roles in Keycloak UI</h3>
+<p>Administrators can fully manage user roles through the <strong>Keycloak Admin UI</strong>.</p>
+<p><strong>Editing User Roles:</strong></p>
+<ol>
+<li>In the Keycloak Admin Console, navigate to the <strong>Users</strong> section.</li>
+<li>Select the desired user and go to the <strong>Role Mappings</strong> tab.</li>
+<li>Assign <code>ROLE_ADMIN</code> to grant the user editing rights, or remove roles to make it a read-only user.</li>
+</ol>
               
             </div>
           </div><footer>

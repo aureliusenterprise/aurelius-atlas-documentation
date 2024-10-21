@@ -65,6 +65,12 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lineage-api">Lineage API</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#federated-identity-with-keycloak">Federated Identity with Keycloak</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#key-features-for-federated-identity">Key Features for Federated Identity</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -117,6 +123,41 @@ registering data producers and consumers, as well as any data transformations th
 pipelines with Aurelius Atlas using the Lineage API</p>
 </div>
 <p>For further details and guidelines on usage, please visit the <a href="https://github.com/aureliusenterprise/aurelius/blob/main/backend/m4i-lineage-rest-api/README.md">API documentation</a>.</p>
+<h2 id="federated-identity-with-keycloak">Federated Identity with Keycloak</h2>
+<p>Keycloak is an open-source identity and access management solution that simplifies authentication and
+authorization for applications. It supports federated identity, allowing users to authenticate through
+external identity providers without needing separate credentials for each application. Keycloak manages this
+by integrating multiple identity providers and managing the user sessions centrally.</p>
+<h3 id="key-features-for-federated-identity">Key Features for Federated Identity</h3>
+<p>Keycloak provides several key features that make federated identity management easier to implement and
+customize for your application:</p>
+<ol>
+<li>
+<p>Unified Authentication and Single Sign-On</p>
+<p>Keycloak enables Single Sign-On (SSO) and Single Sign-Out across multiple applications, allowing users to
+authenticate once and access various services seamlessly. It supports OpenID Connect, OAuth 2.0, and SAML,
+providing flexibility in integrating with different identity providers.</p>
+</li>
+<li>
+<p>Social Login and Identity Brokering</p>
+<p>Users can authenticate using their existing social accounts (e.g., Google, GitHub, Facebook) through
+social login features. Additionally, Keycloak supports identity brokering, enabling authentication with
+external identity providers that utilize OpenID Connect or SAML protocols.</p>
+</li>
+<li>
+<p>User Management and Federation</p>
+<p>The Admin Console allows for centralized management of users, roles, and configurations, while the
+User Federation feature enables synchronization of users from LDAP and Active Directory servers. This
+facilitates streamlined user management without duplicating accounts.</p>
+</li>
+<li>
+<p>Enhanced Security and Customization</p>
+<p>Keycloak provides robust security features, including Two-Factor Authentication, customizable login flows,
+and session management for both users and administrators. Additionally, theme support allows customization
+of user-facing pages to align with your application's branding.</p>
+</li>
+</ol>
+<p>For more information, please visit <a href="https://www.keycloak.org/documentation">Keycloak Documentation</a>.</p>
               
             </div>
           </div><footer>
