@@ -368,34 +368,38 @@ This script will print the passwords for each user to the console.
 
 ## Access Management
 
-### Enable social login
+### Integrating Azure Active Directory with Keycloak
 
-Social login is not enabled by default, to enable it in Aurelius Atlas, please follow the steps below:
+Active Directory login is not enabled by default. To enable it in Aurelius Atlas, follow these steps:
 
-1. Register an OAuth 2.0 client application with Google, GitHub or Facebook.
-    (To see the full list please [keycloak website](https://www.keycloak.org/) )
-    This will be used as an identity provider in Keycloak.
+- Register an application in Azure Active Directory. For more details, follow this guide: [Azure AD integration](https://medium.com/@andremoriya/keycloak-azure-active-directory-integration-14002c699566).
 
-    - [google](https://keycloakthemes.com/blog/how-to-setup-sign-in-with-google-using-keycloak)
-    - [github](https://medium.com/keycloak/github-as-identity-provider-in-keyclaok-dca95a9d80ca)
-    - [facebook](https://medium.com/@didelotkev/facebook-as-identity-provider-in-keycloak-cf298b47cb84)
+- Update the `values.yaml` file
 
-2. Update the `values.yaml` file so a different keycloak configuration is loaded.
+    Update the `values.yaml` file to load a different Keycloak configuration. Set the `{{ .Values.keycloak.realm_file_name }}` key to `realm_m4i_with_provider.json`.
 
-    Set the `{{ .Values.keycloak.realm_file_name }}` key to `realm_m4i_with_provider.json`
-
-3. Customize the realm configuration file (`charts/keycloak/realms/realm_m4i_with_provider.json`),
-    by setting your credentials:
-
+- Customize the realm configuration
+    
+    Update the realm configuration file (`charts/keycloak/realms/realm_m4i_with_provider.json`) by entering
+    your credentials:
+    
 | Key                                            | Description                             |
 | ---------------------------------------------- | --------------------------------------- |
 | `{{ .identityProviders.config.clientId }}`     | The client ID of OAuth 2.0 client.      |
 | `{{ .identityProviders.config.clientSecret }}` | The client secret of  OAuth 2.0 client. |
 
-!!! tip
-    If your deployment is already running, you can enable the identity provider through the Keycloak UI.
+!!! note
+    In addition to Azure Active Directory, social login is also supported through OAuth 2.0 clients, including
+    [Google](https://keycloakthemes.com/blog/how-to-setup-sign-in-with-google-using-keycloak),
+    [GitHub](https://medium.com/keycloak/github-as-identity-provider-in-keyclaok-dca95a9d80ca) or
+    [Facebook](https://medium.com/@didelotkev/facebook-as-identity-provider-in-keycloak-cf298b47cb84).
+    For a complete list of supported identity providers, refer to the [keycloak website](https://www.keycloak.org/).
+    These applications can be configured as identity providers in Keycloak.
 
-**To enable social login on the keycloak UI:**
+!!! tip
+    If the deployment is already running, you can enable the identity provider directly through the Keycloak UI.
+
+**To enable active directory login on the keycloak UI:**
 
 - Navigate to the Keycloak administration console.
 - Click "Identity providers" in the menu, then choose the desired provider from the dropdown menu.
@@ -413,7 +417,7 @@ can manage and modify roles as needed.
 
 ### Register New Users
 
-When **social login** is enabled, users can easily register through the **login UI**.
+When **active directory login** is enabled, users can easily register through the **login UI**.
 
 For greater control over user management, administrators can also **manually create users** directly
 within the **Keycloak UI**. For more information please visit the

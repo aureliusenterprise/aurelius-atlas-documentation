@@ -25,6 +25,8 @@ authorization for applications. It supports federated identity, allowing users t
 external identity providers without needing separate credentials for each application. Keycloak manages this
 by integrating multiple identity providers and managing the user sessions centrally.
 
+For more information, please visit [Keycloak Documentation](https://www.keycloak.org/documentation).
+
 ### Key Features for Federated Identity
 
 Keycloak provides several key features that make federated identity management easier to implement and
@@ -36,11 +38,12 @@ customize for your application:
     authenticate once and access various services seamlessly. It supports OpenID Connect, OAuth 2.0, and SAML,
     providing flexibility in integrating with different identity providers.
 
-2. Social Login and Identity Brokering
+2. Azure Active Directory Integration and Identity Brokering
 
-    Users can authenticate using their existing social accounts (e.g., Google, GitHub, Facebook) through
-    social login features. Additionally, Keycloak supports identity brokering, enabling authentication with
-    external identity providers that utilize OpenID Connect or SAML protocols.
+    Users can authenticate using their existing Azure Active Directory accounts, enabling seamless access for
+    users within organizations that use Azure AD. Keycloak's identity brokering feature facilitates
+    integration with Azure AD as an external identity provider through protocols such as OpenID Connect and
+    SAML. This setup allows organizations to leverage their Azure AD identities for applications managed by Keycloak.
 
 3. User Management and Federation
 
@@ -53,5 +56,3 @@ customize for your application:
     Keycloak provides robust security features, including Two-Factor Authentication, customizable login flows,
     and session management for both users and administrators. Additionally, theme support allows customization
     of user-facing pages to align with your application's branding.
-
-For more information, please visit [Keycloak Documentation](https://www.keycloak.org/documentation).
