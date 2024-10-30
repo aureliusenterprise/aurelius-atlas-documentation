@@ -376,7 +376,7 @@ Active Directory login is not enabled by default. To enable it in Aurelius Atlas
 
 - Update the `values.yaml` file
 
-    Update the `values.yaml` file to load a different Keycloak configuration. Set the `{{ .Values.keycloak.realm_file_name }}` key to `realm_m4i_with_provider.json`.
+    Update the `values.yaml` file in the base folder to load a different Keycloak configuration. Set the `{{ .Values.keycloak.realm_file_name }}` key to `realm_m4i_with_provider.json`.
 
 - Customize the realm configuration
     
@@ -385,8 +385,8 @@ Active Directory login is not enabled by default. To enable it in Aurelius Atlas
     
 | Key                                            | Description                             |
 | ---------------------------------------------- | --------------------------------------- |
-| `{{ .identityProviders.config.clientId }}`     | The client ID of OAuth 2.0 client.      |
-| `{{ .identityProviders.config.clientSecret }}` | The client secret of  OAuth 2.0 client. |
+| `{{ .identityProviders.config.clientId }}`     | The client ID of the identity provider.      |
+| `{{ .identityProviders.config.clientSecret }}` | The client secret of the identity provider   |
 
 !!! note
     In addition to Azure Active Directory, social login is also supported through OAuth 2.0 clients, including
@@ -417,18 +417,29 @@ can manage and modify roles as needed.
 
 ### Register New Users
 
-When **active directory login** is enabled, users can easily register through the **login UI**.
+When **active directory login** is enabled, users can register directly through the **AAD** portal. This process
+allows new users to be created and managed directly within AAD without requiring additional setup in Keycloak.
 
-For greater control over user management, administrators can also **manually create users** directly
-within the **Keycloak UI**. For more information please visit the
+For administrators who need more control over user registration, it’s also possible to manually create users
+directly within the Keycloak UI. For more information please visit the
 official [Keycloak documentation](https://www.keycloak.org/docs/latest/server_admin/#assembly-managing-users_server_administration_guide).
 
 ### Managing Roles in Keycloak UI
 
-Administrators can fully manage user roles through the **Keycloak Admin UI**.
+For organizations using Azure Active Directory (AAD) role assignments can be
+managed centrally in AAD, making it easier to maintain consistent user and role configurations across the
+organization.
 
-**Editing User Roles:**
+Administrators can also manage user roles through the **Keycloak Admin UI**.
 
 1. In the Keycloak Admin Console, navigate to the **Users** section.
 2. Select the desired user and go to the **Role Mappings** tab.
-3. Assign `ROLE_ADMIN` to grant the user editing rights, or remove roles to make it a read-only user.
+3. Assign `DATA_STEWARD` to grant the user editing rights, or remove roles to make it a read-only user.
+
+**User Roles and Permissions**
+
+| Role Name           | Permissions     | Notes                                                    |
+|---------------------|-----------------|----------------------------------------------------------|
+| ROLE_ADMIN          | Edit, View      | Admin role with high privileges                          |
+| DATA_STEWARD        | Edit, View      | Data stewardship role                                    |
+| DATA_SCIENTIST      | View            | Role for data scientists                                 |
