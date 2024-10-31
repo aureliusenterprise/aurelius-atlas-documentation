@@ -227,7 +227,7 @@ screenshot below.
 
 [![Data Discovery](./img/screenshots/data-discovery/business-context.jpg)](./img/screenshots/data-discovery/business-context.jpg)
 
-Here's an explanation of the highlighted elements:
+Here is an explanation of the highlighted elements:
 
 1. **Business Context**: The landing page has a dedicated section to help you
     get started exploring the business context of the data. You can enter search terms related
@@ -531,7 +531,7 @@ effectively to enhance data accuracy, completeness, and reliability for your ana
 By following these steps in Aurelius Atlas, you gain clarity on the quality measures applied to your dataset and
 can take actionable steps to ensure high-quality data for your analysis.
 
-## Access Management
+## Identity & Access Management
 
 To streamline authentication and ensure secure access for enterprise users, organizations can allow users to
 authenticate via their existing Azure Active Directory (Azure AD) accounts. Using Keycloak's identity brokering

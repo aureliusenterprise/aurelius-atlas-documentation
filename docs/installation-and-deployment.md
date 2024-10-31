@@ -366,7 +366,7 @@ command:
 
 This script will print the passwords for each user to the console.
 
-## Access Management
+## Identity & Access Management
 
 ### Integrating Azure Active Directory with Keycloak
 
