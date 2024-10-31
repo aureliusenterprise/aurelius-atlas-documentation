@@ -376,17 +376,18 @@ Active Directory login is not enabled by default. To enable it in Aurelius Atlas
 
 - Update the `values.yaml` file
 
-    Update the `values.yaml` file in the base folder to load a different Keycloak configuration. Set the `{{ .Values.keycloak.realm_file_name }}` key to `realm_m4i_with_provider.json`.
+    Update the `values.yaml` file in the base folder to load a different Keycloak configuration.
+    Set the `{{ .Values.keycloak.realm_file_name }}` key to `realm_m4i_with_provider.json`.
 
 - Customize the realm configuration
-    
+
     Update the realm configuration file (`charts/keycloak/realms/realm_m4i_with_provider.json`) by entering
     your credentials:
-    
-| Key                                            | Description                             |
-| ---------------------------------------------- | --------------------------------------- |
-| `{{ .identityProviders.config.clientId }}`     | The client ID of the identity provider.      |
-| `{{ .identityProviders.config.clientSecret }}` | The client secret of the identity provider   |
+
+| Key                                            | Description                                |
+| ---------------------------------------------- | ------------------------------------------ |
+| `{{ .identityProviders.config.clientId }}`     | The client ID of the identity provider.    |
+| `{{ .identityProviders.config.clientSecret }}` | The client secret of the identity provider |
 
 !!! note
     In addition to Azure Active Directory, social login is also supported through OAuth 2.0 clients, including
@@ -415,10 +416,10 @@ can manage and modify roles as needed.
 - **Viewing Role (Default):** Users with this role can **view** data but cannot make any changes.
 - **Editing Role:** Users with this role have permission to **edit** data and perform updates.
 
-### Register New Users
+### User Access
 
-When **active directory login** is enabled, users can register directly through the **AAD** portal. This process
-allows new users to be created and managed directly within AAD without requiring additional setup in Keycloak.
+Anybody with a company login can access Aurelius Atlas, when **active directory login** is enabled, provided
+that they have the user roles assigned. (See section [User Roles and Permissions](#managing-roles-in-keycloak-ui))
 
 For administrators who need more control over user registration, it’s also possible to manually create users
 directly within the Keycloak UI. For more information please visit the
@@ -436,10 +437,10 @@ Administrators can also manage user roles through the **Keycloak Admin UI**.
 2. Select the desired user and go to the **Role Mappings** tab.
 3. Assign `DATA_STEWARD` to grant the user editing rights, or remove roles to make it a read-only user.
 
-**User Roles and Permissions**
+### User Roles and Permissions
 
-| Role Name           | Permissions     | Notes                                                    |
-|---------------------|-----------------|----------------------------------------------------------|
-| ROLE_ADMIN          | Edit, View      | Admin role with high privileges                          |
-| DATA_STEWARD        | Edit, View      | Data stewardship role                                    |
-| DATA_SCIENTIST      | View            | Role for data scientists                                 |
+| Role Name      | Permissions        | Notes                           |
+| -------------- | ------------------ | ------------------------------- |
+| ROLE_ADMIN     | Edit, View, Delete | Admin role with high privileges |
+| DATA_STEWARD   | Edit, View         | Data stewardship role           |
+| DATA_SCIENTIST | View               | Role for data scientists        |

@@ -530,3 +530,53 @@ effectively to enhance data accuracy, completeness, and reliability for your ana
 
 By following these steps in Aurelius Atlas, you gain clarity on the quality measures applied to your dataset and
 can take actionable steps to ensure high-quality data for your analysis.
+
+## Access Management
+
+To streamline authentication and ensure secure access for enterprise users, organizations can allow users to
+authenticate via their existing Azure Active Directory (Azure AD) accounts. Using Keycloak's identity brokering
+feature, organizations can seamlessly integrate Azure AD as an external identity provider through protocols
+like OpenID Connect and SAML, allowing Azure AD identities to access applications managed by Keycloak.
+
+### Challenges
+
+- Authentication Complexity: Setting up seamless cross-platform authentication requires precise configuration
+    to prevent duplicate sign-ins and maintain security standards.
+- User Experience: Ensuring a smooth authentication flow for users across both Keycloak and Azure AD environments.
+
+### Benefits and Features
+
+- Single Sign-On (SSO): Allows users to authenticate once via Azure AD and gain access to all applications
+    managed by Keycloak without needing separate credentials.
+- Enhanced Security: Uses enterprise-grade authentication protocols like OpenID Connect and SAML for secure
+    identity brokering between Keycloak and Azure AD.
+- Centralized Access Management: Organizations can manage access policies and permissions centrally in Azure
+    AD, streamlining user and permission management.
+
+### Walkthrough
+
+Here’s how the IT administrator sets up the integration to allow Azure AD users seamless access to Aurelius
+Atlas with Keycloak as an intermediary.
+
+### Step-by-Step Guide
+
+- **Step 1**: Configure Azure AD for Integration
+
+    Register Aurelius Atlas in Azure AD: The administrator registers the Aurelius Atlas application in Azure AD
+    and generates client credentials, including client ID and secret.
+
+- **Step 2**: Set Up Keycloak for Azure AD Authentication
+
+    Enable Identity Brokering in Keycloak: In the Keycloak admin console, the IT administrator sets up identity
+    brokering and configures Azure AD as an external identity provider, using OpenID Connect or SAML.
+    For more details please reference our [guide](installation-and-deployment.md#access-management).
+
+    Configure Role Mappings: The admin maps Azure AD group memberships to Keycloak roles that correspond to
+    Aurelius Atlas roles.
+
+- **Step 3**: Verify User Access in Aurelius Atlas
+
+    Sign In via Azure AD: A user with an Azure AD account attempts to access Aurelius Atlas. They select the
+    “Sign in with Azure AD” option, which initiates the authentication flow.
+    Role-Based Access Control (RBAC): After authentication, Keycloak automatically assigns the user’s role in
+    Aurelius Atlas based on their Azure AD group, granting access to the relevant data governance features.
