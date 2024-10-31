@@ -101,13 +101,15 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#access-management">Access Management</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#enable-social-login">Enable social login</a>
+    <li class="toctree-l3"><a class="reference internal" href="#integrating-azure-active-directory-with-keycloak">Integrating Azure Active Directory with Keycloak</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#managing-users">Managing Users</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#register-new-users">Register New Users</a>
+    <li class="toctree-l3"><a class="reference internal" href="#user-access">User Access</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#managing-roles-in-keycloak-ui">Managing Roles in Keycloak UI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#user-roles-and-permissions">User Roles and Permissions</a>
     </li>
         </ul>
     </li>
@@ -558,28 +560,23 @@ command:</p>
 <pre class="highlight"><code class="language-bash">./get_passwords.sh &lt;namespace&gt;</code></pre>
 <p>This script will print the passwords for each user to the console.</p>
 <h2 id="access-management">Access Management</h2>
-<h3 id="enable-social-login">Enable social login</h3>
-<p>Social login is not enabled by default, to enable it in Aurelius Atlas, please follow the steps below:</p>
-<ol>
-<li>
-<p>Register an OAuth 2.0 client application with Google, GitHub or Facebook.
-    (To see the full list please <a href="https://www.keycloak.org/">keycloak website</a> )
-    This will be used as an identity provider in Keycloak.</p>
+<h3 id="integrating-azure-active-directory-with-keycloak">Integrating Azure Active Directory with Keycloak</h3>
+<p>Active Directory login is not enabled by default. To enable it in Aurelius Atlas, follow these steps:</p>
 <ul>
-<li><a href="https://keycloakthemes.com/blog/how-to-setup-sign-in-with-google-using-keycloak">google</a></li>
-<li><a href="https://medium.com/keycloak/github-as-identity-provider-in-keyclaok-dca95a9d80ca">github</a></li>
-<li><a href="https://medium.com/@didelotkev/facebook-as-identity-provider-in-keycloak-cf298b47cb84">facebook</a></li>
+<li>
+<p>Register an application in Azure Active Directory. For more details, follow this guide: <a href="https://medium.com/@andremoriya/keycloak-azure-active-directory-integration-14002c699566">Azure AD integration</a>.</p>
+</li>
+<li>
+<p>Update the <code>values.yaml</code> file</p>
+<p>Update the <code>values.yaml</code> file in the base folder to load a different Keycloak configuration.
+Set the <code>{{ .Values.keycloak.realm_file_name }}</code> key to <code>realm_m4i_with_provider.json</code>.</p>
+</li>
+<li>
+<p>Customize the realm configuration</p>
+<p>Update the realm configuration file (<code>charts/keycloak/realms/realm_m4i_with_provider.json</code>) by entering
+your credentials:</p>
+</li>
 </ul>
-</li>
-<li>
-<p>Update the <code>values.yaml</code> file so a different keycloak configuration is loaded.</p>
-<p>Set the <code>{{ .Values.keycloak.realm_file_name }}</code> key to <code>realm_m4i_with_provider.json</code></p>
-</li>
-<li>
-<p>Customize the realm configuration file (<code>charts/keycloak/realms/realm_m4i_with_provider.json</code>),
-    by setting your credentials:</p>
-</li>
-</ol>
 <table>
 <thead>
 <tr>
@@ -590,19 +587,28 @@ command:</p>
 <tbody>
 <tr>
 <td><code>{{ .identityProviders.config.clientId }}</code></td>
-<td>The client ID of OAuth 2.0 client.</td>
+<td>The client ID of the identity provider.</td>
 </tr>
 <tr>
 <td><code>{{ .identityProviders.config.clientSecret }}</code></td>
-<td>The client secret of  OAuth 2.0 client.</td>
+<td>The client secret of the identity provider</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In addition to Azure Active Directory, social login is also supported through OAuth 2.0 clients, including
+<a href="https://keycloakthemes.com/blog/how-to-setup-sign-in-with-google-using-keycloak">Google</a>,
+<a href="https://medium.com/keycloak/github-as-identity-provider-in-keyclaok-dca95a9d80ca">GitHub</a> or
+<a href="https://medium.com/@didelotkev/facebook-as-identity-provider-in-keycloak-cf298b47cb84">Facebook</a>.
+For a complete list of supported identity providers, refer to the <a href="https://www.keycloak.org/">keycloak website</a>.
+These applications can be configured as identity providers in Keycloak.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If your deployment is already running, you can enable the identity provider through the Keycloak UI.</p>
+<p>If the deployment is already running, you can enable the identity provider directly through the Keycloak UI.</p>
 </div>
-<p><strong>To enable social login on the keycloak UI:</strong></p>
+<p><strong>To enable active directory login on the keycloak UI:</strong></p>
 <ul>
 <li>Navigate to the Keycloak administration console.</li>
 <li>Click "Identity providers" in the menu, then choose the desired provider from the dropdown menu.</li>
@@ -617,19 +623,49 @@ can manage and modify roles as needed.</p>
 <li><strong>Viewing Role (Default):</strong> Users with this role can <strong>view</strong> data but cannot make any changes.</li>
 <li><strong>Editing Role:</strong> Users with this role have permission to <strong>edit</strong> data and perform updates.</li>
 </ul>
-<h3 id="register-new-users">Register New Users</h3>
-<p>When <strong>social login</strong> is enabled, users can easily register through the <strong>login UI</strong>.</p>
-<p>For greater control over user management, administrators can also <strong>manually create users</strong> directly
-within the <strong>Keycloak UI</strong>. For more information please visit the
+<h3 id="user-access">User Access</h3>
+<p>Anybody with a company login can access Aurelius Atlas, when <strong>active directory login</strong> is enabled, provided
+that they have the user roles assigned. (See section <a href="#managing-roles-in-keycloak-ui">User Roles and Permissions</a>)</p>
+<p>For administrators who need more control over user registration, it’s also possible to manually create users
+directly within the Keycloak UI. For more information please visit the
 official <a href="https://www.keycloak.org/docs/latest/server_admin/#assembly-managing-users_server_administration_guide">Keycloak documentation</a>.</p>
 <h3 id="managing-roles-in-keycloak-ui">Managing Roles in Keycloak UI</h3>
-<p>Administrators can fully manage user roles through the <strong>Keycloak Admin UI</strong>.</p>
-<p><strong>Editing User Roles:</strong></p>
+<p>For organizations using Azure Active Directory (AAD) role assignments can be
+managed centrally in AAD, making it easier to maintain consistent user and role configurations across the
+organization.</p>
+<p>Administrators can also manage user roles through the <strong>Keycloak Admin UI</strong>.</p>
 <ol>
 <li>In the Keycloak Admin Console, navigate to the <strong>Users</strong> section.</li>
 <li>Select the desired user and go to the <strong>Role Mappings</strong> tab.</li>
-<li>Assign <code>ROLE_ADMIN</code> to grant the user editing rights, or remove roles to make it a read-only user.</li>
+<li>Assign <code>DATA_STEWARD</code> to grant the user editing rights, or remove roles to make it a read-only user.</li>
 </ol>
+<h3 id="user-roles-and-permissions">User Roles and Permissions</h3>
+<table>
+<thead>
+<tr>
+<th>Role Name</th>
+<th>Permissions</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROLE_ADMIN</td>
+<td>Edit, View, Delete</td>
+<td>Admin role with high privileges</td>
+</tr>
+<tr>
+<td>DATA_STEWARD</td>
+<td>Edit, View</td>
+<td>Data stewardship role</td>
+</tr>
+<tr>
+<td>DATA_SCIENTIST</td>
+<td>View</td>
+<td>Role for data scientists</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>

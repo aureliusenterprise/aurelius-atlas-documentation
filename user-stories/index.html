@@ -143,6 +143,18 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#access-management">Access Management</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenges_6">Challenges</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-and-features_6">Benefits and Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#walkthrough_6">Walkthrough</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-by-step-guide_5">Step-by-Step Guide</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -608,6 +620,52 @@ accountable for the data. It helps you understand what each field represents and
 effectively to enhance data accuracy, completeness, and reliability for your analysis.</p>
 <p>By following these steps in Aurelius Atlas, you gain clarity on the quality measures applied to your dataset and
 can take actionable steps to ensure high-quality data for your analysis.</p>
+<h2 id="access-management">Access Management</h2>
+<p>To streamline authentication and ensure secure access for enterprise users, organizations can allow users to
+authenticate via their existing Azure Active Directory (Azure AD) accounts. Using Keycloak's identity brokering
+feature, organizations can seamlessly integrate Azure AD as an external identity provider through protocols
+like OpenID Connect and SAML, allowing Azure AD identities to access applications managed by Keycloak.</p>
+<h3 id="challenges_6">Challenges</h3>
+<ul>
+<li>Authentication Complexity: Setting up seamless cross-platform authentication requires precise configuration
+    to prevent duplicate sign-ins and maintain security standards.</li>
+<li>User Experience: Ensuring a smooth authentication flow for users across both Keycloak and Azure AD environments.</li>
+</ul>
+<h3 id="benefits-and-features_6">Benefits and Features</h3>
+<ul>
+<li>Single Sign-On (SSO): Allows users to authenticate once via Azure AD and gain access to all applications
+    managed by Keycloak without needing separate credentials.</li>
+<li>Enhanced Security: Uses enterprise-grade authentication protocols like OpenID Connect and SAML for secure
+    identity brokering between Keycloak and Azure AD.</li>
+<li>Centralized Access Management: Organizations can manage access policies and permissions centrally in Azure
+    AD, streamlining user and permission management.</li>
+</ul>
+<h3 id="walkthrough_6">Walkthrough</h3>
+<p>Here’s how the IT administrator sets up the integration to allow Azure AD users seamless access to Aurelius
+Atlas with Keycloak as an intermediary.</p>
+<h3 id="step-by-step-guide_5">Step-by-Step Guide</h3>
+<ul>
+<li>
+<p><strong>Step 1</strong>: Configure Azure AD for Integration</p>
+<p>Register Aurelius Atlas in Azure AD: The administrator registers the Aurelius Atlas application in Azure AD
+and generates client credentials, including client ID and secret.</p>
+</li>
+<li>
+<p><strong>Step 2</strong>: Set Up Keycloak for Azure AD Authentication</p>
+<p>Enable Identity Brokering in Keycloak: In the Keycloak admin console, the IT administrator sets up identity
+brokering and configures Azure AD as an external identity provider, using OpenID Connect or SAML.
+For more details please reference our <a href="../installation-and-deployment/#access-management">guide</a>.</p>
+<p>Configure Role Mappings: The admin maps Azure AD group memberships to Keycloak roles that correspond to
+Aurelius Atlas roles.</p>
+</li>
+<li>
+<p><strong>Step 3</strong>: Verify User Access in Aurelius Atlas</p>
+<p>Sign In via Azure AD: A user with an Azure AD account attempts to access Aurelius Atlas. They select the
+“Sign in with Azure AD” option, which initiates the authentication flow.
+Role-Based Access Control (RBAC): After authentication, Keycloak automatically assigns the user’s role in
+Aurelius Atlas based on their Azure AD group, granting access to the relevant data governance features.</p>
+</li>
+</ul>
               
             </div>
           </div><footer>
