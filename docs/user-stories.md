@@ -578,5 +578,6 @@ Atlas with Keycloak as an intermediary.
 
     Sign In via Azure AD: A user with an Azure AD account attempts to access Aurelius Atlas. They select the
     “Sign in with Azure AD” option, which initiates the authentication flow.
+
     Role-Based Access Control (RBAC): After authentication, Keycloak automatically assigns the user’s role in
     Aurelius Atlas based on their Azure AD group, granting access to the relevant data governance features.
