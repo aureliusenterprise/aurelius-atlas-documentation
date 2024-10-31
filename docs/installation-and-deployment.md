@@ -365,3 +365,82 @@ command:
 ```
 
 This script will print the passwords for each user to the console.
+
+## Identity & Access Management
+
+### Integrating Azure Active Directory with Keycloak
+
+Active Directory login is not enabled by default. To enable it in Aurelius Atlas, follow these steps:
+
+- Register an application in Azure Active Directory. For more details, follow this guide: [Azure AD integration](https://medium.com/@andremoriya/keycloak-azure-active-directory-integration-14002c699566).
+
+- Update the `values.yaml` file
+
+    Update the `values.yaml` file in the base folder to load a different Keycloak configuration.
+    Set the `{{ .Values.keycloak.realm_file_name }}` key to `realm_m4i_with_provider.json`.
+
+- Customize the realm configuration
+
+    Update the realm configuration file (`charts/keycloak/realms/realm_m4i_with_provider.json`) by entering
+    your credentials:
+
+| Key                                            | Description                                |
+| ---------------------------------------------- | ------------------------------------------ |
+| `{{ .identityProviders.config.clientId }}`     | The client ID of the identity provider.    |
+| `{{ .identityProviders.config.clientSecret }}` | The client secret of the identity provider |
+
+!!! note
+    In addition to Azure Active Directory, social login is also supported through OAuth 2.0 clients, including
+    [Google](https://keycloakthemes.com/blog/how-to-setup-sign-in-with-google-using-keycloak),
+    [GitHub](https://medium.com/keycloak/github-as-identity-provider-in-keyclaok-dca95a9d80ca) or
+    [Facebook](https://medium.com/@didelotkev/facebook-as-identity-provider-in-keycloak-cf298b47cb84).
+    For a complete list of supported identity providers, refer to the [keycloak website](https://www.keycloak.org/).
+    These applications can be configured as identity providers in Keycloak.
+
+!!! tip
+    If the deployment is already running, you can enable the identity provider directly through the Keycloak UI.
+
+**To enable active directory login on the keycloak UI:**
+
+- Navigate to the Keycloak administration console.
+- Click "Identity providers" in the menu, then choose the desired provider from the dropdown menu.
+- Set the Client ID and Client Secret. The rest of the settings can remain default.
+
+### Managing Users
+
+In **Aurelius Atlas**, you have the flexibility to control user access through role-based permissions.
+Users can either have **read-only** access or **read/edit** permissions, depending on their role within
+the system. By default, all users are assigned the **viewing** role, but administrators
+can manage and modify roles as needed.
+
+- **Viewing Role (Default):** Users with this role can **view** data but cannot make any changes.
+- **Editing Role:** Users with this role have permission to **edit** data and perform updates.
+
+### User Access
+
+Anybody with a company login can access Aurelius Atlas, when **active directory login** is enabled, provided
+that they have the user roles assigned. (See section [User Roles and Permissions](#managing-roles-in-keycloak-ui))
+
+For administrators who need more control over user registration, it’s also possible to manually create users
+directly within the Keycloak UI. For more information please visit the
+official [Keycloak documentation](https://www.keycloak.org/docs/latest/server_admin/#assembly-managing-users_server_administration_guide).
+
+### Managing Roles in Keycloak UI
+
+For organizations using Azure Active Directory (AAD) role assignments can be
+managed centrally in AAD, making it easier to maintain consistent user and role configurations across the
+organization.
+
+Administrators can also manage user roles through the **Keycloak Admin UI**.
+
+1. In the Keycloak Admin Console, navigate to the **Users** section.
+2. Select the desired user and go to the **Role Mappings** tab.
+3. Assign `DATA_STEWARD` to grant the user editing rights, or remove roles to make it a read-only user.
+
+### User Roles and Permissions
+
+| Role Name      | Permissions        | Notes                           |
+| -------------- | ------------------ | ------------------------------- |
+| ROLE_ADMIN     | Edit, View, Delete | Admin role with high privileges |
+| DATA_STEWARD   | Edit, View         | Data stewardship role           |
+| DATA_SCIENTIST | View               | Role for data scientists        |
