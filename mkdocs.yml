@@ -13,6 +13,7 @@ nav:
   - Installation and Deployment: installation-and-deployment.md
   - Architecture: architecture.md
   - Integrations: integrations.md
+  - Onboarding Data Sources: onboard-datasources.md
   - Frequently Asked Questions: faq.md
   - Support: support.md
   - About Us: about-us.md
@@ -21,8 +22,8 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.tabbed          
-
+  - pymdownx.tabbed
+  
 plugins:
   - mermaid2
 
