@@ -95,6 +95,38 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#onboarding-general-data-sources">Onboarding General Data Sources</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#methodology">Methodology</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1-assessment-and-preparation">1. Assessment and Preparation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2-define-data-source-configuration">2. Define Data Source Configuration</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#3-schema-mapping">3. Schema Mapping</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-integrate-and-test">4. Integrate and Test</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#5-automation-and-monitoring">5. Automation and Monitoring</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#data-model-components">Data Model Components</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-pillars-work-together">How the Pillars Work Together</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#person">Person</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#business-entities">Business Entities</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#technical-entities">Technical Entities</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#quality">Quality</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -519,6 +551,126 @@ Aurelius Atlas tool is important for improving data understanding.</p>
 <pre class="highlight"><code class="language-bash">helm template -s templates/onboard-sources.yaml . -n demo | kubectl apply -f -</code></pre>
 </li>
 </ul>
+<h2 id="onboarding-general-data-sources">Onboarding General Data Sources</h2>
+<p>Onboarding general data sources into Aurelius Atlas involves a 5-step process to ensure seamless integration
+and governance. This approach is designed for sources that do not fit predefined templates like Excel files or
+Kafka streams but still require standardized ingestion and oversight.</p>
+<h3 id="methodology">Methodology</h3>
+<p>The methodology for onboarding general data sources involves identifying the source type, establishing
+connectivity, and mapping the source schema to the Aurelius Atlas data governance model. Below are the key steps:</p>
+<h4 id="1-assessment-and-preparation">1. Assessment and Preparation</h4>
+<ul>
+<li>
+<p>Evaluate the source system to determine the format (e.g., API, relational database, file system, or cloud storage).</p>
+</li>
+<li>
+<p>Ensure the source data is clean, structured.</p>
+</li>
+</ul>
+<h4 id="2-define-data-source-configuration">2. Define Data Source Configuration</h4>
+<ul>
+<li>
+<p>Configure the required connection details, such as API endpoints, database credentials,
+    file paths, or storage buckets.</p>
+</li>
+<li>
+<p>Map the source metadata, including field names, types, and any hierarchical relationships, to Aurelius
+    Atlas's internal data model. For more details, please see <a href="#data-model-components">below</a>.</p>
+</li>
+</ul>
+<h4 id="3-schema-mapping">3. Schema Mapping</h4>
+<ul>
+<li>
+<p>Identify key entities, attributes, and relationships in the source data. For examples, please see <a href="#data-model-components">our data model</a>.</p>
+</li>
+<li>
+<p>Map these entities based on Atlas's internal data model.</p>
+</li>
+</ul>
+<h4 id="4-integrate-and-test">4. Integrate and Test</h4>
+<ul>
+<li>
+<p>Use Apache Atlas API and our <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-atlas-core">our data model</a>
+    to ingest the data. This can be done with the <code>ATLAS</code> user, for examples, see the onboarding with Kafka example.</p>
+</li>
+<li>
+<p>Verify that the ingested data aligns with the governance model.</p>
+</li>
+</ul>
+<h4 id="5-automation-and-monitoring">5. Automation and Monitoring</h4>
+<ul>
+<li>
+<p>Automate the ingestion process using Kubernetes jobs or scheduled pipelines.</p>
+</li>
+<li>
+<p>Monitor the data source for changes or updates, and re-ingest if required.</p>
+</li>
+</ul>
+<h3 id="data-model-components">Data Model Components</h3>
+<p><img alt="alt text" src="../img/meta_model.png"/></p>
+<p>The Data Model is composed of four foundational pillars: Person, Business, Technical, and quality.</p>
+<p>For in-depth technical details, refer to our <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-atlas-core">m4i-atlas-core</a>
+library.</p>
+<h4 id="how-the-pillars-work-together">How the Pillars Work Together</h4>
+<p>The four pillars of our Data Governance Model work together to ensure data is responsibly managed,
+strategically aligned, and compliant with organizational policies:</p>
+<ul>
+<li>Person ensures oversight and accountability for the data.</li>
+<li>Business defines what data is needed and how it should be structured to meet organizational goals.</li>
+<li>Technical implements the systems and processes required to store, process, and transport the data.</li>
+<li>Quality ensures the data is accurate, consistent, and reliable across its lifecycle.</li>
+</ul>
+<p>Together, these pillars create a unified framework that ensures responsible data management
+fosters compliance with regulatory requirements, and enables effective data-driven decision-making.</p>
+<h4 id="person">Person</h4>
+<p>The Person pillar focuses on the human element of data management. It captures roles and responsibilities for
+governance, ensuring effective oversight throughout the data lifecycle.</p>
+<p>For more information and examples on how to use the class please visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/AtlasPerson.py">Atlas Person</a></p>
+<h4 id="business-entities">Business Entities</h4>
+<p>The Business pillar defines the organizational perspective on data, emphasizing its role in operations,
+strategy, and decision-making. It bridges the gap between business goals and data management by providing
+context for data usage in reporting, analysis, and operations.</p>
+<p>Key Components:</p>
+<ul>
+<li>
+<p><strong>Domain</strong>: High-level categorization of data areas (e.g., Order Management, Customer Information).
+    For more information, visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/BusinessDataDomain.py">Data Domain</a></p>
+</li>
+<li>
+<p><strong>Entity</strong>: Specific objects or records within a domain (e.g., Customer Orders).
+    For more information, visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/BusinessDataEntity.py">Data Entity</a></p>
+</li>
+<li>
+<p><strong>Attribute</strong>: Properties or characteristics of an entity (e.g., Order ID, Customer Name).
+    For more information, visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/BusinessDataAttribute.py">Data Attribute</a></p>
+</li>
+</ul>
+<h4 id="technical-entities">Technical Entities</h4>
+<p>The Technical pillar focuses on the operational aspects of data, including its storage, processing, and flow
+through systems. This perspective ensures seamless integration and management of data across IT systems</p>
+<p>Key Components:</p>
+<ul>
+<li>
+<p><strong>System</strong>: Platforms or tools involved in data processing (e.g., Kafka Broker, Node-RED).</p>
+<p>For more information, visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/BusinessSystem.py">System</a></p>
+</li>
+<li>
+<p><strong>Collection</strong>: Logical groupings of datasets or streams (e.g., Kafka Clusters).</p>
+<p>For more information, visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/BusinessCollection.py">Collection</a></p>
+</li>
+<li>
+<p><strong>Dataset</strong>: Structured or semi-structured data containers (e.g., IoT-Expo-Metrics-Avro).</p>
+<p>For more information, visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/BusinessDataset.py">Dataset</a></p>
+</li>
+<li>
+<p><strong>Field</strong>: Specific data points or columns within a dataset (e.g., Order_ID).</p>
+<p>For more information, visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/BusinessField.py">Field</a></p>
+</li>
+</ul>
+<h4 id="quality">Quality</h4>
+<p>The Quality pillar enforces standards, rules, and validation processes to maintain data integrity, accuracy,
+and consistency. It underpins trust in the data by ensuring it meets both business and technical standards.</p>
+<p>For more information, visit: <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-atlas-core/m4i_atlas_core/entities/atlas/data_dictionary/BusinessDataQuality.py">Data Quality</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
