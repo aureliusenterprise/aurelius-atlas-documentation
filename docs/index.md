@@ -12,7 +12,7 @@ how to install and configure it.
 
 Aurelius Atlas is available as an online demo. To access the demo, click the button below:
 
-<a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+<a class="btn btn-success" href="https://google.aurelius-atlas.com/demo/atlas/">Go to the demo</a>
 
 !!! note
     A Google account is required to access the demo.

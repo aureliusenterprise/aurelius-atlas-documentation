@@ -95,7 +95,7 @@ are adjusted accordingly.
 !!! tip
     You can follow along with the scenario on the Aurelius Atlas demo environment.
 
-    <a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+    <a class="btn btn-success" href="https://google.aurelius-atlas.com/demo/atlas/">Go to the demo</a>
 
 #### Step-by-Step Guide
 
@@ -203,7 +203,7 @@ Therefore, the data scientist needs to know:
 !!! tip
     You can follow along with the scenario on the Aurelius Atlas demo environment.
 
-    <a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+    <a class="btn btn-success" href="https://google.aurelius-atlas.com/demo/atlas/">Go to the demo</a>
 
 Watch the video walkthrough below or read the step-by-step instructions.
 
@@ -322,7 +322,7 @@ uses Aurelius Atlas to review potential issues and delve into the details.
 !!! tip
     You can follow along with the scenario on the Aurelius Atlas demo environment.
 
-    <a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+    <a class="btn btn-success" href="https://google.aurelius-atlas.com/demo/atlas/">Go to the demo</a>
 
 Watch the video walkthrough below or read the step-by-step instructions.
 
@@ -476,7 +476,7 @@ Aurelius Atlas to discover and evaluate the data quality of a candidate dataset.
 !!! tip
     You can follow along with the scenario on the Aurelius Atlas demo environment.
 
-    <a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+    <a class="btn btn-success" href="https://google.aurelius-atlas.com/demo/atlas/">Go to the demo</a>
 
 Watch the video walkthrough below or read the step-by-step instructions.
 
