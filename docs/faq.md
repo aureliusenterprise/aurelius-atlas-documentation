@@ -6,7 +6,7 @@ This section provides answers to common questions about Aurelius Atlas.
 
 To access the online demo environment, click the button below:
 
-<a class="btn btn-success" href="https://aureliusdev.westeurope.cloudapp.azure.com/demo/atlas/">Go to the demo</a>
+<a class="btn btn-success" href="https://google.aurelius-atlas.com/demo/atlas/">Go to the demo</a>
 
 !!! note
     A Google account is required to access the demo.
