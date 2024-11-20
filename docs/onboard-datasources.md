@@ -216,7 +216,7 @@ connectivity, and mapping the source schema to the Aurelius Atlas data governanc
 
 - Evaluate the source system to determine the format (e.g., API, relational database, file system, or cloud storage).
 
-- Ensure the source data is clean, structured.
+- Ensure the source data is clean and structured.
 
 #### 2. Define Data Source Configuration
 
@@ -235,7 +235,7 @@ connectivity, and mapping the source schema to the Aurelius Atlas data governanc
 #### 4. Integrate and Test
 
 - Use Apache Atlas API and our [our data model](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-atlas-core)
-    to ingest the data. This can be done with the `ATLAS` user, for examples, see the onboarding with Kafka example.
+    to ingest the data. This can be done with the `ATLAS` user, for an example see the onboarding with Kafka example.
 
 - Verify that the ingested data aligns with the governance model.
 
