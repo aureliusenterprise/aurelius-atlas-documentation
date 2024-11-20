@@ -486,14 +486,31 @@ Click on the button as shown in the image below:</p>
 ones help us quickly identify areas needing attention.</p>
 <p>Next, click on the "Logistics" entity flagged with a warning symbol to investigate further:</p>
 <p><a href="../img/screenshots/data-quality-management/data-management-02.jpg"><img alt="Identify Issues" src="../img/screenshots/data-quality-management/data-management-02.jpg" /></a></p>
-<p>This section provides a detailed view of each field's quality, helping you identify areas that may require
-improvement. For instance, you might notice that fields like "FTE" and "location" meet your quality standards,
-while others, such as "HIER ORGANIZATION" exhibit lower precision.</p>
-<p>To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION" navigate to the data
-quality rules section.</p>
-<p>Here, you can assess the compliance status of the "Logistics" entity with the applied data governance rules:</p>
+<p>Once opened the "Logistics" domain displays all associated metadata. From here, we assess whether there are
+missing or incomplete entries that may impact the quality of data governance within this domain.</p>
+<p><a href="../img/screenshots/data-governance-quality/DGQ_2.png"><img alt="Check the Domain Results" src="../img/screenshots/data-governance-quality/DGQ_2.png" /></a></p>
+<p>In this overview, we find the following segments:</p>
+<ol>
+<li>Name of the entity.</li>
+<li>Type of the entity.</li>
+<li>Description of the entity.</li>
+<li>People Responsible for this Data</li>
+<li>Summary of all page elements.</li>
+</ol>
+<p>From this overview, we can effectively answer one of our questions i.e. :</p>
+<p>Is there any inconsistency in the metadata that causes the warning symbol to show for the domain?</p>
+<p>However, we still need to review the governance quality rules. Upon further examination of the
+governance quality rules section, we observe that the attribute "dataEntity" is flagged with a completeness warning.</p>
 <p><a href="../img/screenshots/data-quality-management/data-management-04.jpg"><img alt="Assess Compliance" src="../img/screenshots/data-quality-management/data-management-04.jpg" /></a></p>
-<p>Check if all required data entities are complete or if there are any missing elements that require attention.</p>
+<p>When we inspect the rules within "dataEntity," we identified two rules: "Compliant" and "Non-Compliant."</p>
+<p><a href="../img/screenshots/data-governance-quality/data_governance_quality_3.png"><img alt="Assess the Compliance Rules" src="../img/screenshots/data-governance-quality/data_governance_quality_3.png" /></a></p>
+<p>Here we found two compliance rules and it's description :</p>
+<p>a. Compliant : Rule states "This Entity Has A DataEntity."</p>
+<p>b. Non-Compliant : Rule states "This Entity Is Missing A DataEntity."</p>
+<p>c. Description : This Data Governance Quality Check Is A Missing Values Check That Results
+In Compliance Or Non Compliance Depending On Whether A Data Domain Has A Linked Data Entity.
+Compliance When A Data Entity Is Linked And Non Compliance When It Is Not Linked.</p>
+<p><a href="../img/screenshots/data-governance-quality/data_governance_quality_5.jpg"><img alt="View the Compliance Rules" src="../img/screenshots/data-governance-quality/data_governance_quality_5.jpg" /></a></p>
 <p>By following these steps, you can effectively monitor and improve data governance quality, ensuring compliance
 with established rules and standards across your organization.</p>
 <h2 id="data-lineage">Data Lineage</h2>
