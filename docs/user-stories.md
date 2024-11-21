@@ -536,7 +536,7 @@ This section provides a detailed view of each field's quality, helping you ident
 improvement. For instance, you might notice that fields like **FTE** and **location** meet your quality standards,
 while others, such as **HIER ORGANIZATION**, exhibit lower precision.
 
-To gain deeper insights into the specific data quality issues affecting **HIER ORGANIZATION**, 
+To gain deeper insights into the specific data quality issues affecting **HIER ORGANIZATION**,
 navigate to the data quality rules section.
 
 [![Data Quality Rules](./img/screenshots/data-governance-quality/data-quality-03.jpg)](./img/screenshots/data-governance-quality/data-quality-03.jpg)
