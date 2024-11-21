@@ -113,7 +113,7 @@ entity's name and type, its hierarchical breadcrumb, a description, and a summar
 the page. Additionally, you can check the availability of the lineage model and find a navigation button for
 quick access to related sections.
 
-To explore the data lineage of **NL1-HR-001**, locate and click on the "Lineage Model" option provided either
+To explore the data lineage of **NL1-HR-001**, locate and click on the **Lineage Model** option provided either
 in segment 5 or via the navigation button in segment 6.
 
 The lineage analysis reveals that the data originates from a relational database, providing critical insights
@@ -340,7 +340,7 @@ Watch the video walkthrough below or read the step-by-step instructions.
 
 #### Step-by-Step Guide
 
-Let's begin by searching for the "Logistics" domain within Aurelius Atlas to assess its data governance quality.
+Let's begin by searching for the **Logistics** domain within Aurelius Atlas to assess its data governance quality.
 Click on the button as shown in the image below:
 
 [![Search Results](./img/screenshots/data-quality-management/data-management-01.jpg)](./img/screenshots/data-quality-management/data-management-01.jpg)
@@ -348,22 +348,47 @@ Click on the button as shown in the image below:
 Icons such as data type indicators, check marks for fully populated entities, and warning symbols for incomplete
 ones help us quickly identify areas needing attention.
 
-Next, click on the "Logistics" entity flagged with a warning symbol to investigate further:
+Next, click on the **Logistics** entity flagged with a warning symbol to investigate further:
 
 [![Identify Issues](./img/screenshots/data-quality-management/data-management-02.jpg)](./img/screenshots/data-quality-management/data-management-02.jpg)
 
-This section provides a detailed view of each field's quality, helping you identify areas that may require
-improvement. For instance, you might notice that fields like "FTE" and "location" meet your quality standards,
-while others, such as "HIER ORGANIZATION" exhibit lower precision.
+Once opened the **Logistics** domain displays all associated metadata. From here, we assess whether there are
+missing or incomplete entries that may impact the quality of data governance within this domain.
 
-To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION" navigate to the data
-quality rules section.
+[![Check the Domain Results](./img/screenshots/data-governance-quality/DGQ_2.png)](./img/screenshots/data-governance-quality/DGQ_2.png)
 
-Here, you can assess the compliance status of the "Logistics" entity with the applied data governance rules:
+In this overview, we find the following segments:
+
+1. Name of the entity.
+2. Type of the entity.
+3. Description of the entity.
+4. People Responsible for this Data
+5. Summary of all page elements.
+
+From this overview, we can effectively answer one of our questions i.e. :
+
+Is there any inconsistency in the metadata that causes the warning symbol to show for the domain?
+
+However, we still need to review the governance quality rules. Upon further examination of the
+governance quality rules section, we observe that the attribute **dataEntity** is flagged with a completeness warning.
 
 [![Assess Compliance](./img/screenshots/data-quality-management/data-management-04.jpg)](./img/screenshots/data-quality-management/data-management-04.jpg)
 
-Check if all required data entities are complete or if there are any missing elements that require attention.
+When we inspect the rules within **dataEntity,** we identified two rules: **Compliant** and **Non-Compliant.**
+
+[![Assess the Compliance Rules](./img/screenshots/data-governance-quality/data_governance_quality_3.png)](./img/screenshots/data-governance-quality/data_governance_quality_3.png)
+
+Here we found two compliance rules and it's description :
+
+a. Compliant : Rule states **This Entity Has A DataEntity.**
+
+b. Non-Compliant : Rule states **This Entity Is Missing A DataEntity.**
+
+c. Description : This Data Governance Quality Check Is A Missing Values Check That Results
+In Compliance Or Non Compliance Depending On Whether A Data Domain Has A Linked Data Entity.
+Compliance When A Data Entity Is Linked And Non Compliance When It Is Not Linked.
+
+[![View the Compliance Rules](./img/screenshots/data-governance-quality/data_governance_quality_5.jpg)](./img/screenshots/data-governance-quality/data_governance_quality_5.jpg)
 
 By following these steps, you can effectively monitor and improve data governance quality, ensuring compliance
 with established rules and standards across your organization.
@@ -508,16 +533,16 @@ Next, assess the quality of each field by navigating to the field details sectio
 [![Field Quality](./img/screenshots/data-governance-quality/data-quality-02.jpg)](./img/screenshots/data-governance-quality/data-quality-02.jpg)
 
 This section provides a detailed view of each field's quality, helping you identify areas that may require
-improvement. For instance, you might notice that fields like "FTE" and "location" meet your quality standards,
-while others, such as "HIER ORGANIZATION," exhibit lower precision.
+improvement. For instance, you might notice that fields like **FTE** and **location** meet your quality standards,
+while others, such as **HIER ORGANIZATION**, exhibit lower precision.
 
-To gain deeper insights into the specific data quality issues affecting "HIER ORGANIZATION," navigate to the data
-quality rules section.
+To gain deeper insights into the specific data quality issues affecting **HIER ORGANIZATION**,
+navigate to the data quality rules section.
 
 [![Data Quality Rules](./img/screenshots/data-governance-quality/data-quality-03.jpg)](./img/screenshots/data-governance-quality/data-quality-03.jpg)
 
 Here, you can review all applied rules and their respective scores. For example, you might discover that
-inconsistencies in the syntax of the "HIER ORGANIZATION" field contribute to its lower quality score.
+inconsistencies in the syntax of the **HIER ORGANIZATION** field contribute to its lower quality score.
 
 To understand the implications of these findings and identify who within your organization is responsible for
 addressing these quality issues, navigate to the data attributes section.
