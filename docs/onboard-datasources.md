@@ -18,6 +18,8 @@ data dictionaries. This method is suitable when data is prepared in structured s
 
 Below are the technical descriptions for each relevant column in the excel template.
 
+For more details, please see the example [Excel template](https://github.com/aureliusenterprise/aurelius/blob/main/apps/m4i-data-dictionary-io/m4i_data_dictionary_io/example/Data%20Dictionary%20in%20IoT%20Terms.xlsm).
+
 #### L1 Data Domains
 
 The **L1 Data Domains** sheet categorizes and manages the high-level business data domains. Below is a table
