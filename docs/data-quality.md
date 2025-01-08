@@ -149,7 +149,7 @@ required documents is shown below. It contains all the conceptual elements expla
 ### Data quality rules
 
 Data quality rules are Apache Atlas entities, which can not be entered via the Aurelius Atlas frontend at the
-moment. We are working on it.
+moment.
 
 The entity contains the required fields as properties, such that they referential integrity between data
 quality results and the data quality rule entity are guaranteed.
@@ -274,7 +274,7 @@ This is the function that we are using: `bijacency(df, "column_a", "column_b")`.
 and the column names.
 The id and name are the same in this example, which means they are bijacent. The output will be 1.
 
-The source code to bijacency is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/bijacency/bijacency.py)
+The source code to bijacency is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/bijacency/bijacency.py).
 
 ### 2. Compare First characters
 
@@ -299,7 +299,7 @@ result = compare_first_characters(data, "id", "name", 2)
 This is the function used in this example: `compare_first_characters(df, "column_a", "column_b", num_char)`.
 The inputs are the dataset,the column names and the number of characters.
 
-The source code to `compare_first_characters` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/compare_first_characters/compare_first_characters.py)
+The source code to `compare_first_characters` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/compare_first_characters/compare_first_characters.py).
 
 ### 3. Check First Characters using Prefix
 
@@ -325,7 +325,7 @@ A prefix BE is used and the function is `compare_first_characters_starting_witho
 The inputs are the data, the column names, the number of characters and the prefix.
 The output will be 1, because the characters are the same and have the prefix too.
 
-The source code to `compare_first_characters_starting_without` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/compare_first_characters_starting_without/compare_first_characters_starting_without.py)
+The source code to `compare_first_characters_starting_without` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/compare_first_characters_starting_without/compare_first_characters_starting_without.py).
 
 ### 4. Check Completeness
 
@@ -347,7 +347,7 @@ to check.
 
 The output will be 0, because the column 'name' has no value in it.
 
-The source code to `completeness` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/completeness/completeness.py)
+The source code to `completeness` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/completeness/completeness.py).
 
 ### 5. Check Conditional Completeness
 
@@ -368,7 +368,7 @@ The inputs are data, the name of the columns and the list of given values.
 The output here will be 1, because they are no empty values in the columns and the column "conditional" has
 substrings of the given `values = ['.TMP', '.FREE']`
 
-The source code to `conditional_completeness` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_completeness)
+The source code to `conditional_completeness` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_completeness).
 
 ### 6. Check Unallowed Text
 
@@ -391,7 +391,7 @@ The inputs are the dataframe, the name of the two columns, the values of the sub
 The output will be 1 because it contains substrings in the 'conditional'  column and doesn't contain the
 unallowed text in column "Value". If it did the output would be 0.
 
-The source code to `conditional_unallowed_text` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_unallowed_text/conditional_unallowed_text.py)
+The source code to `conditional_unallowed_text` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_unallowed_text/conditional_unallowed_text.py).
 
 ### 7. Check Conditional Value
 
@@ -413,7 +413,7 @@ The inputs are data of the dummy dataset, the names of the columns which are "va
 values, that are the substrings we want to check.
 The output here will 1, because "value" column, contains an expected value. Otherwise it would be 0.
 
-The source code to `conditional_value` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_value/conditional_value.py)
+The source code to `conditional_value` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_value/conditional_value.py).
 
 ### 8. Check Character Count
 
@@ -432,7 +432,7 @@ The inputs are data, name of the column, the character we want to check and 1 is
 The check performed here is to if the the id contains "." . The output will be 1 because the "id" column
 contains "."
 
-The source code to `contains_character` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/contains_character/contains_character.py)
+The source code to `contains_character` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/contains_character/contains_character.py).
 
 ### 9. Check Matching Pattern
 
@@ -450,7 +450,7 @@ This is the function used for this example `formatting(df, "column", expression_
 The inputs are the dataset,the column "name" and the pattern to see if it matches
 The output will be 1 in this example, because 'ExampleText' matches the pattern.
 
-The source code to `formatting` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/formatting/formatting.py)
+The source code to `formatting` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/formatting/formatting.py).
 
 ### 10. Check Invalidity
 
@@ -469,7 +469,7 @@ result = invalidity(data, "value", exampleValues)
 The function is `invalidity(df, "column", [list])`. The inputs are data, column name and the list of values.
 The output will be 1 , because "X" is in the list of values.
 
-The source code to `invalidity` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/invalidity/invalidity.py)
+The source code to `invalidity` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/invalidity/invalidity.py).
 
 ### 11.  Check Length
 
@@ -486,7 +486,7 @@ result = length(data, "id", 4)
 The function is `length(df,"column",int)`. The inputs are data, column name and the length of required characters.
 The output is 1 because the length of id is 4.
 
-The source code to `length` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/length/length.py)
+The source code to `length` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/length/length.py).
 
 ### 12.  Check Range
 
@@ -509,7 +509,7 @@ The function is `range(df, "column", int1, int2)`.
 The inputs are the dataframe, the column name and the range (The upper and lower bound)
 The output will be 1 because 0.1 is between 0 and 1.
 
-The source code to `range` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/range/range.py)
+The source code to `range` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/range/range.py).
 
 ### 12.  Check Prefix
 
@@ -524,7 +524,7 @@ result = starts_with(data, "id", "1")
 The function is called `starts_with(data, "column", "prefix")`. The inputs are the data the column name and
 the prefix. The output is 1, because "1" is in the value of the id column.
 
-The source code to `starts_with` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/starts_with/starts_with.py)
+The source code to `starts_with` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/starts_with/starts_with.py).
 
 ### 13.  Check Unallowed Text
 
@@ -541,7 +541,7 @@ result = unallowed_text(data, "Organization", "BG Van Oord")
 The function is called `unallowed_text(df, "column", "sting")`. The inputs are data, the column name and the
 unallowed text The output is 1 because "BG Van Oord" is not in the "Something Else" of the "Organization" column.
 
-The source code to `unallowed_text` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/unallowed_text)
+The source code to `unallowed_text` is available [here](https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/unallowed_text).
 
 ### 14. Check Uniqueness
 
@@ -588,7 +588,7 @@ Aurelius Atlas and is used to apply the rules to your data.
 The quality score of your data is calculated based on the applied rules and the results are sent to a Kafka topic.
 Below is an image that describes the whole process for your better understanding.
 
-[image](img/logical.png)
+[![image](./img/logical.png)](./img/logical.png)
 
 1. First upload a file, define the rules that we want to apply to the data. Then push this file to atlas.
 2. Then get the data quality rules from atlas and see the data quality results. The quality results have a
@@ -665,7 +665,7 @@ json_quality = {
 }
 ```
 
-1. Create instances
+- Create instances
 
 Create instances of BusinessDataset, BusinessField, and BusinessDataQuality
 
@@ -680,7 +680,7 @@ json_str2 = json.dumps(json_quality)
 quality_instance = BusinessDataQuality.from_json(json_str2)
 ```
 
-1. Add relationship between the field and dataset instances
+- Add relationship between the field and dataset instances
 
 ```python
 field_attributes = field_instance.attributes
@@ -692,14 +692,14 @@ field_attributes.datasets = [
 ]
 ```
 
-1. Push the entities to atlas.
+- Push the entities to atlas.
 
 We use the create_entities function that can be found in the m4i_atlas_core. It is important to understand
 what are the inputs. `create_entities(dataset_instance, referred_entities, access_token)`. The first input is
 the instance we created, then the referred entities, which here are non because we are just creating an entity
 with no relationships and finally the access token.
 
-Push the dataset instance to Atlas
+- Push the dataset instance to Atlas
 
 ```python
 async def create_in_atlas(dataset, access_token=access_token):
@@ -714,7 +714,7 @@ push_to_atlas = asyncio.run(
 )
 ```
 
-Push the field instance to Atlas
+- Push the field instance to Atlas
 
 ```python
 async def create_in_atlas_field(field, access_token=access_token):
@@ -729,7 +729,7 @@ push_field = asyncio.run(
 )
 ```
 
-Push the data quality instance to Atlas
+- Push the data quality instance to Atlas
 
 ```python
 async def create_in_atlas_rule(rule, access_token=access_token):
