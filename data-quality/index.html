@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Data Quality - Aurelius Enterprise Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/tabs.css" rel="stylesheet" />
+        <link href="../stylesheets/icons.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Data Quality";
+        var mkdocs_page_input_path = "data-quality.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/logo.png" class="logo" alt="Logo"/>
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../benefits-and-features/">Benefits and Features</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../user-stories/">User Stories</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation-and-deployment/">Installation and Deployment</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture/">Architecture</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../integrations/">Integrations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../onboard-datasources/">Onboarding Data Sources</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Data Quality</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#conceptual-view">Conceptual view</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#data-quality-result">Data quality result</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-quality-rule">Data quality rule</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#associated-field">Associated field</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#technical-view">Technical view</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#data-quality-result_1">Data quality result</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-quality-rules">Data quality rules</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#propagation-of-data-quality-results">Propagation of data quality results</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#definitions-of-data-quality-rules">Definitions of data quality rules</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-quality-rules-and-examples">Data Quality Rules and Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-bijacency">1. Bijacency</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-compare-first-characters">2. Compare First characters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-check-first-characters-using-prefix">3. Check First Characters using Prefix</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-check-completeness">4. Check Completeness</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-check-conditional-completeness">5. Check Conditional Completeness</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-check-unallowed-text">6. Check Unallowed Text</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7-check-conditional-value">7. Check Conditional Value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#8-check-character-count">8. Check Character Count</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#9-check-matching-pattern">9. Check Matching Pattern</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#10-check-invalidity">10. Check Invalidity</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#11-check-length">11. Check Length</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-check-range">12. Check Range</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-check-prefix">12. Check Prefix</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-check-unallowed-text">13. Check Unallowed Text</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#14-check-uniqueness">14. Check Uniqueness</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#15-check-validity">15. Check Validity</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#apply-data-quality-results">Apply Data Quality Results</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-run-data-quality-check">How to run data quality check</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-create-entities-and-relationships">How to create entities and relationships</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#define-the-attributes-for-the-field-instance">Define the attributes for the field instance</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#define-the-attributes-for-the-data-quality-instance">Define the attributes for the data quality instance</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">Frequently Asked Questions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about-us/">About Us</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Aurelius Enterprise Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Data Quality</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="data-quality">Data Quality</h1>
+<p>Data quality refers to the overall fitness for use of data. It describes the degree to which data meets the
+requirements of its intended use, which can vary depending on the context, application, and user.
+Evaluating data quality ensures that the data is reliable, relevant, and actionable, and can help identify
+areas for improvement in data collection, storage, and management processes.
+Ultimately, the goal of data quality management is to ensure that data can be trusted and used effectively to
+support decision-making, analysis, and other business processes.
+Since actual data is required for this assessment, this analysis can not be done in Aurelius Atlas itself, but
+is performed on the related data storage system. The quality results however,
+can be documented in Aurelius Atlas. This documentation contains the checked rules as well as the actual data
+quality compliance results.</p>
+<p>Data quality results are then propagated along the breadcrumb of the field to datasets, collections and
+systems on the technical side and to data attributes, data entities and data domains on the business side.</p>
+<h2 id="conceptual-view">Conceptual view</h2>
+<p>Thus, conceptually data quality results can be added in Aurelius Atlas. It consists of 3 parts:</p>
+<ul>
+<li>the actual data quality result</li>
+<li>an associated data quality Atlas entity</li>
+<li>a field which is associated with the quality result</li>
+</ul>
+<h3 id="data-quality-result">Data quality result</h3>
+<p>Data quality result consists of multiple fields:</p>
+<ul>
+<li>a unique ID, which can be human readable</li>
+<li>a qualityguid, which is a guid of the actual quality result</li>
+<li>a data quality result (dqscore), which is a boolean value of 0 or 1, where 0 means 0% compliance and 1 means
+    100% compliance</li>
+</ul>
+<h3 id="data-quality-rule">Data quality rule</h3>
+<p>A data quality rule is described in Aurelius Atlas as type data quality rule. Currently you can not enter this
+quality rule via the front end.</p>
+<p>A data quality rule consists of:</p>
+<ul>
+<li>name: of the associated rule</li>
+<li>description: explaining the thought behind the rule</li>
+<li>expression: which is constructed from an expression language on the level of the data quality</li>
+<li>business rule ID: which is usually just a number used for ordering the rules when presented in the front end
+    dimension</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Rule Category</th>
+<th>Rule Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>completeness</td>
+<td>Degree to which data is not null</td>
+</tr>
+<tr>
+<td>accuracy</td>
+<td>Degree to which a column conforms to a standard</td>
+</tr>
+<tr>
+<td>validity</td>
+<td>Degree to which the data comply with a predefined structure</td>
+</tr>
+<tr>
+<td>uniqueness</td>
+<td>Degree to which the data has a unique value</td>
+</tr>
+<tr>
+<td>timeliness</td>
+<td>The data should be up to date</td>
+</tr>
+</tbody>
+</table>
+<h3 id="associated-field">Associated field</h3>
+<p>A field can be used in multiple data quality rules, thus a field may have multiple data quality results of
+different data quality rule dimensions. A field is referenced by the following information:</p>
+<ul>
+<li>qualified name of the field used for the assessment</li>
+<li>fieldguid, that is the guid of the referenced field</li>
+<li>qualified field name</li>
+</ul>
+<h2 id="technical-view">Technical view</h2>
+<p>Technically, data quality is represented in Aurelius Atlas as an Apache Atlas entity and as data in the
+metadata store (elastic app search).
+The field as well as a description of the data quality rule are entities in Aurelius Atlas, while the actual
+data quality result is stored as metadata in elastic app search.</p>
+<h3 id="data-quality-result_1">Data quality result</h3>
+<p>The data quality result in elastic app search is stored in the atlas-dev-quality engine. An example of the
+required documents is shown below. It contains all the conceptual elements explained in the previous section.</p>
+<pre class="highlight"><code class="language-json">{
+  "id": "nl3--nl3plant--nl3plant001--workorderid--8",
+  "fields": [
+    {
+      "name": "id",
+      "value": "nl3--nl3plant--nl3plant001--workorderid--8",
+      "type": "enum"
+    },
+    {
+      "name": "fieldqualifiedname",
+      "value": "nl3--nl3plant--nl3plant001--workorderid",
+      "type": "string"
+    },
+    {
+      "name": "fieldguid",
+      "value": "21f89d8f-4e10-4419-b135-6a84d55ed63f",
+      "type": "string"
+    },
+    {
+      "name": "qualityguid",
+      "value": "61484c0e-89db-49ff-a67a-2e3bb2e9219c",
+      "type": "string"
+    },
+    {
+      "name": "dataqualityruledescription",
+      "value": "This field has to be filled at all times",
+      "type": "string"
+    },
+    {
+      "name": "expression",
+      "value": "Completeness('workorderid')",
+      "type": "string"
+    },
+    {
+      "name": "dqscore",
+      "value": "1.0",
+      "type": "float"
+    },
+    {
+      "name": "dataqualityruledimension",
+      "value": "Completeness",
+      "type": "string"
+    },
+    {
+      "name": "businessruleid",
+      "value": "8.0",
+      "type": "float"
+    },
+    {
+      "name": "name",
+      "value": "Rule 8",
+      "type": "string"
+    },
+    {
+      "name": "guid",
+      "value": "61484c0e-89db-49ff-a67a-2e3bb2e9219c",
+      "type": "string"
+    },
+    {
+      "name": "qualityqualifiedname",
+      "value": "nl3--nl3plant--nl3plant001--workorderid--8",
+      "type": "string"
+    },
+    {
+      "name": "datadomainname",
+      "value": "plant data",
+      "type": "string"
+    }
+  ]
+}</code></pre>
+<h3 id="data-quality-rules">Data quality rules</h3>
+<p>Data quality rules are Apache Atlas entities, which can not be entered via the Aurelius Atlas frontend at the
+moment.</p>
+<p>The entity contains the required fields as properties, such that they referential integrity between data
+quality results and the data quality rule entity are guaranteed.
+An example of a data quality rule entity in json format as it is stored in Apache Atlas is shown below.</p>
+<pre class="highlight"><code class="language-json">    {
+        "referredEntities": {},
+        "entity": {
+            "typeName": "m4i_data_quality",
+            "attributes": {
+                "expression": "completeness('HIER_ORG')",
+                "qualifiedName": "nl1--nl1hr--nl1hr001--hier_organization--30",
+                "displayName": null,
+                "description": null,
+                "active": true,
+                "businessRuleDescription": "",
+                "ruleDescription": "This field has to be filled at all times",
+                "name": "nl1--nl1hr--nl1hr001--hier_organization--30",
+                "filterRequired": true,
+                "id": 30,
+                "qualityDimension": "Completeness",
+                "expressionVersion": "1",
+                "fields": [
+                    {
+                        "guid": "0df94338-1afc-455c-b9d5-c3d0e36d1dac",
+                        "typeName": "m4i_field",
+                        "uniqueAttributes": {
+                            "qualifiedName": "nl1--nl1hr--nl1hr001--hier_organization"
+                        }
+                    }
+                ]
+            },
+            "guid": "3059989c-364d-4404-92ef-c1e719014f00",
+            "isIncomplete": false,
+            "relationshipAttributes": {
+                "fields": [{
+                        "guid": "0df94338-1afc-455c-b9d5-c3d0e36d1dac",
+                        "typeName": "m4i_field",
+                        "entityStatus": "ACTIVE",
+                        "displayText": "HIER_ORGANIZATION",
+                        "relationshipType": "m4i_data_quality_field_assignment",
+                        "relationshipGuid": "35b3502c-38a7-4524-b266-2fd46888e5f2",
+                        "relationshipStatus": "ACTIVE",
+                        "relationshipAttributes": {
+                            "typeName": "m4i_data_quality_field_assignment"
+                        }
+                    }
+                ],
+            },
+        }
+    }</code></pre>
+<p>The relationship attribute fields is referencing the related field. The remaining values are local to the
+entity and some of them are referenced and/or taken over in the data quality result data structure.</p>
+<h3 id="propagation-of-data-quality-results">Propagation of data quality results</h3>
+<p>After creating the data quality rule entity in Apache Atlas and data quality results in the metadata store,
+the data quality is accessible at the field.
+To propagate data quality results through the complete governance tree, currently there is a script required
+which can be called periodically.
+In a later version of Aurelius Atlas, all changes to data quality or the governance structures in Aurelius
+Atlas will also propagate data quality results.
+A description on how to setup the script and how to run it will follow shortly.</p>
+<h4 id="definitions-of-data-quality-rules">Definitions of data quality rules</h4>
+<p>They are located at the m4i-data-management repository <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules">quality rules</a>
+You can find all the data quality rules, that you wish to apply on a dataset. They are explanations of each
+rule and examples on how to use them.
+These are they data quality rules that are applied on a dataset.</p>
+<p>Below is a brief description of each rule.</p>
+<table>
+<thead>
+<tr>
+<th>Rule Number</th>
+<th>Rule Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Bijacency</td>
+<td>Checks whether or not the values in the given column_a and column_b only occur as a unique combination. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/bijacency/bijacency.py">Link</a></td>
+</tr>
+<tr>
+<td>2. Compare First Characters</td>
+<td>Checks whether the first ‘number_of_characters’ values in first_column_name and second_column_name are similar, and if the values are None or NaN. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/compare_first_characters/compare_first_characters.py">Link</a></td>
+</tr>
+<tr>
+<td>3. Check First Characters using Prefix</td>
+<td>Checks whether the first ‘number_of_characters’ values starting without in first_column_name and second_column_name are similar, and if column_name does not start with any of the given prefixes, and if the values are None or NaN. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/compare_first_characters_starting_without/compare_first_characters_starting_without.py">Link</a></td>
+</tr>
+<tr>
+<td>4. Check Completeness</td>
+<td>Checks whether the values in the column with the given column_name are None or NaN. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/completeness/completeness.py">Link</a></td>
+</tr>
+<tr>
+<td>5. Check Conditional Completeness</td>
+<td>Checks whether or not the values in the given value_column are None or NaN. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_completeness">Link</a></td>
+</tr>
+<tr>
+<td>6. Check Unallowed Text</td>
+<td>Checks if values in the column with the given value_column contain a specific unallowed text. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_unallowed_text/conditional_unallowed_text.py">Link</a></td>
+</tr>
+<tr>
+<td>7. Check Conditional Value</td>
+<td>Checks whether the values in the given value_column match (one of) the expected value(s) for a given key in the key_column. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_value/conditional_value.py">Link</a></td>
+</tr>
+<tr>
+<td>8. Check Character Count</td>
+<td>Checks how many times the values in the column with the given column_name contain a specific character. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/contains_character/contains_character.py">Link</a></td>
+</tr>
+<tr>
+<td>9. Check Matching Pattern</td>
+<td>Checks whether or not the values in the column with the given column_name match the given pattern. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/formatting/formatting.py">Link</a></td>
+</tr>
+<tr>
+<td>10. Check Invalidity</td>
+<td>Checks whether or not the values in the column with the given column_name does not exist in the given list of values. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/invalidity/invalidity.py">Link</a></td>
+</tr>
+<tr>
+<td>11. Check Length</td>
+<td>Checks if the number of characters of the values in the column with the given column_name are equal to the required_length. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/length/length.py">Link</a></td>
+</tr>
+<tr>
+<td>12. Check Range</td>
+<td>Checks whether or not the values in the column with the given column_name are: - Greater than or equal to the given lower_bound. - Less than or equal to the given upper_bound. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/range/range.py">Link</a></td>
+</tr>
+<tr>
+<td>13. Check Prefix</td>
+<td>Checks whether or not the values in the column with the given column_name start with any of the given prefixes. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/starts_with/starts_with.py">Link</a></td>
+</tr>
+<tr>
+<td>14. Check Unallowed Text</td>
+<td>Checks if values in the column with the given column_name contain a specific unallowed text. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/unallowed_text">Link</a></td>
+</tr>
+<tr>
+<td>15. Check Uniqueness</td>
+<td>Checks whether the values in the column with the given column_name are unique (duplicate value check). <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/uniqueness/uniqueness.py">Link</a></td>
+</tr>
+<tr>
+<td>16. Check Validity</td>
+<td>Checks whether or not the values in the column with the given column_name exist in the given list of values. <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/validity/validity.py">Link</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-quality-rules-and-examples">Data Quality Rules and Examples</h2>
+<h3 id="1-bijacency">1. Bijacency</h3>
+<p>In this example, a dummy dataset is provided and the columns "id" and "name" are compared.</p>
+<p>A dummy data set is seen in the code
+First run a test to see if the columns are bijacent. The columns "id" and "name" are compared.</p>
+<pre class="highlight"><code class="language-python">data = DataFrame(
+    [
+        {"id": 1234, "name": "John Doe", "function": "Developer", "from": "01-01-2021"},
+        {
+            "id": 1234,
+            "name": "John Doe",
+            "function": "Senior developer",
+            "from": "01-01-2022",
+        },
+    ]
+)
+
+result = bijacency(data, "id", "name")</code></pre>
+<p>This is the function that we are using: <code>bijacency(df, "column_a", "column_b")</code>. The inputs are the dataset
+and the column names.
+The id and name are the same in this example, which means they are bijacent. The output will be 1.</p>
+<p>The source code to bijacency is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/bijacency/bijacency.py">here</a>.</p>
+<h3 id="2-compare-first-characters">2. Compare First characters</h3>
+<p>Checks whether the first 'number_of_characters 'values in <code>first_column_name</code> and <code>second_column_name</code> are
+similar, and if the values are None or NaN.</p>
+<p>A dummy dataset is provided and the first two characters of the id and name will be compared.</p>
+<pre class="highlight"><code class="language-python">data = DataFrame(
+    [
+        {
+            "id": "NL.xxx",
+            "name": "NL.xxx",
+        }
+    ]
+)
+
+result = compare_first_characters(data, "id", "name", 2)</code></pre>
+<p>This is the function used in this example: <code>compare_first_characters(df, "column_a", "column_b", num_char)</code>.
+The inputs are the dataset,the column names and the number of characters.</p>
+<p>The source code to <code>compare_first_characters</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/compare_first_characters/compare_first_characters.py">here</a>.</p>
+<h3 id="3-check-first-characters-using-prefix">3. Check First Characters using Prefix</h3>
+<p>This rule does three checks. It checks if the first characters are the same, if the have same prefix and if
+the values are Nan or none.</p>
+<p>A dummy dataset with two columns, id and name is provided</p>
+<pre class="highlight"><code class="language-python">data = DataFrame(
+    [
+        {
+            "id": "BE.xxx",
+            "name": "BE.xxx",
+        }
+    ]
+)
+
+result = compare_first_characters_starting_without(data, "id", "name", 2, "BE")</code></pre>
+<p>A prefix BE is used and the function is <code>compare_first_characters_starting_without(data, "id", "name", 2, 'BE')</code>
+The inputs are the data, the column names, the number of characters and the prefix.
+The output will be 1, because the characters are the same and have the prefix too.</p>
+<p>The source code to <code>compare_first_characters_starting_without</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/compare_first_characters_starting_without/compare_first_characters_starting_without.py">here</a>.</p>
+<h3 id="4-check-completeness">4. Check Completeness</h3>
+<p>Checks whether the values in the column with the given <code>column_name</code> are None or NaN.</p>
+<p>We provide a data dummy test in the unit test and we want to check if the column 'name' has a value or not.
+If it has a value the function will return 1, otherwise it will return 0</p>
+<pre class="highlight"><code class="language-python">data = DataFrame(
+    [{"id": 1234, "name": NaN, "function": "Developer", "from": "01-01-2021"}]
+)
+
+result = completeness(data, "name")</code></pre>
+<p>The function is called <code>completeness(df, "column")</code>. The inputs are data and the name of the column we want
+to check.</p>
+<p>The output will be 0, because the column 'name' has no value in it.</p>
+<p>The source code to <code>completeness</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/completeness/completeness.py">here</a>.</p>
+<h3 id="5-check-conditional-completeness">5. Check Conditional Completeness</h3>
+<p>The columns "value" and "conditional" are 'None' or 'NaN'. The rows are filtered,
+where the value of the 'key_column', is not a substring of the given value in the function. In this example
+the key column in "conditional" and we are seeing if it has a substring of the list values.</p>
+<pre class="highlight"><code class="language-python">values = [".TMP", ".FREE"]
+
+data = DataFrame([{"value": "Something", "conditional": "xx.FREE.eur"}])
+
+result = conditional_completeness(data, "conditional", "value", values)</code></pre>
+<p>This is the function of use <code>conditional_completeness(df, "column_a", "column_b", [list])</code>.
+The inputs are data, the name of the columns and the list of given values.
+The output here will be 1, because they are no empty values in the columns and the column "conditional" has
+substrings of the given <code>values = ['.TMP', '.FREE']</code></p>
+<p>The source code to <code>conditional_completeness</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_completeness">here</a>.</p>
+<h3 id="6-check-unallowed-text">6. Check Unallowed Text</h3>
+<p>The check here is to see if there is unallowed text in the columns of the dummy dataframe.</p>
+<pre class="highlight"><code class="language-python">values = [".TMP", ".FREE"]
+
+unallowed_text_item = "("
+
+data = DataFrame([{"value": "Something", "conditional": "xx.FREE.eur"}])
+
+result = conditional_unallowed_text(
+    data, "conditional", "value", values, unallowed_text_item
+)</code></pre>
+<p>This is the function of use  <code>conditional_unallowed_text(df, "column_a", "column_b", [list_of_values], "string")</code>.
+The inputs are the dataframe, the name of the two columns, the values of the substrings and the unallowed text.
+The output will be 1 because it contains substrings in the 'conditional'  column and doesn't contain the
+unallowed text in column "Value". If it did the output would be 0.</p>
+<p>The source code to <code>conditional_unallowed_text</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_unallowed_text/conditional_unallowed_text.py">here</a>.</p>
+<h3 id="7-check-conditional-value">7. Check Conditional Value</h3>
+<p>The 'value' and 'conditional' column are being checked to see if it contains the expected values of the 'key'
+values object.</p>
+<pre class="highlight"><code class="language-python">values = {"xx.TMP": "XX No Grade"}  # (this is dictionary with it's key and value)
+
+data = DataFrame(
+    [{"value": "XX No Grade", "conditional": "xx.TMP"}]  # (this is our dummy dataset)
+)
+
+result = conditional_value(data, "conditional", "value", values)</code></pre>
+<p>the function used for this example is called <code>conditional_value(df, "column_a", "column_b", {dictionary})</code>.
+The inputs are data of the dummy dataset, the names of the columns which are "value" and "conditional" and the
+values, that are the substrings we want to check.
+The output here will 1, because "value" column, contains an expected value. Otherwise it would be 0.</p>
+<p>The source code to <code>conditional_value</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/conditional_value/conditional_value.py">here</a>.</p>
+<h3 id="8-check-character-count">8. Check Character Count</h3>
+<p>Checks how many times the values in the column with the given <code>column_name</code> contain a specific character.</p>
+<p>A dummy dataframe is provided with one column called "id".</p>
+<pre class="highlight"><code class="language-python">data = DataFrame([{"id": "12.12"}])
+
+result = contains_character(data, "id", ".", 1)</code></pre>
+<p>This is the function used in this example <code>contains_character(df, "column", "string", int)</code>.
+The inputs are data, name of the column, the character we want to check and 1 is the expected count
+The check performed here is to if the the id contains "." . The output will be 1 because the "id" column
+contains "."</p>
+<p>The source code to <code>contains_character</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/contains_character/contains_character.py">here</a>.</p>
+<h3 id="9-check-matching-pattern">9. Check Matching Pattern</h3>
+<p>Checks if the values in the column <code>name</code> match the given <code>pattern</code>.</p>
+<p>A dummy dataset is provided</p>
+<pre class="highlight"><code class="language-python">data = DataFrame([{"name": "ExampleText"}])
+
+result = formatting(data, "name", r"^[a-zA-Z]+$")</code></pre>
+<p>This is the function used for this example <code>formatting(df, "column", expression_pattern)</code>.
+The inputs are the dataset,the column "name" and the pattern to see if it matches
+The output will be 1 in this example, because 'ExampleText' matches the pattern.</p>
+<p>The source code to <code>formatting</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/formatting/formatting.py">here</a>.</p>
+<h3 id="10-check-invalidity">10. Check Invalidity</h3>
+<p>The values in the column with the given name <code>value</code> are checked if they do not exist in the given list of <code>exampleValues</code>.</p>
+<p>A list of the example values and a dummy dataframe are provided.</p>
+<pre class="highlight"><code class="language-python">exampleValues = ["x", "X", "TBD", "Name"]
+
+data = DataFrame([{"value": "X"}])
+
+result = invalidity(data, "value", exampleValues)</code></pre>
+<p>The function is <code>invalidity(df, "column", [list])</code>. The inputs are data, column name and the list of values.
+The output will be 1 , because "X" is in the list of values.</p>
+<p>The source code to <code>invalidity</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/invalidity/invalidity.py">here</a>.</p>
+<h3 id="11-check-length">11.  Check Length</h3>
+<p>The check performed here is the number of characters of the values in the column <code>id</code> are equal to the <code>required_length</code>.</p>
+<p>A dummy dataframe with column name "id"</p>
+<pre class="highlight"><code class="language-python">data = DataFrame([{"id": "1234"}])
+
+result = length(data, "id", 4)</code></pre>
+<p>The function is <code>length(df,"column",int)</code>. The inputs are data, column name and the length of required characters.
+The output is 1 because the length of id is 4.</p>
+<p>The source code to <code>length</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/length/length.py">here</a>.</p>
+<h3 id="12-check-range">12.  Check Range</h3>
+<p>The check performed here is the values in the column  <code>column_name</code> are greater than or equal to the given
+<code>lower_bound</code> or less than or equal to the given <code>upper_bound</code>.</p>
+<p>A dummy dataframe for this example with column name "value"</p>
+<pre class="highlight"><code class="language-python">    data = DataFrame([
+            {
+                "value": 0.1
+            }
+                     ])
+
+    result = range(data, "value", 0, 1)</code></pre>
+<p>The function is <code>range(df, "column", int1, int2)</code>.
+The inputs are the dataframe, the column name and the range (The upper and lower bound)
+The output will be 1 because 0.1 is between 0 and 1.</p>
+<p>The source code to <code>range</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/range/range.py">here</a>.</p>
+<h3 id="12-check-prefix">12.  Check Prefix</h3>
+<p>This example checks if the values in the column <code>column_name</code> start with any of the given <code>prefixes</code>.</p>
+<pre class="highlight"><code class="language-python">data = DataFrame([{"id": 1234}])
+
+result = starts_with(data, "id", "1")</code></pre>
+<p>The function is called <code>starts_with(data, "column", "prefix")</code>. The inputs are the data the column name and
+the prefix. The output is 1, because "1" is in the value of the id column.</p>
+<p>The source code to <code>starts_with</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/starts_with/starts_with.py">here</a>.</p>
+<h3 id="13-check-unallowed-text">13.  Check Unallowed Text</h3>
+<p>This example checks if the values in the column <code>Organization</code> contain a specific unallowed <code>text</code>.</p>
+<p>A dummy dataset is provided.</p>
+<pre class="highlight"><code class="language-python">data = DataFrame([{"Organization": "Something Else"}])
+
+result = unallowed_text(data, "Organization", "BG Van Oord")</code></pre>
+<p>The function is called <code>unallowed_text(df, "column", "sting")</code>. The inputs are data, the column name and the
+unallowed text The output is 1 because "BG Van Oord" is not in the "Something Else" of the "Organization" column.</p>
+<p>The source code to <code>unallowed_text</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/unallowed_text">here</a>.</p>
+<h3 id="14-check-uniqueness">14. Check Uniqueness</h3>
+<p>This example checks  if the values in the column <code>id</code> are unique. It checks for duplicate values</p>
+<p>A dummy dataset is provided</p>
+<pre class="highlight"><code class="language-python">data = DataFrame([{"id": "1234"}, {"id": "1234"}, {"id": "2345"}])
+
+result = uniqueness(data, "id")</code></pre>
+<p>The function is <code>uniqueness(data, "id")</code>. The inputs are the dataset and the name of the column.
+The output will be 0, because the "id" column contains duplicate values</p>
+<p>The source code to <code>uniqueness</code> is available <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/uniqueness/uniqueness.py">here</a>.</p>
+<h3 id="15-check-validity">15. Check Validity</h3>
+<p>This example checks if the values in the column <code>value</code> exist in the list of exampleValues.</p>
+<p>The values in the example list and a dummy dataset are provided</p>
+<pre class="highlight"><code class="language-python">exampleValues = ["Definite Contract", "Indefinite Contract"]
+
+data = DataFrame([{"value": "Definite Contract"}])
+
+result = validity(data, "value", exampleValues)</code></pre>
+<p>The function is <code>validity(df, "key",[list])</code>. The inputs are data, the column name and the list of example values.
+The output is 1, because the value of the column exists in the example list.</p>
+<p>The source code to <code>validity</code> is available <a href="https://github.com/aureliusenterprise/aurelius/blob/main/libs/m4i-data-management/m4i_data_management/core/quality/rules/validity/validity.py%3E">here</a>.</p>
+<h2 id="apply-data-quality-results">Apply Data Quality Results</h2>
+<p>The tool checks the quality of your data. To use it, you need to provide a csv file with your data and the
+rules you want to apply to it. The rules are basically the type
+of checks you want to do on the attributes of your dataset. The rules you want to define are stored, on
+Aurelius Atlas and is used to apply the rules to your data.
+The quality score of your data is calculated based on the applied rules and the results are sent to a Kafka topic.
+Below is an image that describes the whole process for your better understanding.</p>
+<p><a href="../img/logical.png"><img alt="image" src="../img/logical.png" /></a></p>
+<ol>
+<li>First upload a file, define the rules that we want to apply to the data. Then push this file to atlas.</li>
+<li>Then get the data quality rules from atlas and see the data quality results. The quality results have a
+    data quality score. 1 is compliant and 0 is non-compliant</li>
+<li>Finally push the data quality results to kafka.</li>
+</ol>
+<h3 id="how-to-run-data-quality-check">How to run data quality check</h3>
+<p>Here is a <a href="https://github.com/aureliusenterprise/aurelius/tree/main/libs/m4i-atlas-core">link</a> of the
+repository you will need. This library contains all core functionality around data management.</p>
+<p>Our tool checks the quality of your data. To use it, you need to provide a csv file with your data and the
+rules you want to apply to it. The rules are basically the type of checks you want to do on the attributes of
+your dataset. We store your data and rules on Atlas and use our tool to apply the rules to your data. We then
+calculate the quality score of your data based on the applied rules and provided a csv output with the results.</p>
+<p>These are the steps on how to do it</p>
+<ol>
+<li>
+<p>In the run_quality_rules.py we can now run our check. We have to provide a dataset so we can do a quality check.
+    Fill in the path in the get_data_csv(). You will see it on line 63. Make a csv file with example data.
+    Here is a simple example below.</p>
+<p>Just One Column named UID and provide a name. Make an excel file.</p>
+<p>UID
+example_name</p>
+</li>
+<li>
+<p>Finally we run our check in the run_quality_rules.py In debug mode run the <code>asyncio.run(atlas_dataset_quality.run())</code></p>
+</li>
+</ol>
+<h3 id="how-to-create-entities-and-relationships">How to create entities and relationships</h3>
+<p>In the create_push_to_atlas.py a user can create a dataset, field and data quality rule entity and push it to
+atlas. He can create a relationship between the field and dataset. I will explain how to do it with an example.</p>
+<ol>
+<li>Define the attributes for each instance</li>
+</ol>
+<p>Define the attributes for the dataset instance</p>
+<pre class="highlight"><code class="language-json">json_dataset = {
+    "attributes": {
+        "name": "example",
+        "qualifiedName": "example100"
+    },
+    "typeName": "m4i_dataset"
+}</code></pre>
+<h4 id="define-the-attributes-for-the-field-instance">Define the attributes for the field instance</h4>
+<pre class="highlight"><code class="language-json">json_field={
+    "attributes": {
+        "name": "field",
+        "qualifiedName": "example--field"
+    },
+    "typeName": "m4i_field",
+    "relationshipAttributes": {
+        "dataset": {
+            "guid": "&lt;guid-of-json_dataset&gt;",
+            "typeName": "m4i_dataset",
+            "relationshipType": "m4i_dataset_fields"
+        }
+    }
+}</code></pre>
+<h4 id="define-the-attributes-for-the-data-quality-instance">Define the attributes for the data quality instance</h4>
+<pre class="highlight"><code class="language-python">json_quality = {
+    "attributes": {"name": "field", "qualifiedName": "example--quality", "id": 1},
+    "typeName": "m4i_data_quality",
+}</code></pre>
+<ul>
+<li>Create instances</li>
+</ul>
+<p>Create instances of BusinessDataset, BusinessField, and BusinessDataQuality</p>
+<pre class="highlight"><code class="language-python">json_str = json.dumps(json_dataset)
+dataset_instance = BusinessDataset.from_json(json_str)
+
+json_str1 = json.dumps(json_field)
+field_instance = BusinessField.from_json(json_str1)
+
+json_str2 = json.dumps(json_quality)
+quality_instance = BusinessDataQuality.from_json(json_str2)</code></pre>
+<ul>
+<li>Add relationship between the field and dataset instances</li>
+</ul>
+<pre class="highlight"><code class="language-python">field_attributes = field_instance.attributes
+field_attributes.datasets = [
+    ObjectId(
+        type_name="m4i_dataset",
+        unique_attributes=M4IAttributes(qualified_name="example100"),
+    )
+]</code></pre>
+<ul>
+<li>Push the entities to atlas.</li>
+</ul>
+<p>We use the create_entities function that can be found in the m4i_atlas_core. It is important to understand
+what are the inputs. <code>create_entities(dataset_instance, referred_entities, access_token)</code>. The first input is
+the instance we created, then the referred entities, which here are non because we are just creating an entity
+with no relationships and finally the access token.</p>
+<ul>
+<li>Push the dataset instance to Atlas</li>
+</ul>
+<pre class="highlight"><code class="language-python">async def create_in_atlas(dataset, access_token=access_token):
+    mutations_dataset = await create_entities(
+        dataset, referred_entities=None, access_token=access_token
+    )
+    print(mutations_dataset)
+
+
+push_to_atlas = asyncio.run(
+    create_in_atlas(dataset_instance, access_token=access_token)
+)</code></pre>
+<ul>
+<li>Push the field instance to Atlas</li>
+</ul>
+<pre class="highlight"><code class="language-python">async def create_in_atlas_field(field, access_token=access_token):
+    mutations_field = await create_entities(
+        field, field, referred_entities=None, access_token=access_token
+    )
+    print(mutations_field)
+
+
+push_field = asyncio.run(
+    create_in_atlas_field(field_instance, access_token=access_token)
+)</code></pre>
+<ul>
+<li>Push the data quality instance to Atlas</li>
+</ul>
+<pre class="highlight"><code class="language-python">async def create_in_atlas_rule(rule, access_token=access_token):
+    mutations_rule = await create_entities(
+        rule, referred_entities=None, access_token=access_token
+    )
+    print(mutations_rule)
+
+
+push_rule = asyncio.run(create_in_atlas_rule(rule, access_token=access_token))</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../onboard-datasources/" class="btn btn-neutral float-left" title="Onboarding Data Sources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../faq/" class="btn btn-neutral float-right" title="Frequently Asked Questions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../onboard-datasources/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
