@@ -55,6 +55,16 @@ The following are the minimal infrastructure requirements for deploying Aurelius
     | RAM        | 16 GB         |
     | Disk Space | 100 GB        |
 
+=== "Huawei Cloud"
+    For Huawei Cloud, the recommended system requirements are:
+
+    | Resource   | Specification |
+    | ---------- | ------------- |
+    | Node Count | 2             |
+    | CPU Cores  | 4             |
+    | RAM        | 16 GB         |
+    | Disk Space | 100 GB        |
+
 === "Docker Compose"
     For a local deployment, the recommended system requirements are:
 
@@ -88,6 +98,14 @@ Before you begin the installation process, ensure that you have the following pr
     - [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed
     - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed
     - A registered domain name for the Ingress controller
+
+=== "Huawei Cloud"
+    Please ensure you have the following prerequisites for deployment on Huawei Cloud:
+
+    - 2 Elastic IPs
+    - An Elastic Load Balancer with 5 Mbit/s bandwidth, which can later be changed to traffic-based pricing.
+    - A NAT Gateway with an SNAT rule [Huawei Cloud Documentation](https://support.huaweicloud.com/eu/qs-natgateway/en-us_topic_0087895790.html)
+    - A registered domain name for the external IP of the Elastic Load Balancer
 
 === "Docker Compose"
     Please ensure you have the following prerequisites for a local deployment:
@@ -231,6 +249,18 @@ install the ingress controller, follow the steps below:
     helm install nginx-ingress ingress-nginx/ingress-nginx \
         --set controller.publishService.enabled=true
     ```
+
+=== "Huawei Cloud"
+    On Huawei Cloud we use Elastic Load Balancer as an nginx ingress controller. To set it up, follow the
+    [official documentation](https://support.huaweicloud.com/intl/en-us/usermanual-elb/elb_lb_000006.html).
+
+    To validate whether the ingress service is running, run:
+
+    ```bash
+    kubectl get all -n default
+    ```
+
+    You should see two NGINX ingress controller instances with a `Running` status.
 
 === "Docker Compose"
     You can skip this step when making a local deployment.
