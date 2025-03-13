@@ -26,37 +26,8 @@ All distributions of Aurelius Atlas are available on GitHub:
 The following are the minimal infrastructure requirements for deploying Aurelius Atlas:
 
 === "Kubernetes Cluster"
-    For an on-premises Kubernetes cluster, the system requirements are:
-
-    | Resource   | Specification |
-    | ---------- | ------------- |
-    | Node Count | 2             |
-    | CPU Cores  | 4             |
-    | RAM        | 16 GB         |
-    | Disk Space | 100 GB        |
-
-=== "Azure"
-    For Azure, the recommended system requirements are:
-
-    | Resource   | Specification |
-    | ---------- | ------------- |
-    | Node Count | 2             |
-    | CPU Cores  | 4             |
-    | RAM        | 16 GB         |
-    | Disk Space | 100 GB        |
-
-=== "Google Cloud"
-    For Google Cloud, the recommended system requirements are:
-
-    | Resource   | Specification |
-    | ---------- | ------------- |
-    | Node Count | 2             |
-    | CPU Cores  | 4             |
-    | RAM        | 16 GB         |
-    | Disk Space | 100 GB        |
-
-=== "Huawei Cloud"
-    For Huawei Cloud, the recommended system requirements are:
+    The following system requirements apply to Kubernetes clusters. This setup is supported on Azure, Google
+    Cloud, Huawei Cloud, and on-premises Kubernetes clusters.
 
     | Resource   | Specification |
     | ---------- | ------------- |
@@ -103,7 +74,7 @@ Before you begin the installation process, ensure that you have the following pr
     Please ensure you have the following prerequisites for deployment on Huawei Cloud:
 
     - 2 Elastic IPs
-    - An Elastic Load Balancer with 5 Mbit/s bandwidth, which can later be changed to traffic-based pricing.
+    - An Elastic Load Balancer with a minimum bandwidth of 5 Mbit/s, which can later be changed to traffic-based pricing.
     - A NAT Gateway with an SNAT rule [Huawei Cloud Documentation](https://support.huaweicloud.com/eu/qs-natgateway/en-us_topic_0087895790.html)
     - A registered domain name for the external IP of the Elastic Load Balancer
 
