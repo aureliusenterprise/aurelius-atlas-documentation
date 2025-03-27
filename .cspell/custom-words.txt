@@ -39,3 +39,5 @@ dataqualityruledescription
 dataqualityruledimension
 businessruleid
 qualityqualifiedname
+Mbit
+SNAT
