@@ -13,7 +13,7 @@ any cloud provider or on-premises Kubernetes cluster.
 All distributions of Aurelius Atlas are available on GitHub:
 
 <div class="wy-btn-group">
-    <a class="btn btn-success" href="https://github.com/aureliusenterprise/Aurelius-Atlas-helm-chart">
+    <a class="btn btn-success" href="https://github.com/aureliusenterprise/aurelius/tree/main/k8s">
         Get the Helm chart
     </a>
     <a class="btn btn-info" href="https://github.com/aureliusenterprise/Aurelius-Atlas-docker-compose">
@@ -27,7 +27,7 @@ The following are the minimal infrastructure requirements for deploying Aurelius
 
 === "Kubernetes Cluster"
     The following system requirements apply to Kubernetes clusters. This setup is supported on Azure, Google
-    Cloud, Huawei Cloud, and on-premises Kubernetes clusters.
+    Cloud, and on-premises Kubernetes clusters.
 
     | Resource   | Specification |
     | ---------- | ------------- |
@@ -69,14 +69,6 @@ Before you begin the installation process, ensure that you have the following pr
     - [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed
     - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed
     - A registered domain name for the Ingress controller
-
-=== "Huawei Cloud"
-    Please ensure you have the following prerequisites for deployment on Huawei Cloud:
-
-    - 2 Elastic IPs
-    - An Elastic Load Balancer with a minimum bandwidth of 5 Mbit/s, which can later be changed to traffic-based pricing.
-    - A NAT Gateway with an SNAT rule [Huawei Cloud Documentation](https://support.huaweicloud.com/eu/qs-natgateway/en-us_topic_0087895790.html)
-    - A registered domain name for the external IP of the Elastic Load Balancer
 
 === "Docker Compose"
     Please ensure you have the following prerequisites for a local deployment:
@@ -220,18 +212,6 @@ install the ingress controller, follow the steps below:
     helm install nginx-ingress ingress-nginx/ingress-nginx \
         --set controller.publishService.enabled=true
     ```
-
-=== "Huawei Cloud"
-    On Huawei Cloud we use Elastic Load Balancer as an nginx ingress controller. To set it up, follow the
-    [official documentation](https://support.huaweicloud.com/intl/en-us/usermanual-elb/elb_lb_000006.html).
-
-    To validate whether the ingress service is running, run:
-
-    ```bash
-    kubectl get all -n default
-    ```
-
-    You should see two NGINX ingress controller instances with a `Running` status.
 
 === "Docker Compose"
     You can skip this step when making a local deployment.
