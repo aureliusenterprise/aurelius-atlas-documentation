@@ -181,7 +181,7 @@ is also provided.</p>
 </div>
 <p>All distributions of Aurelius Atlas are available on GitHub:</p>
 <div class="wy-btn-group">
-    <a class="btn btn-success" href="https://github.com/aureliusenterprise/Aurelius-Atlas-helm-chart">
+    <a class="btn btn-success" href="https://github.com/aureliusenterprise/aurelius/tree/main/k8s">
         Get the Helm chart
     </a>
     <a class="btn btn-info" href="https://github.com/aureliusenterprise/Aurelius-Atlas-docker-compose">
@@ -193,7 +193,7 @@ is also provided.</p>
 <p>The following are the minimal infrastructure requirements for deploying Aurelius Atlas:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Kubernetes Cluster</label><div class="tabbed-content">
 <p>The following system requirements apply to Kubernetes clusters. This setup is supported on Azure, Google
-Cloud, Huawei Cloud, and on-premises Kubernetes clusters.</p>
+Cloud, and on-premises Kubernetes clusters.</p>
 <table>
 <thead>
 <tr>
@@ -249,7 +249,7 @@ Cloud, Huawei Cloud, and on-premises Kubernetes clusters.</p>
 </div>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before you begin the installation process, ensure that you have the following prerequisites:</p>
-<div class="tabbed-set" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Kubernetes Cluster</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Kubernetes Cluster</label><div class="tabbed-content">
 <p>Please ensure you have the following prerequisites for a deployment on a Kubernetes cluster:</p>
 <ul>
 <li><a href="https://helm.sh/docs/intro/install/">Helm</a> installed</li>
@@ -273,16 +273,7 @@ Cloud, Huawei Cloud, and on-premises Kubernetes clusters.</p>
 <li>A registered domain name for the Ingress controller</li>
 </ul>
 </div>
-<input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><label for="__tabbed_2_4">Huawei Cloud</label><div class="tabbed-content">
-<p>Please ensure you have the following prerequisites for deployment on Huawei Cloud:</p>
-<ul>
-<li>2 Elastic IPs</li>
-<li>An Elastic Load Balancer with a minimum bandwidth of 5 Mbit/s, which can later be changed to traffic-based pricing.</li>
-<li>A NAT Gateway with an SNAT rule <a href="https://support.huaweicloud.com/eu/qs-natgateway/en-us_topic_0087895790.html">Huawei Cloud Documentation</a></li>
-<li>A registered domain name for the external IP of the Elastic Load Balancer</li>
-</ul>
-</div>
-<input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><label for="__tabbed_2_5">Docker Compose</label><div class="tabbed-content">
+<input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><label for="__tabbed_2_4">Docker Compose</label><div class="tabbed-content">
 <p>Please ensure you have the following prerequisites for a local deployment:</p>
 <ul>
 <li><a href="https://docs.docker.com/get-docker/">Docker</a> installed</li>
@@ -354,7 +345,7 @@ note that you will need to provide your ingress controller's details in later st
 <h4 id="set-up-ingress-controller">Set Up Ingress Controller</h4>
 <p>Aurelius Atlas recommends using an <a href="https://kubernetes.github.io/ingress-nginx/">NGINX ingress controller</a>. To
 install the ingress controller, follow the steps below:</p>
-<div class="tabbed-set" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Kubernetes Cluster</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Kubernetes Cluster</label><div class="tabbed-content">
 <p>To install the NGINX ingress controller on a Kubernetes cluster, run the following commands:</p>
 <pre class="highlight"><code class="language-bash">helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
@@ -383,14 +374,7 @@ helm repo update
 helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.publishService.enabled=true</code></pre>
 </div>
-<input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><label for="__tabbed_3_4">Huawei Cloud</label><div class="tabbed-content">
-<p>On Huawei Cloud we use Elastic Load Balancer as an nginx ingress controller. To set it up, follow the
-<a href="https://support.huaweicloud.com/intl/en-us/usermanual-elb/elb_lb_000006.html">official documentation</a>.</p>
-<p>To validate whether the ingress service is running, run:</p>
-<pre class="highlight"><code class="language-bash">kubectl get all -n default</code></pre>
-<p>You should see two NGINX ingress controller instances with a <code>Running</code> status.</p>
-</div>
-<input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><label for="__tabbed_3_5">Docker Compose</label><div class="tabbed-content">
+<input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><label for="__tabbed_3_4">Docker Compose</label><div class="tabbed-content">
 <p>You can skip this step when making a local deployment.</p>
 </div>
 </div>
