@@ -179,8 +179,8 @@ graph LR
 
     This refers to the keys associated with the messages in a topic.
 
-This process creates the data dictionary but does not include descriptions. Adding descriptions in the
-Aurelius Atlas tool is important for improving data understanding.
+Adding descriptions in the Aurelius Atlas is important for improving data understanding. The onboarding process can retrieve descriptions
+from a schema registry if one is available. Otherwise, descriptions have to be added manually.
 
 ### Running the onboarding module
 
