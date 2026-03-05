@@ -298,7 +298,7 @@ The following are the key configuration settings that you need to update:
 | -------------------------------------------- | ----------------------------------------- |
 | `{{ .Values.global.external_hostname }}`     | Set this to your DNS name.                |
 | `{{ .Values.keycloak.keycloakFrontendURL }}` | Set this to your DNS name.                |
-| `{{ .Values.post_install.upload_data }}`     | Set this to `true` to upload sample data. |
+| `{{ .Values.post_install.upload_data }}`     | Set this to `true` to upload sample data. Default is `true` |
 
 !!! tip
     Aurelius Atlas ships with sample data that you can us to explore the platform. To load the sample data,
@@ -310,7 +310,7 @@ To deploy Aurelius Atlas using the Helm chart, run the following commands:
 
 ```bash
 helm dependency update
-helm install --generate-name -n <namespace> -f values.yaml --wait --timeout 15m0s .
+helm install --generate-name -n <namespace> -f values.yaml --wait --timeout 20m0s .
 ```
 
 !!! note
