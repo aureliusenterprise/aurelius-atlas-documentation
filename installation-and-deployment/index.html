@@ -442,7 +442,7 @@ file contains the configuration settings for Aurelius Atlas.</p>
 </tr>
 <tr>
 <td><code>{{ .Values.post_install.upload_data }}</code></td>
-<td>Set this to <code>true</code> to upload sample data.</td>
+<td>Set this to <code>true</code> to upload sample data. Default is <code>true</code></td>
 </tr>
 </tbody>
 </table>
@@ -454,7 +454,7 @@ set <code>{{ .Values.post_install.upload_data }}</code> to <code>true</code>.</p
 <h3 id="deploy-helm-chart">Deploy Helm Chart</h3>
 <p>To deploy Aurelius Atlas using the Helm chart, run the following commands:</p>
 <pre class="highlight"><code class="language-bash">helm dependency update
-helm install --generate-name -n &lt;namespace&gt; -f values.yaml --wait --timeout 15m0s .</code></pre>
+helm install --generate-name -n &lt;namespace&gt; -f values.yaml --wait --timeout 20m0s .</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Replace <code>&lt;namespace&gt;</code> with the namespace where you want to deploy Aurelius Atlas.</p>
